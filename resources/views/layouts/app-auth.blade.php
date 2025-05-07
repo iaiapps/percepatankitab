@@ -37,34 +37,14 @@
     <link rel="stylesheet" href={{ asset('mantis/dist/assets/css/style-preset.css') }}>
     {{-- endthemes --}}
 
+
 </head>
 
-<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+<body>
     <div id="app">
-        @include('layouts.partials.loader')
-        @include('layouts.partials.sidebar')
-        @include('layouts.partials.header')
-
-        <!-- [ Main Content ] start -->
-        <div class="pc-container">
-            <div class="pc-content">
-
-                <!-- [ breadcrumb ] start -->
-                @include('layouts.partials.title')
-                <!-- [ breadcrumb ] end -->
-                @yield('content')
-
-                <!-- [ Main Content ] start -->
-
-            </div>
-        </div>
-        @include('layouts.partials.footer')
+        @yield('content')
     </div>
 
-    <!-- [Page Specific JS] start -->
-    <script src={{ asset('mantis/dist/assets/js/plugins/apexcharts.min.js') }}></script>
-    <script src={{ asset('mantis/dist/assets/js/pages/dashboard-default.js') }}></script>
-    <!-- [Page Specific JS] end -->
     <!-- Required Js -->
     <script src={{ asset('mantis/dist/assets/js/plugins/popper.min.js') }}></script>
     <script src={{ asset('mantis/dist/assets/js/plugins/simplebar.min.js') }}></script>

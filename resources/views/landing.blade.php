@@ -4,146 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baca Kitab Cepat - Buku & Kelas Percepatan Membaca Kitab Bahasa Arab</title>
-    <!-- Bootstrap 5.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e74c3c;
-            --accent-color: #f39c12;
-            --arabic-font: 'Traditional Arabic', Arial, sans-serif;
-        }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-        }
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
-        }
+    <title>{{ config('app.name', 'Percepatan Baca Kitab') }}</title>
 
-        .book-cover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            transition: transform 0.3s;
-            max-height: 400px;
-            width: auto;
-        }
+    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-        .book-cover:hover {
-            transform: scale(1.05);
-        }
-
-        .benefit-icon {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-
-        .price-box {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: #6c757d;
-        }
-
-        .discount-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .testimonial-card {
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .cta-section {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .guarantee-badge {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            display: inline-block;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .btn-primary-custom {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            padding: 0.75rem 2rem;
-            font-weight: bold;
-        }
-
-        .btn-primary-custom:hover {
-            background-color: #c0392b;
-            border-color: #c0392b;
-        }
-
-        .arabic-text {
-            font-family: var(--arabic-font);
-            font-size: 1.2em;
-            direction: rtl;
-        }
-
-        .course-card {
-            transition: transform 0.3s;
-        }
-
-        .course-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .countdown-box {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 1rem;
-            border-radius: 5px;
-            display: inline-block;
-        }
-
-        .countdown-item {
-            display: inline-block;
-            margin: 0 10px;
-            text-align: center;
-        }
-
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: bold;
-            display: block;
-        }
-    </style>
 </head>
 
 <body>
@@ -151,7 +20,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
-                <i class="fas fa-book-quran me-2"></i> Baca Kitab Cepat
+                <i class="fas fa-book-quran me-2"></i> Percepatan Baca Kitab
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -180,49 +49,59 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section ">
+        <div class="countdown-box mb-4 text-center w-100">
+            <div class="d-flex justify-content-center">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span>Hari</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span>Jam</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span>Menit</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span>Detik</span>
+                </div>
+            </div>
+            <div class=" d-block p-3">
+                <p class="text-center mb-0 bg-danger fs-4 d-inline-block p-3 rounded">Diskon 40% akan segera berakhir!
+                </p>
+            </div>
+        </div>
         <div class="container">
+
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="countdown-box mb-4">
-                        <div class="d-flex justify-content-center">
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="days">00</span>
-                                <span>Hari</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="hours">00</span>
-                                <span>Jam</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="minutes">00</span>
-                                <span>Menit</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="seconds">00</span>
-                                <span>Detik</span>
-                            </div>
-                        </div>
-                        <p class="text-center mt-2 mb-0">Diskon 40% akan segera berakhir!</p>
-                    </div>
-
-                    <h1 class="display-4 fw-bold mb-4">Baca Kitab Kuning <span class="text-warning">Tanpa
-                            Terjemahan</span> dalam 30 Hari</h1>
-                    <p class="lead mb-4">Metode revolusioner untuk memahami kitab gundul dengan cepat dan mudah</p>
+                    <h1 class="display-6 mb-3">Beli Buku, Dapat Pelatihan Seharga 2juta+.
+                    </h1>
+                    <p class="text-warning display-6 mt-0 border-1 rounded-3 fw-bold">Tapi Ajak 5 temen = gratis semua.
+                        Serius!
+                    </p>
+                    <p class="lead mb-4">Metode revolusioner untuk membaca kitab brbahasa arab dengan cepat dan mudah
+                    </p>
                     <ul class="list-unstyled mb-4">
-                        <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Teknik membaca cepat
-                            kitab gundul</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Kuasai 1000 kosakata
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Teknik membaca
+                            cepat
+                            kitab </li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Kuasai 1000
+                            kosakata
                             penting dalam kitab kuning</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Pahami struktur kalimat
-                            bahasa Arab klasik</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Pahami struktur
+                            kalimat
+                            bahasa Arab </li>
                     </ul>
                     <a href="#pricing" class="btn btn-warning btn-lg fw-bold px-4 me-2">Dapatkan Sekarang</a>
-                    <a href="#buku" class="btn btn-outline-light btn-lg px-4">Pelajari Lebih Lanjut</a>
+                    {{-- <a href="#buku" class="btn btn-outline-light btn-lg px-4">Pelajari Lebih Lanjut</a> --}}
                 </div>
-                <div class="col-lg-6 text-center">
-                    <img src="https://m.media-amazon.com/images/I/71UwSHSZRnS._AC_UF1000,1000_QL80_.jpg"
-                        alt="Baca Kitab Cepat" class="img-fluid book-cover">
+                <div class="col-lg-6 text-center p-3">
+                    <img src="https://bukukita.com/babacms/displaybuku/101988_f.jpg" alt="Baca Kitab Cepat"
+                        class="img-fluid book-cover p-3 bg-white">
                 </div>
             </div>
         </div>
@@ -236,52 +115,60 @@
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                         alt="Buku Baca Kitab Cepat" class="img-fluid rounded shadow">
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7 ">
                     <h2 class="fw-bold mb-4"><span class="text-primary">Buku Panduan</span> Percepatan Membaca Kitab
                     </h2>
-                    <p class="lead">Temukan metode terstruktur untuk menguasai kitab gundul dalam waktu singkat</p>
+                    <p class="lead">Temukan metode terstruktur untuk menguasai membaca kitab gundul dalam waktu
+                        singkat</p>
+                    <div class="ms-5">
 
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-check-circle text-primary fs-3 me-3"></i>
-                                <div>
-                                    <h5 class="fw-bold">Best Seller</h5>
-                                    <p class="mb-0">10.000+ eksemplar terjual</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="d-flex mb-3">
+                                    <i class="bi bi-check-circle-fill text-primary fs-3 me-3"></i>
+                                    <div>
+                                        <h5 class="fw-bold">Best Seller</h5>
+                                        <p class="mb-0">10.000+ eksemplar terjual</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex mb-3">
+                                    <i class="bi bi-star-fill text-primary fs-3 me-3"></i>
+                                    <div>
+                                        <h5 class="fw-bold">Rating 4.8/5</h5>
+                                        <p class="mb-0">Dari 500+ pembaca</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-star text-primary fs-3 me-3"></i>
-                                <div>
-                                    <h5 class="fw-bold">Rating 4.8/5</h5>
-                                    <p class="mb-0">Dari 500+ pembaca</p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="d-flex mb-3">
+                                    <i class="bi bi-book-half text-primary fs-3 me-3"></i>
+                                    <div>
+                                        <h5 class="fw-bold">200+ Halaman</h5>
+                                        <p class="mb-0">Materi padat dan praktis</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex mb-3">
+                                    <i class="bi bi-patch-plus-fill text-primary fs-3 me-3"></i>
+                                    <div>
+                                        <h5 class="fw-bold">Bonus Eksklusif</h5>
+                                        <p class="mb-0">Akses materi digital</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-book-open text-primary fs-3 me-3"></i>
-                                <div>
-                                    <h5 class="fw-bold">200+ Halaman</h5>
-                                    <p class="mb-0">Materi padat dan praktis</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-award text-primary fs-3 me-3"></i>
-                                <div>
-                                    <h5 class="fw-bold">Bonus Eksklusif</h5>
-                                    <p class="mb-0">Akses materi digital</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mt-5 text-center">
+                    <br>
+                    <a href="#buku" class="btn btn-danger btn-lg px-4">Test Kemampuan bahasa Arab Anda!</a>
                 </div>
             </div>
         </div>
@@ -300,17 +187,20 @@
                     <div class="card h-100 course-card">
                         <div class="card-header bg-primary text-white text-center py-3">
                             <h4>Kelas Dasar</h4>
-                            <p class="mb-0">Memahami Kitab Fiqh Dasar</p>
+                            <p class="mb-0">Membaca Kitab Fiqh Dasar</p>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> 12 Sesi Live</li>
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Materi Kitab
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> 12 Sesi Live
+                                </li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Materi Kitab
                                     Safinatun Najah</li>
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Grup Diskusi
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Grup Diskusi
                                     WhatsApp</li>
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Rekaman Kelas</li>
-                                <li class="mb-2"><i class="fas fa-times text-muted me-2"></i> Konsultasi Privat</li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Rekaman Kelas
+                                </li>
+                                <li class="mb-2"><i class="bi bi-x-circle text-danger me-2"></i> Konsultasi Privat
+                                </li>
                             </ul>
                         </div>
                         <div class="card-footer bg-transparent text-center">
@@ -330,13 +220,17 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> 24 Sesi Live</li>
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Materi Kitab Fathul
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> 24 Sesi Live
+                                </li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Materi Kitab
+                                    Fathul
                                     Qorib</li>
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Grup Diskusi
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Grup Diskusi
                                     WhatsApp</li>
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Rekaman Kelas</li>
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> 2x Konsultasi Privat
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Rekaman Kelas
+                                </li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> 2x Konsultasi
+                                    Privat
                                 </li>
                             </ul>
                         </div>
@@ -350,17 +244,20 @@
                     <div class="card h-100 course-card">
                         <div class="card-header bg-success text-white text-center py-3">
                             <h4>Kelas Lanjutan</h4>
-                            <p class="mb-0">Analisis Kitab Turots</p>
+                            <p class="mb-0">Analisis Kitab Fiqih Lanjutan</p>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 36 Sesi Live</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Materi Kitab Ihya
-                                    Ulumuddin</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Grup Diskusi
+                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> 36 Sesi Live
+                                </li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Materi Kitab
+                                    Al Umm</li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Grup Diskusi
                                     WhatsApp</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Rekaman Kelas</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 6x Konsultasi Privat
+                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Rekaman Kelas
+                                </li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> 6x Konsultasi
+                                    Privat
                                 </li>
                             </ul>
                         </div>
@@ -389,15 +286,20 @@
                         </div>
 
                         <ul class="list-unstyled text-start mb-4">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Buku "Baca Kitab Cepat"
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Buku "Baca Kitab
+                                Cepat"
                                 (Hard Cover)</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Akses Kelas Dasar Online
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Akses Kelas Dasar
+                                Online
                             </li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Bonus E-Book Kosakata
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Bonus E-Book
+                                Kosakata
                                 Kitab Kuning</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Grup Diskusi Eksklusif
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Grup Diskusi
+                                Eksklusif
                             </li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Sertifikat Penyelesaian
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Sertifikat
+                                Penyelesaian
                             </li>
                         </ul>
 
@@ -428,11 +330,11 @@
                                     <h5 class="mb-0">Ahmad Fauzi</h5>
                                     <p class="text-muted mb-0">Mahasiswa Pesantren</p>
                                     <div class="text-warning">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
                                     </div>
                                 </div>
                             </div>
@@ -453,11 +355,11 @@
                                     <h5 class="mb-0">Siti Aminah</h5>
                                     <p class="text-muted mb-0">Guru Ngaji</p>
                                     <div class="text-warning">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
                                     </div>
                                 </div>
                             </div>
@@ -478,11 +380,11 @@
                                     <h5 class="mb-0">Budi Santoso</h5>
                                     <p class="text-muted mb-0">Karyawan</p>
                                     <div class="text-warning">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
                                     </div>
                                 </div>
                             </div>
@@ -509,7 +411,7 @@
                         merasakan manfaatnya.</p>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    <img src="https://images.unsplash.com/photo-1628313388777-9b9a751dfc6a?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="Garansi" class="img-fluid rounded shadow">
                 </div>
             </div>
@@ -522,15 +424,27 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h2 class="fw-bold text-white mb-4">Siap Menguasai Kitab Kuning?</h2>
-                    <p class="lead text-white mb-5">Daftar sekarang dan dapatkan diskon 40% untuk paket buku + kelas
+                    <p class="lead text-white mb-3">Daftar sekarang dan dapatkan diskon 40% untuk paket buku + kelas
                     </p>
                     <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Sekarang</a>
                     <p class="text-white-50 mb-0">Penawaran terbatas hanya untuk 100 pendaftar pertama</p>
                 </div>
             </div>
+
         </div>
     </section>
 
+    <section class="py-5 bg-success p-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bold text-white">Atau</h2>
+                <p class="lead text-white mb-3">Daftarkan diri anda menjadi Reseller sekarang dan dapatkan diskon kelas
+                </p>
+                <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Reseller</a>
+
+            </div>
+        </div>
+    </section>
     <!-- FAQ Section -->
     <section id="faq" class="py-5 bg-light">
         <div class="container">
@@ -612,13 +526,52 @@
             </div>
         </div>
     </section>
+    <section class="bg-dark">
+        <div class="container py-4  text-sm-start text-center">
+            <div class="row text-white">
+                <div class="col-12 col-md-6">
+                    <div class="col-lg-12 mb-4 mb-lg-0 d-sm-flex ">
+                        <img class="logofooter bg-white rounded" src="{{ asset('img/logo.png') }}" alt="logo">
+                        <div class="ms-sm-5">
+                            <h5>Tentang Kami</h5>
+                            <p class="">Kami adalah ..............</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <h5>Kontak Kami</h5>
+                            <ul class="list-unstyled ">
+                                <li><i class="bi bi-geo-alt me-2"></i> Jl. Contoh No. 123, Jember</li>
+                                <li><i class="bi bi-telephone me-2"></i> +62 123 4567 890</li>
+                                <li><i class="bi bi-envelope me-2"></i> info@example.com</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5>Sosial Media Kami</h5>
+
+                            <div class="mt-3">
+                                <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-5"></i></a>
+                                <a href="#" class="text-white me-2"><i class="bi bi-twitter fs-5"></i></a>
+                                <a href="#" class="text-white me-2"><i class="bi bi-instagram fs-5"></i></a>
+                                <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="py-4 bg-dark text-white">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2023 Baca Kitab Cepat. All rights reserved.</p>
+                    <p class="mb-0">Copyright &copy;2025 Percepatan Baca Kitab | All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <a href="#" class="text-white text-decoration-none me-3">Kebijakan Privasi</a>
@@ -628,14 +581,11 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5.3 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script>
         // Countdown Timer
         function updateCountdown() {
             const now = new Date();
-            const targetDate = new Date();
+            const targetDate = new Date('2025-05-07');
             targetDate.setDate(now.getDate() + 3); // Set target 3 days from now
 
             const totalSeconds = (targetDate - now) / 1000;
