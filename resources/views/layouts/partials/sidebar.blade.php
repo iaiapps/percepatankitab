@@ -23,7 +23,7 @@
 
 
                 <li class="pc-item pc-caption">
-                    <label data-i18n="Widget">UI Components</label>
+                    <label data-i18n="Widget">Kelas</label>
                     <i class="pc-micon">
                         <svg class="pc-icon">
                             <use xlink:href="#line-chart"></use>
@@ -33,31 +33,25 @@
                 <li class="pc-item">
                     <a href="../elements/bc_typography.html" class="pc-link">
                         <span class="pc-micon">
-                            <svg class="pc-icon">
-                                <use xlink:href="#font-size"></use>
-                            </svg>
+                            <i class="bi bi-wallet"></i>
                         </span>
-                        <span class="pc-mtext">Typography</span>
+                        <span class="pc-mtext">Pembayaran</span>
                     </a>
                 </li>
                 <li class="pc-item">
                     <a href="../elements/bc_color.html" class="pc-link">
                         <span class="pc-micon">
-                            <svg class="pc-icon">
-                                <use xlink:href="#bg-colors"></use>
-                            </svg>
+                            <i class="bi bi-mortarboard"></i>
                         </span>
-                        <span class="pc-mtext">Color</span>
+                        <span class="pc-mtext">Kelas</span>
                     </a>
                 </li>
                 <li class="pc-item">
                     <a href="../elements/icon-tabler.html" class="pc-link">
                         <span class="pc-micon">
-                            <svg class="pc-icon">
-                                <use xlink:href="#highlight"></use>
-                            </svg>
+                            <i class="bi bi-journal-bookmark"></i>
                         </span>
-                        <span class="pc-mtext">Icons</span>
+                        <span class="pc-mtext mt-3">Modul</span>
                     </a>
                 </li>
                 {{-- user management --}}
@@ -72,9 +66,7 @@
                 <li class="pc-item">
                     <a href="../elements/bc_typography.html" class="pc-link">
                         <span class="pc-micon">
-                            <svg class="pc-icon">
-                                <use xlink:href="#font-size"></use>
-                            </svg>
+                            <i class="bi bi-people"></i>
                         </span>
                         <span class="pc-mtext">Master User</span>
                     </a>

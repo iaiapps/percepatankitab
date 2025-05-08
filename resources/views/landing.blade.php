@@ -83,6 +83,12 @@
                     <p class="text-warning display-6 mt-0 border-1 rounded-3 fw-bold">Tapi Ajak 5 temen = gratis semua.
                         Serius!
                     </p>
+
+                </div>
+                <div class="col-lg-6 text-center p-3">
+                    <img src="https://bukukita.com/babacms/displaybuku/101988_f.jpg" alt="Baca Kitab Cepat"
+                        class="img-fluid book-cover p-3 bg-white">
+
                     <p class="lead mb-4">Metode revolusioner untuk membaca kitab brbahasa arab dengan cepat dan mudah
                     </p>
                     <ul class="list-unstyled mb-4">
@@ -99,10 +105,6 @@
                     <a href="#pricing" class="btn btn-warning btn-lg fw-bold px-4 me-2">Dapatkan Sekarang</a>
                     {{-- <a href="#buku" class="btn btn-outline-light btn-lg px-4">Pelajari Lebih Lanjut</a> --}}
                 </div>
-                <div class="col-lg-6 text-center p-3">
-                    <img src="https://bukukita.com/babacms/displaybuku/101988_f.jpg" alt="Baca Kitab Cepat"
-                        class="img-fluid book-cover p-3 bg-white">
-                </div>
             </div>
         </div>
     </section>
@@ -115,7 +117,7 @@
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                         alt="Buku Baca Kitab Cepat" class="img-fluid rounded shadow">
                 </div>
-                <div class="col-lg-7 ">
+                {{-- <div class="col-lg-7 ">
                     <h2 class="fw-bold mb-4"><span class="text-primary">Buku Panduan</span> Percepatan Membaca Kitab
                     </h2>
                     <p class="lead">Temukan metode terstruktur untuk menguasai membaca kitab gundul dalam waktu
@@ -164,17 +166,39 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="mt-5 text-center">
                     <br>
-                    <a href="#buku" class="btn btn-danger btn-lg px-4">Test Kemampuan bahasa Arab Anda!</a>
+                    <a href="#buku" class="btn btn-danger btn-lg px-4">Test Kemampuan Baca Kitab Kuning Anda
+                        disini!</a>
                 </div>
             </div>
         </div>
     </section>
+    <section class="py-5 bg-success p-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                {{-- <h2 class="fw-bold text-white">Atau</h2> --}}
+                <p class="lead text-white mb-3">Daftarkan diri anda menjadi Reseller sekarang dan dapatkan diskon kelas
+                </p>
+                <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Reseller</a>
 
-    <!-- Kelas Section -->
+            </div>
+        </div>
+    </section>
+    <section class="py-5 bg-success p-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bold text-white">Atau</h2>
+                <p class="lead text-white mb-3">Daftarkan diri anda menjadi Reseller sekarang dan dapatkan diskon kelas
+                </p>
+                <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Link Affiliate</a>
+
+            </div>
+        </div>
+    </section>
+    {{-- <!-- Kelas Section -->
     <section id="kelas" class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
@@ -268,7 +292,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Pricing Section -->
     <section id="pricing" class="py-5">
@@ -277,7 +301,7 @@
                 <div class="col-lg-8">
                     <div class="price-box text-center">
                         <div class="discount-badge">40%</div>
-                        <h2 class="fw-bold mb-3">Paket Komplit Buku + Kelas</h2>
+                        <h2 class="fw-bold mb-3">Buku</h2>
                         <p class="lead">Dapatkan buku panduan + akses kelas online dengan harga spesial</p>
 
                         <div class="my-4">
@@ -303,7 +327,7 @@
                             </li>
                         </ul>
 
-                        <a href="{{ route('register') }}" class="btn btn-danger btn-lg fw-bold px-5 mb-3">Pesan
+                        <a href="{{ route('register') }}" class="btn btn-danger btn-lg fw-bold px-5 mb-3">Beli
                             Sekarang</a>
                         <p class="small text-muted">*Harga spesial hanya untuk 100 pembeli pertama</p>
                     </div>
@@ -435,17 +459,7 @@
         </div>
     </section>
 
-    <section class="py-5 bg-success p-3">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h2 class="fw-bold text-white">Atau</h2>
-                <p class="lead text-white mb-3">Daftarkan diri anda menjadi Reseller sekarang dan dapatkan diskon kelas
-                </p>
-                <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Reseller</a>
 
-            </div>
-        </div>
-    </section>
     <!-- FAQ Section -->
     <section id="faq" class="py-5 bg-light">
         <div class="container">
@@ -556,7 +570,8 @@
                                 <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-5"></i></a>
                                 <a href="#" class="text-white me-2"><i class="bi bi-twitter fs-5"></i></a>
                                 <a href="#" class="text-white me-2"><i class="bi bi-instagram fs-5"></i></a>
-                                <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+                                youtube tiktok
+
                             </div>
                         </div>
                     </div>
@@ -572,7 +587,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">Copyright &copy;2025 Percepatan Baca Kitab | All rights reserved.</p>
+                    <p class="mb-0">Copyright &copy;2025 Percepatan Baca Kitab Kuning | All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <a href="#" class="text-white text-decoration-none me-3">Kebijakan Privasi</a>
