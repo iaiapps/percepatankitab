@@ -36,7 +36,7 @@
     <link rel="stylesheet" href={{ asset('mantis/dist/assets/css/style.css') }} id="main-style-link">
     <link rel="stylesheet" href={{ asset('mantis/dist/assets/css/style-preset.css') }}>
     {{-- endthemes --}}
-
+    @stack('css')
 </head>
 
 <body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
@@ -94,6 +94,7 @@
     <script>
         font_change('Public-Sans');
     </script>
+    @stack('scripts')
 </body>
 
 </html>

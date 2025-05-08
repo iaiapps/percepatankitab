@@ -303,7 +303,8 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="btn btn-danger btn-lg fw-bold px-5 mb-3">Pesan Sekarang</a>
+                        <a href="{{ route('register') }}" class="btn btn-danger btn-lg fw-bold px-5 mb-3">Pesan
+                            Sekarang</a>
                         <p class="small text-muted">*Harga spesial hanya untuk 100 pembeli pertama</p>
                     </div>
                 </div>
@@ -583,12 +584,19 @@
 
     <script>
         // Countdown Timer
+        const targetDate = new Date('2025-05-09');
+
         function updateCountdown() {
             const now = new Date();
-            const targetDate = new Date('2025-05-07');
-            targetDate.setDate(now.getDate() + 3); // Set target 3 days from now
-
             const totalSeconds = (targetDate - now) / 1000;
+
+            if (totalSeconds <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
 
             const days = Math.floor(totalSeconds / 3600 / 24);
             const hours = Math.floor(totalSeconds / 3600) % 24;
