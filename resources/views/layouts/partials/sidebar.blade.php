@@ -21,15 +21,10 @@
                     </a>
                 </li>
 
-
                 <li class="pc-item pc-caption">
                     <label data-i18n="Widget">Kelas</label>
-                    <i class="pc-micon">
-                        <svg class="pc-icon">
-                            <use xlink:href="#line-chart"></use>
-                        </svg>
-                    </i>
                 </li>
+
                 <li class="pc-item">
                     <a href="../elements/bc_typography.html" class="pc-link">
                         <span class="pc-micon">
@@ -54,17 +49,13 @@
                         <span class="pc-mtext mt-3">Modul</span>
                     </a>
                 </li>
+
                 {{-- user management --}}
                 <li class="pc-item pc-caption">
                     <label data-i18n="Widget">User Management</label>
-                    <i class="pc-micon">
-                        <svg class="pc-icon">
-                            <use xlink:href="#line-chart"></use>
-                        </svg>
-                    </i>
                 </li>
                 <li class="pc-item">
-                    <a href="../elements/bc_typography.html" class="pc-link">
+                    <a href="{{ route('user.index') }}" class="pc-link">
                         <span class="pc-micon">
                             <i class="bi bi-people"></i>
                         </span>

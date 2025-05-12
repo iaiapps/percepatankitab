@@ -26,11 +26,15 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Alamat</label>
-                                <input type="text" class="form-control" placeholder="Company">
+                                <input type="text" class="form-control" placeholder="Alamat">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Email Address*</label>
                                 <input type="email" class="form-control" placeholder="Email Address">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Nomor Hp</label>
+                                <input type="email" class="form-control" placeholder="Nomor Hp">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Password</label>

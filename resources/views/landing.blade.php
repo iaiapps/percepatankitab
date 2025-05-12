@@ -77,10 +77,10 @@
         <div class="container">
 
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h1 class="display-6 mb-3">Beli Buku, Dapat Pelatihan Seharga 2juta+.
+                <div class="col-lg-6 mb-4">
+                    <h1 class="display-5 mb-3">Beli Buku, Dapat Pelatihan Seharga 2juta+.
                     </h1>
-                    <p class="text-warning display-6 mt-0 border-1 rounded-3 fw-bold">Tapi Ajak 5 temen = gratis semua.
+                    <p class="text-warning display-4 mt-0 border-1 rounded-3 fw-bold">Tapi Ajak 5 temen = gratis semua.
                         Serius!
                     </p>
 
@@ -88,23 +88,25 @@
                 <div class="col-lg-6 text-center p-3">
                     <img src="https://bukukita.com/babacms/displaybuku/101988_f.jpg" alt="Baca Kitab Cepat"
                         class="img-fluid book-cover p-3 bg-white">
-
-                    <p class="lead mb-4">Metode revolusioner untuk membaca kitab brbahasa arab dengan cepat dan mudah
-                    </p>
-                    <ul class="list-unstyled mb-4">
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Teknik membaca
-                            cepat
-                            kitab </li>
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Kuasai 1000
-                            kosakata
-                            penting dalam kitab kuning</li>
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Pahami struktur
-                            kalimat
-                            bahasa Arab </li>
-                    </ul>
-                    <a href="#pricing" class="btn btn-warning btn-lg fw-bold px-4 me-2">Dapatkan Sekarang</a>
-                    {{-- <a href="#buku" class="btn btn-outline-light btn-lg px-4">Pelajari Lebih Lanjut</a> --}}
                 </div>
+            </div>
+            <div class="text-center mt-3">
+                <p class="lead mb-4 fw-bold">Metode revolusioner untuk membaca kitab brbahasa arab dengan cepat dan
+                    mudah
+                </p>
+                <ul class="list-unstyled mb-4">
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Teknik membaca
+                        cepat
+                        kitab </li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Kuasai 1000
+                        kosakata
+                        penting dalam kitab kuning</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i> Pahami struktur
+                        kalimat
+                        bahasa Arab </li>
+                </ul>
+                <a href="#pricing" class="btn btn-warning btn-lg fw-bold px-4 me-2">Dapatkan Sekarang</a>
+                {{-- <a href="#buku" class="btn btn-outline-light btn-lg px-4">Pelajari Lebih Lanjut</a> --}}
             </div>
         </div>
     </section>
@@ -112,63 +114,12 @@
     <!-- Buku Section -->
     <section id="buku" class="py-5">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center justify-content-center">
                 <div class="col-lg-5 mb-4 mb-lg-0">
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                         alt="Buku Baca Kitab Cepat" class="img-fluid rounded shadow">
                 </div>
-                {{-- <div class="col-lg-7 ">
-                    <h2 class="fw-bold mb-4"><span class="text-primary">Buku Panduan</span> Percepatan Membaca Kitab
-                    </h2>
-                    <p class="lead">Temukan metode terstruktur untuk menguasai membaca kitab gundul dalam waktu
-                        singkat</p>
-                    <div class="ms-5">
-
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <div class="d-flex mb-3">
-                                    <i class="bi bi-check-circle-fill text-primary fs-3 me-3"></i>
-                                    <div>
-                                        <h5 class="fw-bold">Best Seller</h5>
-                                        <p class="mb-0">10.000+ eksemplar terjual</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex mb-3">
-                                    <i class="bi bi-star-fill text-primary fs-3 me-3"></i>
-                                    <div>
-                                        <h5 class="fw-bold">Rating 4.8/5</h5>
-                                        <p class="mb-0">Dari 500+ pembaca</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="d-flex mb-3">
-                                    <i class="bi bi-book-half text-primary fs-3 me-3"></i>
-                                    <div>
-                                        <h5 class="fw-bold">200+ Halaman</h5>
-                                        <p class="mb-0">Materi padat dan praktis</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex mb-3">
-                                    <i class="bi bi-patch-plus-fill text-primary fs-3 me-3"></i>
-                                    <div>
-                                        <h5 class="fw-bold">Bonus Eksklusif</h5>
-                                        <p class="mb-0">Akses materi digital</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-
-                <div class="mt-5 text-center">
+                <div class="mt-2 text-center">
                     <br>
                     <a href="#buku" class="btn btn-danger btn-lg px-4">Test Kemampuan Baca Kitab Kuning Anda
                         disini!</a>
@@ -176,11 +127,11 @@
             </div>
         </div>
     </section>
-    <section class="py-5 bg-success p-3">
+    <section class="py-5 bg-warning p-3">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
                 {{-- <h2 class="fw-bold text-white">Atau</h2> --}}
-                <p class="lead text-white mb-3">Daftarkan diri anda menjadi Reseller sekarang dan dapatkan diskon kelas
+                <p class="lead text-dark mb-3">Daftarkan diri anda menjadi Reseller sekarang dan dapatkan diskon kelas
                 </p>
                 <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Reseller</a>
 
@@ -191,108 +142,13 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
                 <h2 class="fw-bold text-white">Atau</h2>
-                <p class="lead text-white mb-3">Daftarkan diri anda menjadi Reseller sekarang dan dapatkan diskon kelas
+                <p class="lead text-white mb-3">Daftarkan diri anda menjadi Affiliate sekarang dan dapatkan diskon kelas
                 </p>
                 <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Link Affiliate</a>
 
             </div>
         </div>
     </section>
-    {{-- <!-- Kelas Section -->
-    <section id="kelas" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Kelas <span class="text-primary">Online</span> Percepatan Membaca Kitab</h2>
-                <p class="lead text-muted">Program intensif dengan pendampingan langsung dari ahli</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 course-card">
-                        <div class="card-header bg-primary text-white text-center py-3">
-                            <h4>Kelas Dasar</h4>
-                            <p class="mb-0">Membaca Kitab Fiqh Dasar</p>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> 12 Sesi Live
-                                </li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Materi Kitab
-                                    Safinatun Najah</li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Grup Diskusi
-                                    WhatsApp</li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Rekaman Kelas
-                                </li>
-                                <li class="mb-2"><i class="bi bi-x-circle text-danger me-2"></i> Konsultasi Privat
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-footer bg-transparent text-center">
-                            <a href="#" class="btn btn-outline-primary">Info Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card h-100 course-card border-primary border-2">
-                        <div class="card-header bg-white text-primary text-center py-3">
-                            <span
-                                class="badge bg-warning text-dark position-absolute top-0 start-50 translate-middle">Paling
-                                Populer</span>
-                            <h4>Kelas Menengah</h4>
-                            <p class="mb-0">Membaca Kitab Fiqh Lanjutan</p>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> 24 Sesi Live
-                                </li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Materi Kitab
-                                    Fathul
-                                    Qorib</li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Grup Diskusi
-                                    WhatsApp</li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Rekaman Kelas
-                                </li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> 2x Konsultasi
-                                    Privat
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-footer bg-transparent text-center">
-                            <a href="#" class="btn btn-primary">Info Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card h-100 course-card">
-                        <div class="card-header bg-success text-white text-center py-3">
-                            <h4>Kelas Lanjutan</h4>
-                            <p class="mb-0">Analisis Kitab Fiqih Lanjutan</p>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> 36 Sesi Live
-                                </li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Materi Kitab
-                                    Al Umm</li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Grup Diskusi
-                                    WhatsApp</li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Rekaman Kelas
-                                </li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> 6x Konsultasi
-                                    Privat
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-footer bg-transparent text-center">
-                            <a href="#" class="btn btn-outline-success">Info Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
     <!-- Pricing Section -->
     <section id="pricing" class="py-5">
@@ -546,7 +402,7 @@
             <div class="row text-white">
                 <div class="col-12 col-md-6">
                     <div class="col-lg-12 mb-4 mb-lg-0 d-sm-flex ">
-                        <img class="logofooter bg-white rounded" src="{{ asset('img/logo.png') }}" alt="logo">
+                        <img class="logofooter rounded-circle" src="{{ asset('img/logo.png') }}" alt="logo">
                         <div class="ms-sm-5">
                             <h5>Tentang Kami</h5>
                             <p class="">Kami adalah ..............</p>
@@ -570,8 +426,8 @@
                                 <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-5"></i></a>
                                 <a href="#" class="text-white me-2"><i class="bi bi-twitter fs-5"></i></a>
                                 <a href="#" class="text-white me-2"><i class="bi bi-instagram fs-5"></i></a>
-                                youtube tiktok
-
+                                <a href="#" class="text-white me-2"><i class="bi bi-youtube fs-5"></i></a>
+                                <a href="#" class="text-white me-2"><i class="bi bi-tiktok fs-5"></i></a>
                             </div>
                         </div>
                     </div>

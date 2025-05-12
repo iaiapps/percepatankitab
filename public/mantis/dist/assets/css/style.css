@@ -16054,6 +16054,7 @@ pre[class*=language-] > code {
   display: none;
 }
 .pc-sidebar .pc-micon {
+  margin-bottom: 7px;
   margin-right: 15px;
   height: 24px;
   display: inline-block;
