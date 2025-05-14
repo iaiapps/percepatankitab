@@ -130,6 +130,15 @@ body {
     display: block;
 }
 
+.logo-header{
+    width:30px;
+    height: 100%;
+}
 .logofooter{
-    width: 90px;
+    width: 120px;
+    height: 100%;
+}
+
+.img-test{
+    width: 100%;
 }

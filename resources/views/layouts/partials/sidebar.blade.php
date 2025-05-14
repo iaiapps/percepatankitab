@@ -1,6 +1,6 @@
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
-        <div class="mb-1 mt-3 text-center">
+        <div class="mb-1 pt-3 text-center">
             <a href="{{ route('home') }}" class="b-brand text-primary">
                 <!-- ========   Change your logo from here   ============ -->
                 <img src="{{ asset('img/logo.png') }}" alt="logo" style="width: 50px">
