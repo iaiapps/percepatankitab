@@ -24,10 +24,10 @@
                                 <label class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" placeholder="First Name">
                             </div>
-                            <div class="form-group mb-3">
+                            {{-- <div class="form-group mb-3">
                                 <label class="form-label">Alamat</label>
                                 <input type="text" class="form-control" placeholder="Alamat">
-                            </div>
+                            </div> --}}
                             <div class="form-group mb-3">
                                 <label class="form-label">Email Address*</label>
                                 <input type="email" class="form-control" placeholder="Email Address">
@@ -50,18 +50,18 @@
                     </form>
                 </div>
                 <div class="auth-footer row">
-                    <!-- <div class=""> -->
-                    <div class="col my-1">
+
+                    <div class="col my-1 text-center">
                         <p class="m-0">Copyright © <a href="#">Percepatan Baca Kitab</a></p>
                     </div>
-                    <div class="col-auto my-1">
+                    {{-- <div class="col-auto my-1">
                         <ul class="list-inline footer-link mb-0">
                             <li class="list-inline-item"><a href="#">Home</a></li>
                             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
                             <li class="list-inline-item"><a href="#">Contact us</a></li>
                         </ul>
-                    </div>
-                    <!-- </div> -->
+                    </div> --}}
+
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@
     <div class="navbar-wrapper">
         <div class="mb-1 pt-3 text-center">
             <a href="{{ route('home') }}" class="b-brand text-primary">
-                <!-- ========   Change your logo from here   ============ -->
                 <img src="{{ asset('img/logo.png') }}" alt="logo" style="width: 50px">
             </a>
             <p class="mb-0 mt-1 fs-5">PERCEPATAN</p>
@@ -52,7 +51,7 @@
 
                 {{-- user management --}}
                 <li class="pc-item pc-caption">
-                    <label data-i18n="Widget">User Management</label>
+                    <label data-i18n="Widget">Management</label>
                 </li>
                 <li class="pc-item">
                     <a href="{{ route('user.index') }}" class="pc-link">
@@ -60,6 +59,14 @@
                             <i class="bi bi-people"></i>
                         </span>
                         <span class="pc-mtext">Master User</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="{{ route('user.index') }}" class="pc-link">
+                        <span class="pc-micon">
+                            <i class="bi bi-people"></i>
+                        </span>
+                        <span class="pc-mtext">Settings</span>
                     </a>
                 </li>
             </ul>

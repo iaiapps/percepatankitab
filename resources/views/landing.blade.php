@@ -81,27 +81,25 @@
 
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4">
-                    <h1 class="display-5 mb-3">Beli Buku, Gratis Kelas 4,5 bulan.
+                    <h1 class="display-5 fw-bold mb-3">Beli Buku, Gratis Kelas 4,5 bulan.
                     </h1>
                     <p class="text-warning display-4 mt-0 border-1 rounded-3 fw-bold">Tapi, Ajak 5 temen = Gratis
-                        Semua.
-                        Serius!
+                        Semua. Serius!
                     </p>
-
                 </div>
                 <div class="col-lg-6 text-center p-3">
-                    <img src="https://bukukita.com/babacms/displaybuku/101988_f.jpg" alt="Baca Kitab Cepat"
+                    <img src="{{ asset('img/book2.png') }}" alt="Baca Kitab Cepat"
                         class="img-fluid book-cover p-3 bg-white">
                 </div>
             </div>
             <div class=" mt-3">
-                <div class="text-center">
-                    <p class="lead mb-4 fw-bold">Metode cepat dan revolusioner untuk membaca baca Kitab kuning
+                <div class="text-center fs-4">
+                    <p class=" mb-4 fw-bold">Metode cepat dan revolusioner untuk belajar baca Kitab kuning
                     </p>
-                    <p class="lead mb-4 fw-bold">Apa yang kamu dapatkan?
-                        Bukan cuma buku, tapi juga 10 BONUS PREMIUM senilai total Rp 2.400.000 + :</p>
+                    <p class="mb-4 fw-bold">Apa yang kamu dapatkan?
+                        Bukan cuma buku, tapi juga 10 BONUS PREMIUM senilai total Rp 2.400.000+</p>
                 </div>
-                <ul class="list-unstyled mb-4 text-md-center">
+                <ul class="list-unstyled mb-4 text-md-center fs-5">
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Kelas online Baca
                         Kitab
                         Kuning selama 4,5 bulan penuh (senilai Rp1.500.000) </li>
@@ -141,14 +139,14 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-5 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Buku Baca Kitab Cepat" class="img-fluid rounded shadow">
+                    <img src="{{ asset('img/think.jpg') }}" alt="Buku Baca Kitab Cepat"
+                        class="img-fluid rounded shadow">
                 </div>
                 <div class="mt-2 text-center">
-                    <p class="fs-5">"Ukur seberapa jago kamu baca Kitab Kuning.
+                    <p class="fs-4">Ukur seberapa jago kamu baca Kitab Kuning.
                         Hasilnya akan tunjukkan: kamu di level Beginner, Foundation, atau Intermediate.
                     </p>
-                    <p class="fs-5">Langsung tes sekarang, biar belajar lebih tepat sasaran!"</p>
+                    <p class="fs-5">Langsung tes sekarang, biar belajar lebih tepat sasaran!</p>
                     <br>
                     <a href="#" class="btn btn-danger btn-lg px-4">Test Kemampuan Baca Kitab
                         Kuning Anda
@@ -161,10 +159,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
                 {{-- <h2 class="fw-bold text-white">Atau</h2> --}}
-                <p class="lead text-dark mb-3">"Bantu jualkan buku, dan dapatkan Rp50.000 untuk setiap penjualan.
+                <p class="text-dark mb-3 fs-4">Bantu jualkan buku, dan dapatkan Rp50.000 untuk setiap penjualan.
                     Jual minimal 2 buku sehari? Kamu dapat bonus tambahan Rp40.000 per hari!"</p>
 
-                <p>Tanpa modal, tanpa ribet. Cukup sebar link resellermu, hasilkan cuan harian.
+                <p class="fs-5">Tanpa modal, tanpa ribet. Cukup sebar link resellermu, hasilkan cuan harian.
                     Daftar sekarang, mulai hasilkan dari hari ini juga!
                 </p>
                 <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Reseller</a>
@@ -176,13 +174,13 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center text-white">
                 <h2 class="fw-bold ">Atau</h2>
-                <p class="lead  mb-3">"Punya jaringan atau followers?
+                <p class="fs-4 mb-3">Punya jaringan atau followers?
                     Gabung program afiliate kami dan dapatkan komisi 4% setiap ada pembelian lewat link afiliatemu."
                 </p>
-                <p>Tanpa stok, tanpa repot, cukup bagikan link dan nikmati hasilnya.
+                <p class="fs-5">Tanpa stok, tanpa repot, cukup bagikan link dan nikmati hasilnya.
                     Daftar sekarang & mulai hasilkan pasif income!
                 </p>
-                <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Link Affiliate</a>
+                <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Affiliate</a>
 
             </div>
         </div>
@@ -195,15 +193,15 @@
                 <div class="col-lg-8">
                     <div class="price-box text-center">
                         <div class="discount-badge">30%</div>
-                        <h2 class="fw-bold mb-3">Buku</h2>
-                        <p class="lead">Dapat buku + akses kelas senilai 2 jutaan dengan harga spesial</p>
+                        <h1 class="fw-bold mb-3 ">Buku</h1>
+                        <p class="fs-4">Dapat buku + akses kelas senilai 2 jutaan dengan harga spesial</p>
 
                         <div class="my-4">
-                            <h3 class="original-price d-inline">Rp500.000</h3>
-                            <h1 class="d-inline ms-3 text-danger">Rp350.000</h1>
+                            <h2 class="original-price d-inline">Rp500.000</h2>
+                            <h1 class="d-inline ms-3 text-danger display-5 fw-bold">Rp350.000</h1>
                         </div>
 
-                        <ul class="list-unstyled text-start mb-4">
+                        <ul class="list-unstyled text-start mb-4 fs-5 mt-3">
                             <li class="mb-2 d-flex">
                                 <i class="bi bi-check-circle text-success me-3"> </i>
                                 Buku "Metode Cepat Bisa Baca Kitab Kuning السباق
@@ -305,10 +303,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h2 class="fw-bold text-white mb-4">Siap Menguasai Kitab Kuning?</h2>
-                    <p class="lead text-white mb-3">Daftar sekarang dan dapatkan diskon 30% untuk paket buku +
+                    <p class="lead text-white mb-3">Beli sekarang dan dapatkan diskon 30% untuk paket buku +
                         kelas
                     </p>
-                    <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Sekarang</a>
+                    <a href="#pricing" class="btn btn-danger btn-lg fw-bold px-5 mb-3">Beli Sekarang</a>
                     <p class="text-white-50 mb-0">Penawaran terbatas hanya untuk 100 pendaftar pertama</p>
                 </div>
             </div>
@@ -410,7 +408,7 @@
                         <img class="logofooter rounded-circle" src="{{ asset('img/logo.png') }}" alt="logo">
                         <div class="ms-sm-5">
                             <h5>Tentang Kami</h5>
-                            <p class="">"Kami hadir untuk memudahkan siapa pun belajar membaca Kitab Kuning
+                            <p class="">Kami hadir untuk memudahkan siapa pun belajar membaca Kitab Kuning
                                 dari nol.
                             </p>
                             <p>
@@ -437,7 +435,7 @@
                                 <li><i class="bi bi-geo-alt me-2"></i> Jl. Sriti, Kelurahan Banjar Sengon,
                                     Kecamatan
                                     Patrang, Jember, Jawa Timur - Indonesia</li>
-                                <li><i class="bi bi-telephone me-2"></i> +6281298440058</li>
+                                <li><i class="bi bi-telephone me-2"></i> +6281298440068</li>
                                 <li><i class="bi bi-envelope me-2"></i> ansacademy18@gmail.com</li>
                             </ul>
                         </div>
