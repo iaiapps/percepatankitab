@@ -17,9 +17,9 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">No Hp</th>
+                            <th scope="col">Bukti Pembayaran</th>
+                            <th scope="col">Status Pembayaran</th>
                             <th scope="col">Actions</th>
 
                         </tr>
@@ -29,13 +29,23 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td> {{ $user->roles->first()->name ?? 'belum ditentukan' }}</td>
+                                <td>{{ $user->profile->no_hp ?? 'belum ada data' }}</td>
+                                <td>
+                                    @php
+                                        if ($user->payment) {
+                                            $img = asset('img-pembayaran/' . $user->payment->img);
+                                        } else {
+                                            $img = asset('img/computer.png');
+                                        }
+                                    @endphp
+                                    <img class="img-pembayaran" src="{{ $img }}" alt="bukti"> <a href=""
+                                        class="ms-3 btn btn-sm btn-outline-primary">lihat bukti</a>
+                                </td>
                                 <td> {{ $user->active == 1 ? 'aktif' : 'tidak aktif' }}</td>
                                 <td>
-                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm"><i
+                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-sm"><i
                                             class="bi bi-pencil-square"></i>
-                                        edit</a>
+                                        aktifkan</a>
                                     {{-- <form class="d-inline-block"
                                         onsubmit="return confirm('Apakah anda yakin untuk mereset password ?');"
                                         action="{{ route('reset.pass', ['id' => $user->id]) }}" method="POST">
@@ -63,6 +73,11 @@
     </div>
 @endsection
 @push('css')
+    <style>
+        .img-pembayaran {
+            width: 50px;
+        }
+    </style>
     <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 @endpush

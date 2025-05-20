@@ -29,7 +29,10 @@ class HomeController extends Controller
         $user = Auth::user();
         $role = $user->getRoleNames()->first();
 
-
-        return view('home');
+        if ($role == 'admin' or $role == 'operator') {
+            return view('home.home');
+        } else {
+            return view('guest.guest', compact('user'));
+        };
     }
 }

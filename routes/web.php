@@ -16,6 +16,9 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
 
+    // guest
+    Route::post('upload', [PaymentController::class, 'store'])->name('upload');
+
     // Admin routes
     Route::middleware(['role:admin'])->group(function () {
         Route::resource('user', UserController::class);

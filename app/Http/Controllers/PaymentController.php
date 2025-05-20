@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-
-        return view('admin.payment.index');
+        $users = User::where('id', '!=', 1)->where('id', '!=', 2)->get();
+        return view('admin.payment.index', compact('users'));
     }
 
     /**
@@ -29,7 +30,33 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        // get data pembayaran
+        $id = $request->user_id;
+        $name = $request->name;
+
+        //validate upload bukti pembayaran
+        $imgDocument = $request->validate([
+            'document' => 'required|file|image|mimes:jpeg,jpg,png|max:1024',
+        ]);
+
+        //beri nama
+        $file = $request->file('document');
+        $file_name = $name . '-pembayaran' . '-' . time() . '-' . $file->getClientOriginalName();
+
+        // simpan di folder public
+        $request->file('document')->move(public_path('img-pembayaran'), $file_name);
+
+        //masukkan ke array validate
+        $imgDocument['user_id'] = $id;
+        $imgDocument['name'] = $name;
+        $imgDocument['img'] = $file_name;
+
+        //simpan ke database
+        Payment::create($imgDocument);
+
+        // kembali ke payment
+        return redirect()->route('home')->with('success', 'Bukti Pembayaran berhasil diupload!');
     }
 
     /**
