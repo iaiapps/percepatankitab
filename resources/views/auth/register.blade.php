@@ -12,33 +12,43 @@
     <div class="auth-main">
         <div class="auth-wrapper v3">
             <div class="auth-form">
+
                 <div class="card my-5">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $error }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endforeach
+                    @endif
                     <form method="POST" action="{{ route('register') }}">
                         <div class="card-body">
                             @csrf
                             <div class="d-flex justify-content-between align-items-end mb-4">
                                 <h3 class="mb-0"><b>Daftar</b></h3>
-                                <a href="#" class="link-primary">Sudah punya akun?</a>
+                                <a href="{{ route('login') }}" class="link-primary">Sudah punya akun?</a>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" placeholder="First Name">
-                            </div>
-                            {{-- <div class="form-group mb-3">
-                                <label class="form-label">Alamat</label>
-                                <input type="text" class="form-control" placeholder="Alamat">
-                            </div> --}}
-                            <div class="form-group mb-3">
-                                <label class="form-label">Email Address*</label>
-                                <input type="email" class="form-control" placeholder="Email Address">
+                                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name">
                             </div>
                             <div class="form-group mb-3">
-                                <label class="form-label">Nomor Hp</label>
-                                <input type="email" class="form-control" placeholder="Nomor Hp">
+                                <label class="form-label">alamat Email</label>
+                                <input type="email" class="form-control" placeholder="Alamat Email" name="email">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Nomor Hp (aktif WA)</label>
+                                <input type="text" class="form-control" placeholder="+6285xxxxxxxxx" name="no_hp">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control" placeholder="Password">
+                                <input type="password" class="form-control" placeholder="Password" name="password">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Konfirmasi Password</label>
+                                <input type="password" class="form-control" placeholder="Ulangi Password"
+                                    name="password_confirmation">
                             </div>
                             <p class="mt-4 text-sm text-muted">By Signing up, you agree to our <a href="#"
                                     class="text-primary"> Terms of Service </a> and <a href="#" class="text-primary">
