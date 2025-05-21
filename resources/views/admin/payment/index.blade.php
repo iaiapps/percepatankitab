@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Data Master User')
+@section('title', 'Data Pembayaran')
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible fade show"> {{ $message }} <button type="button"
+                class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+
     <div class="card p-3 rounded">
 
         <div class="table-responsive">
@@ -20,6 +27,7 @@
                             <th scope="col">No Hp</th>
                             <th scope="col">Bukti Pembayaran</th>
                             <th scope="col">Status Pembayaran</th>
+                            <th scope="col">Token</th>
                             <th scope="col">Actions</th>
 
                         </tr>
@@ -34,35 +42,46 @@
                                     @php
                                         if ($user->payment) {
                                             $img = asset('img-pembayaran/' . $user->payment->img);
+                                            $id = $user->payment->id;
                                         } else {
-                                            $img = asset('img/computer.png');
+                                            $img = asset('img/404.png');
+                                            $id = 'tidak ada';
                                         }
                                     @endphp
-                                    <img class="img-pembayaran" src="{{ $img }}" alt="bukti"> <a href=""
-                                        class="ms-3 btn btn-sm btn-outline-primary">lihat bukti</a>
+                                    <img class="img-pembayaran" src="{{ $img }}" alt="bukti"> <a
+                                        href="{{ route('payment.show', $id) ?? 'belum' }}"
+                                        class="ms-3 btn btn-sm btn-outline-primary">lihat
+                                        bukti</a>
                                 </td>
-                                <td> {{ $user->active == 1 ? 'aktif' : 'tidak aktif' }}</td>
                                 <td>
-                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-sm"><i
-                                            class="bi bi-pencil-square"></i>
-                                        aktifkan</a>
-                                    {{-- <form class="d-inline-block"
-                                        onsubmit="return confirm('Apakah anda yakin untuk mereset password ?');"
-                                        action="{{ route('reset.pass', ['id' => $user->id]) }}" method="POST">
+                                    @if ($user->getRoleNames()->first() == 'guest')
+                                        <p class="mb-0 bg-danger text-center text-white rounded">belum membayar</p>
+                                    @elseif ($user->getRoleNames()->first() == 'user')
+                                        <p class="mb-0 bg-primary text-center text-white rounded">sudah membayar</p>
+                                    @else
+                                        <p>tidak dapat menentukan status ...</p>
+                                    @endif
+                                </td>
+                                <td>{{ $user->payment->token_code ?? 'belum ada' }}</td>
+                                <td>
+
+                                    <form class="d-inline-block"
+                                        onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"
+                                        action="{{ route('activate', $user->id) }}" method="POST">
                                         @csrf
-                                        @method('PUT')
+
                                         <button type="submit" class="btn btn-secondary btn-sm"><i
-                                                class="bi bi-arrow-clockwise"></i> reset
+                                                class="bi bi-arrow-clockwise"></i> aktifkan
                                         </button>
-                                    </form> --}}
-                                    <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
+                                    </form>
+                                    {{-- <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
                                         action="{{ route('user.destroy', $user->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger btn-sm">
                                             <i class="bi bi-trash3"></i> del
                                         </button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach

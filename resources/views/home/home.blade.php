@@ -5,7 +5,6 @@
     <div class="card">
         <div class="card-body">
             <h4 class="mb-2 f-w-400 ">Selamat Datang di Aplikasi Manajemen Percepatan Baca Kitab</h4>
-
         </div>
     </div>
     <div class="row">

@@ -46,7 +46,7 @@
                         <a class="nav-link" href="#faq">FAQ</a>
                     </li>
                 </ul>
-                <a href="#pricing" class="btn btn-warning ms-3">Daftar Sekarang</a>
+                <a href="{{ route('login') }}" class="btn btn-warning ms-3">Login</a>
             </div>
         </div>
     </nav>

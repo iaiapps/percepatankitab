@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Payment;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -52,6 +53,7 @@ class PaymentController extends Controller
         $imgDocument['name'] = $name;
         $imgDocument['img'] = $file_name;
 
+
         //simpan ke database
         Payment::create($imgDocument);
 
@@ -64,7 +66,8 @@ class PaymentController extends Controller
      */
     public function show(Payment $payment)
     {
-        //
+        // dd($payment);
+        return view('admin.payment.show', compact('payment'));
     }
 
     /**
@@ -89,5 +92,18 @@ class PaymentController extends Controller
     public function destroy(Payment $payment)
     {
         //
+    }
+
+    // aktifkan pembayaran user
+    public function activate(Request $request)
+    {
+        $id = $request->id;
+        $role = User::where('id', $id)->first();
+        $role->syncRoles('user');
+
+        Payment::where('user_id', $id)->update([
+            'token_code' => Str::random(10),
+        ]);
+        return redirect()->back()->with('success', 'berhasil mengubah data!');
     }
 }

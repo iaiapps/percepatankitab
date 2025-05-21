@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,9 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:admin'])->group(function () {
         Route::resource('user', UserController::class);
         Route::resource('payment', PaymentController::class);
+        // aktifkan user
+        Route::post('activate/{id}', [PaymentController::class, 'activate'])->name('activate');
         Route::resource('setting', SettingController::class);
+        Route::resource('course', CourseController::class);
     });
 });

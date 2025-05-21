@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Setting;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
-class SettingController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $settings = Setting::all();
-        return view('admin.setting.index', compact('settings'));
+        //
     }
 
     /**
@@ -35,7 +34,7 @@ class SettingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Setting $setting)
+    public function show(Course $course)
     {
         //
     }
@@ -43,7 +42,7 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Setting $setting)
+    public function edit(Course $course)
     {
         //
     }
@@ -51,7 +50,7 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request, Course $course)
     {
         //
     }
@@ -59,7 +58,7 @@ class SettingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Setting $setting)
+    public function destroy(Course $course)
     {
         //
     }

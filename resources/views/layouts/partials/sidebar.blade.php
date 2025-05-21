@@ -79,6 +79,25 @@
                         </li>
                     @break
 
+                    @case('user')
+                        <li class="pc-item">
+                            <a href="{{ route('home') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-speedometer2"></i>
+                                </span>
+                                <span class="pc-mtext">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a href="{{ route('') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-mortarboard"></i>
+                                </span>
+                                <span class="pc-mtext">Kelas</span>
+                            </a>
+                        </li>
+                    @break
+
                     @default
                         <li class="pc-item">
                             <a href="{{ route('home') }}" class="pc-link">
