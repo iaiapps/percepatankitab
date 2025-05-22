@@ -7,7 +7,7 @@
             Tambah Data</a>
     </div>
 
-    @if (!isset($courses))
+    @if (empty($courses) || count($courses) === 0)
         <div class="card">
             <div class="card-body">
                 <p class="text-center fs-5 mb-0">Belum ada data ...</p>
@@ -17,11 +17,11 @@
         <div class="row">
             @foreach ($courses as $course)
                 <div class="col-12 col-md-4">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-body">
                             <h4 class="mb-3">{{ $course->name }}</h4>
                             <img class="img-thumbnail" src="{{ $course->thumbnail_path }}" alt="thumbnail">
-                            <p class="mt-3">{{ $course->description }}</p>
+                            <p class="mt-3">{{ Str::limit($course->description, 150) }}</p>
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-danger">hapus</button>
@@ -31,7 +31,8 @@
                 </div>
             @endforeach
         </div>
-        {{-- <div class="table-responsive">
+    @endif
+    {{-- <div class="table-responsive">
             <table id="table" class="table table-striped align-middle" style="width: 100%">
                 <thead>
                     <tr>
@@ -70,7 +71,6 @@
                 </tbody>
             </table>
         </div> --}}
-    @endif
 
 @endsection
 @push('css')

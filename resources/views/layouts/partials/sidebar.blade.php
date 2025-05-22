@@ -89,7 +89,7 @@
                             </a>
                         </li>
                         <li class="pc-item">
-                            <a href="{{ route('') }}" class="pc-link">
+                            <a href="{{ route('course.index') }}" class="pc-link">
                                 <span class="pc-micon">
                                     <i class="bi bi-mortarboard"></i>
                                 </span>

@@ -63,4 +63,16 @@ class UserController extends Controller
     {
         //
     }
+
+    public function status(Request $request)
+    {
+        $id = $request->id;
+
+        $user = User::find($id);
+
+        $user->update([
+            'status' => '1',
+        ]);
+        return redirect()->back();
+    }
 }

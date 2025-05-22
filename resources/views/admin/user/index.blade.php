@@ -31,7 +31,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td> {{ $user->roles->first()->name ?? 'belum ditentukan' }}</td>
-                                <td> {{ $user->active == 1 ? 'aktif' : 'tidak aktif' }}</td>
+                                <td> {{ $user->status == 1 ? 'aktif' : 'tidak aktif' }}</td>
                                 <td>
                                     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm"><i
                                             class="bi bi-pencil-square"></i>

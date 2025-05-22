@@ -1,10 +1,10 @@
     <!-- Modal -->
     <div class="modal fade" id="upload" tabindex="-1" aria-labelledby="uploadLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
 
-            <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
+            <div class="modal-content">
+                <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="uploadLabel">Upload Bukti Pembayaran</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -21,7 +21,7 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>

@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('admin1234'),
                 'email_verified_at' => now(),
+                'status' => '1',
             ]);
         $admin->assignRole('admin');
 
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
                 'email' => 'editor@gmail.com',
                 'password' => Hash::make('editor1234'),
                 'email_verified_at' => now(),
+                'status' => '1',
             ]);
         $editor->assignRole('editor');
 

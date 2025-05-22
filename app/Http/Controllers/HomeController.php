@@ -31,8 +31,10 @@ class HomeController extends Controller
 
         if ($role == 'admin' or $role == 'operator') {
             return view('home.home');
-        } else {
+        } elseif ($role == 'guest') {
             return view('guest.guest', compact('user'));
+        } elseif ($role == 'user') {
+            return view('home.home', compact('user'));
         };
     }
 }
