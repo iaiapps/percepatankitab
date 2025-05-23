@@ -71,6 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'no_hp' => $data['no_hp'],
+            'address' => $data['address'],
         ])->assignRole('guest');
 
         $id  = $create->id;

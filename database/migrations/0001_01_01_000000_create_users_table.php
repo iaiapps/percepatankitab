@@ -21,6 +21,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('token_code')->nullable();
             $table->string('status')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
 

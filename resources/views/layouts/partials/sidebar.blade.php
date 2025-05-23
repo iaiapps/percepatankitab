@@ -89,11 +89,19 @@
                             </a>
                         </li>
                         <li class="pc-item">
-                            <a href="{{ route('course.index') }}" class="pc-link">
+                            <a href="{{ route('usercourse') }}" class="pc-link">
                                 <span class="pc-micon">
                                     <i class="bi bi-mortarboard"></i>
                                 </span>
                                 <span class="pc-mtext">Kelas</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a href="{{ '#' }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <span class="pc-mtext">Profil</span>
                             </a>
                         </li>
                     @break

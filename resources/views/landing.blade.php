@@ -88,8 +88,7 @@
                     </p>
                 </div>
                 <div class="col-lg-6 text-center p-3">
-                    <img src="{{ asset('img/book2.png') }}" alt="Baca Kitab Cepat"
-                        class="img-fluid book-cover p-3 bg-white">
+                    <img src="{{ asset('img/book3.png') }}" alt="Baca Kitab Cepat" class="img-fluid p-3 ">
                 </div>
             </div>
             <div class=" mt-3">
@@ -99,7 +98,7 @@
                     <p class="mb-4 fw-bold">Apa yang kamu dapatkan?
                         Bukan cuma buku, tapi juga 10 BONUS PREMIUM senilai total Rp 2.400.000+</p>
                 </div>
-                <ul class="list-unstyled mb-4 text-md-center fs-5">
+                <ul class="list-unstyled mb-4 fs-5">
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Kelas online Baca
                         Kitab
                         Kuning selama 4,5 bulan penuh (senilai Rp1.500.000) </li>
@@ -108,11 +107,9 @@
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Akses ke Grup WA
                         Eksklusif untuk diskusi dan bimbingan langsung </li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Sesi Zoom
-                        Interaktif
-                        langsung bareng penulis buku (senilai Rp500.000)</li>
+                        Interaktif langsung bareng penulis buku (senilai Rp500.000)</li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Dua e-book:
-                        "Tips Praktis Menghafal Mufradat" dan
-                        "101 Alasan Kenapa Kamu Harus Bisa Baca Kitab Kuning"
+                        "Tips Praktis Menghafal Mufradat" dan "101 Alasan Kenapa Kamu Harus Bisa Baca Kitab Kuning"
                         (senilai total Rp100.000)</li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Checklist Harian
                         Latihan Baca Kitab (format printable)</li>
@@ -128,7 +125,8 @@
                         Kelulusan setelah ujian praktik (senilai Rp30.000)</li>
                 </ul>
                 <div class="text-center">
-                    <a href="#pricing" class="btn btn-warning btn-lg fw-bold px-4 me-2">Dapatkan Sekarang</a>
+                    <a href="#pricing" class="btn btn-warning btn-lg fw-bold px-4 me-2 mb-3 mt-3">Dapatkan Sekarang</a>
+                    <a href="#pricing" class="btn btn-success btn-lg fw-bold px-4 me-2">Masuk Kelas Gratis</a>
                 </div>
             </div>
         </div>
@@ -148,7 +146,7 @@
                     </p>
                     <p class="fs-5">Langsung tes sekarang, biar belajar lebih tepat sasaran!</p>
                     <br>
-                    <a href="#" class="btn btn-danger btn-lg px-4">Test Kemampuan Baca Kitab
+                    <a href="{{ route('quizz') }}" class="btn btn-danger btn-lg px-4">Test Kemampuan Baca Kitab
                         Kuning Anda
                         disini!</a>
                 </div>
@@ -401,7 +399,7 @@
         </div>
     </section>
     <section class="bg-dark">
-        <div class="container py-4  text-sm-start text-center">
+        <div class="container py-4 text-sm-start text-center">
             <div class="row text-white">
                 <div class="col-12 col-md-6">
                     <div class="col-lg-12 mb-4 mb-lg-0 d-sm-flex ">
@@ -475,7 +473,7 @@
 
     <script>
         // Countdown Timer
-        const targetDate = new Date('2025-05-09');
+        const targetDate = new Date('2025-05-24');
 
         function updateCountdown() {
             const now = new Date();

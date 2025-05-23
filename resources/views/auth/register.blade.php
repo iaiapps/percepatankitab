@@ -42,19 +42,12 @@
                                 <input type="text" class="form-control" placeholder="+6285xxxxxxxxx" name="no_hp">
                             </div>
                             <div class="form-group mb-3">
-                                <label class="form-label">Password</label>
-                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                <label class="form-label">Alamat Lengkap</label>
+                                <textarea class="form-control" aria-label="With textarea" name="address"></textarea>
                             </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">Konfirmasi Password</label>
-                                <input type="password" class="form-control" placeholder="Ulangi Password"
-                                    name="password_confirmation">
-                            </div>
-                            <p class="mt-4 text-sm text-muted">By Signing up, you agree to our <a href="#"
-                                    class="text-primary"> Terms of Service </a> and <a href="#" class="text-primary">
-                                    Privacy Policy</a></p>
+
                             <div class="d-grid mt-3">
-                                <button type="submit" class="btn btn-primary">Create Account</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -64,13 +57,6 @@
                     <div class="col my-1 text-center">
                         <p class="m-0">Copyright © <a href="#">Percepatan Baca Kitab</a></p>
                     </div>
-                    {{-- <div class="col-auto my-1">
-                        <ul class="list-inline footer-link mb-0">
-                            <li class="list-inline-item"><a href="#">Home</a></li>
-                            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-                            <li class="list-inline-item"><a href="#">Contact us</a></li>
-                        </ul>
-                    </div> --}}
 
                 </div>
             </div>

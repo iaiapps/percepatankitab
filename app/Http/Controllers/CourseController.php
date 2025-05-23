@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 
@@ -152,5 +154,34 @@ class CourseController extends Controller
             report($e);
             return false;
         }
+    }
+
+    // -------------------------------- handle user -------------------------------- //
+    public function usercourse()
+    {
+        $user = Auth::user();
+        $id = $user->id;
+        $user_token_code = $user->token_code;
+        $payment_token_code = $user->payment->token_code;
+        // dd($user->payment->token_code);
+        $courses = Course::all();
+
+        if ($user_token_code == $payment_token_code) {
+            $permit = true;
+        } else {
+            $permit = false;
+        }
+        return view('user.course.index', compact('permit', 'courses', 'user'));
+    }
+
+    public function kode(Request $request)
+    {
+        $id = $request->user_id;
+        $kode = $request->kode;
+
+        $user = User::find($id);
+        // dd($user);
+        $user->update(['token_code' => $kode]);
+        return redirect()->back();
     }
 }

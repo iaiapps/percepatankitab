@@ -11,6 +11,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SettingController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
+Route::get('quizz', [LandingController::class, 'quizz'])->name('quizz');
 
 Auth::routes();
 
@@ -32,5 +33,9 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:user'])->group(function () {
         // status aktif user
         Route::post('user-status/{id}', [UserController::class, 'status'])->name('status');
+
+        // kelas
+        Route::get('usercourse', [CourseController::class, 'usercourse'])->name('usercourse');
+        Route::post('kode', [CourseController::class, 'kode'])->name('kode');
     });
 });

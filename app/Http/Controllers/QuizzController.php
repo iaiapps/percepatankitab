@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Landing;
+use App\Models\Quizz;
 use Illuminate\Http\Request;
 
-class LandingController extends Controller
+class QuizzController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('landing');
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class LandingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Landing $landing)
+    public function show(Quizz $quizz)
     {
         //
     }
@@ -42,7 +42,7 @@ class LandingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Landing $landing)
+    public function edit(Quizz $quizz)
     {
         //
     }
@@ -50,7 +50,7 @@ class LandingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Landing $landing)
+    public function update(Request $request, Quizz $quizz)
     {
         //
     }
@@ -58,13 +58,8 @@ class LandingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Landing $landing)
+    public function destroy(Quizz $quizz)
     {
         //
-    }
-
-    public function quizz()
-    {
-        return view('quizz');
     }
 }
