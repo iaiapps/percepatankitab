@@ -11,7 +11,10 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SettingController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
-Route::get('quizz', [LandingController::class, 'quizz'])->name('quizz');
+Route::get('quizzdata', [LandingController::class, 'quizzdata'])->name('quizzdata');
+Route::post('quizzdatastore', [LandingController::class, 'quizzdatastore'])->name('quizzdatastore');
+Route::get('quizz={str}', [LandingController::class, 'quizz'])->name('quizz');
+Route::post('quizzstore', [LandingController::class, 'quizzstore'])->name('quizzstore');
 
 Auth::routes();
 

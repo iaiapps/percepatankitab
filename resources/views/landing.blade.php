@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app-landing')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@section('title', 'Landing Page')
+@section('content')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Percepatan Baca Kitab') }}</title>
-
-    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-</head>
-
-<body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
@@ -126,7 +112,9 @@
                 </ul>
                 <div class="text-center">
                     <a href="#pricing" class="btn btn-warning btn-lg fw-bold px-4 me-2 mb-3 mt-3">Dapatkan Sekarang</a>
-                    <a href="#pricing" class="btn btn-success btn-lg fw-bold px-4 me-2">Masuk Kelas Gratis</a>
+                    <a href="{{ route('login') }}" class="btn btn-success btn-lg fw-bold px-4 me-2" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Masuk Kelas
+                        Gratis</a>
                 </div>
             </div>
         </div>
@@ -137,8 +125,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-5 mb-4 mb-lg-0">
-                    <img src="{{ asset('img/think.jpg') }}" alt="Buku Baca Kitab Cepat"
-                        class="img-fluid rounded shadow">
+                    <img src="{{ asset('img/think.jpg') }}" alt="Buku Baca Kitab Cepat" class="img-fluid rounded shadow">
                 </div>
                 <div class="mt-2 text-center">
                     <p class="fs-4">Ukur seberapa jago kamu baca Kitab Kuning.
@@ -146,7 +133,7 @@
                     </p>
                     <p class="fs-5">Langsung tes sekarang, biar belajar lebih tepat sasaran!</p>
                     <br>
-                    <a href="{{ route('quizz') }}" class="btn btn-danger btn-lg px-4">Test Kemampuan Baca Kitab
+                    <a href="{{ route('quizzdata') }}" class="btn btn-danger btn-lg px-4">Test Kemampuan Baca Kitab
                         Kuning Anda
                         disini!</a>
                 </div>
@@ -331,8 +318,8 @@
                                     Apakah program ini cocok untuk pemula?
                                 </button>
                             </h3>
-                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     Ya, sangat cocok! Program ini dirancang mulai dari level Beginner hingga
                                     Intermediate, jadi kamu bisa belajar dari dasar tanpa khawatir tertinggal.
@@ -366,8 +353,8 @@
                                     Apakah ada jadwal khusus untuk kelas online?
                                 </button>
                             </h3>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     Ya, kelas online berjalan terjadwal tapi fleksibel. Materi bisa diakses ulang,
                                     jadi
@@ -450,11 +437,10 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="py-4 bg-dark text-white">
@@ -471,6 +457,43 @@
         </div>
     </footer>
 
+
+    {{-- floating --}}
+    <a href="https://wa.me/6281298440068" class="float-whatsapp" target="_blank" title="Chat via WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+        <span class="tooltip">Hubungi Kami</span>
+    </a>
+
+    {{-- modal --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Masuk Kelas</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3 ">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-whatsapp"></i></span>
+                        <input type="text" class="form-control" placeholder="Nomor Hp" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3 ">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-check2-circle"></i></span>
+                        <input type="text" class="form-control" placeholder="Token Kelas" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+@push('scripts')
     <script>
         // Countdown Timer
         const targetDate = new Date('2025-05-24');
@@ -501,6 +524,4 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
-</body>
-
-</html>
+@endpush

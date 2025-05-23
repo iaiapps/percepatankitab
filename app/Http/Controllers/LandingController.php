@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Quizz;
 use App\Models\Landing;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -62,9 +64,41 @@ class LandingController extends Controller
     {
         //
     }
-
-    public function quizz()
+    // handling quizz //
+    public function quizzdata()
     {
-        return view('quizz');
+        return view('quizz.quizzdata');
+    }
+
+    public function quizzdatastore(Request $request)
+    {
+        // $request->all();
+        $str = Str::random(10);
+        $data_validate = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'no_hp' => 'required',
+        ]);
+        $data_validate['str'] = $str;
+
+        Quizz::create($data_validate);
+        return redirect()->route('quizz', $str);
+    }
+
+    public function quizz(Request $request)
+    {
+        $str = $request->str;
+        return view('quizz.quizz', compact('str'));
+    }
+    public function quizzstore(Request $request)
+    {
+        $score = $request->score;
+        $str = $request->str;
+        $user = Quizz::where('str', $str)->get()->first();
+        $user->update([
+            'score' => $score,
+        ]);
+        // dd(?$score);
+        return redirect()->back();
     }
 }
