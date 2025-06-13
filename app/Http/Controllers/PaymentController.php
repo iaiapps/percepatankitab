@@ -100,10 +100,14 @@ class PaymentController extends Controller
         $id = $request->id;
         $role = User::where('id', $id)->first();
         $role->syncRoles('user');
-
+        $token_code = Str::random(10);
         Payment::where('user_id', $id)->update([
-            'token_code' => Str::random(10),
+            'token_code' => $token_code,
         ]);
+        User::where('id', $id)->first()->update([
+            'token_code' => $token_code,
+        ]);
+
         return redirect()->back()->with('success', 'berhasil mengubah data!');
     }
 }

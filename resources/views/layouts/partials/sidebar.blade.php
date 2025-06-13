@@ -3,7 +3,7 @@
     $role = $user->getRoleNames()->first();
 @endphp
 
-<nav class="pc-sidebar">
+<nav class="pc-sidebar overflow-auto">
     <div class="navbar-wrapper">
         <div class="mb-1 pt-3 text-center">
             <a href="{{ route('home') }}" class="b-brand text-primary">
@@ -18,7 +18,7 @@
         </div>
         <hr>
         <div class="navbar-content">
-            <ul class="pc-navbar">
+            <ul class="pc-navbar  ">
                 @switch($role)
                     @case('admin')
                         <li class="pc-item">

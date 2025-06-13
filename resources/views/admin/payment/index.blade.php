@@ -29,7 +29,6 @@
                             <th scope="col">Status Pembayaran</th>
                             <th scope="col">Token</th>
                             <th scope="col">Actions</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -74,6 +73,9 @@
                                                 class="bi bi-arrow-clockwise"></i> aktifkan
                                         </button>
                                     </form>
+
+                                    <a href="https://wa.me/{{ $user->no_hp }}?text=Hai kak, ..."
+                                        class="btn btn-primary btn-sm">kirim</a>
                                     {{-- <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
                                         action="{{ route('user.destroy', $user->id) }}" method="post" class="d-inline">
                                         @csrf

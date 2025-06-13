@@ -49,13 +49,23 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'password_confirmation' => ['required'],
-            'no_hp' => ['required'],
-        ]);
+        $formbuy = $data['formbuy'];
+        if ($formbuy == 'passwordformbuy') {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'no_hp' => ['required'],
+            ]);
+        } else {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'password_confirmation' => ['required'],
+                'no_hp' => ['required'],
+            ]);
+        }
+        dd($formbuy);
     }
 
     /**
@@ -66,20 +76,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $formbuy = $data['formbuy'];
+        if ($formbuy == 'passwordformbuy') {
+            $password =  Hash::make('passwordformbuy');
+        } else {
+            $password =  Hash::make($data['password']);
+        }
+
         $create =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => $password,
             'no_hp' => $data['no_hp'],
             'address' => $data['address'],
         ])->assignRole('guest');
 
-        $id  = $create->id;
-        $make_profile = Profile::create([
-            'user_id' => $id,
-            'full_name' => $data['name'],
-            'no_hp' => $data['no_hp'],
-        ]);
+        // $id  = $create->id;
+        // $make_profile = Profile::create([
+        //     'user_id' => $id,
+        //     'full_name' => $data['name'],
+        //     'no_hp' => $data['no_hp'],
+        // ]);
 
         return $create;
     }

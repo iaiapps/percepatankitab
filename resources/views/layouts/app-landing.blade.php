@@ -28,6 +28,7 @@
     <div id="app">
         @yield('content')
     </div>
+    <script src="{{ asset('assets/jquery/jquery-3.6.4.min.js') }}"></script>
     @stack('scripts')
 </body>
 

@@ -230,7 +230,7 @@
 
                         </ul>
 
-                        <a href="{{ route('register') }}" class="btn btn-danger btn-lg fw-bold px-5 mb-3">Beli
+                        <a href="{{ route('formbuy') }}" class="btn btn-danger btn-lg fw-bold px-5 mb-3">Beli
                             Sekarang</a>
                         <p class="small text-muted">*Harga spesial hanya untuk 100 pembeli pertama</p>
                     </div>
@@ -468,29 +468,59 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Masuk Kelas</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3 ">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-whatsapp"></i></span>
-                        <input type="text" class="form-control" placeholder="Nomor Hp" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                <form action="{{ route('tokenlogin') }}" method="POST">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Masuk Kelas</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="input-group mb-3 ">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-check2-circle"></i></span>
-                        <input type="text" class="form-control" placeholder="Token Kelas" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                    <div class="modal-body">
+                        @csrf
+                        <div class="input-group mb-3 ">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-whatsapp"></i></span>
+                            <input type="text" class="form-control" placeholder="Nomor Hp" name="no_hp">
+                        </div>
+                        <div class="input-group mb-3 ">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-check2-circle"></i></span>
+                            <input type="text" class="form-control" placeholder="Token Kelas" name="token_code">
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">masuk kelas</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
+    @if (session('loginbuy'))
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var myModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
+                myModal.show();
+            });
+        </script>
+    @endif
+    <!-- Modal Error Login -->
 
+
+    {{-- @dd(session('loginbuy')) --}}
+    @if (session('loginbuy'))
+        <div class="modal fade" id="loginErrorModal" tabindex="-1" aria-labelledby="loginErrorModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-danger text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginErrorModalLabel">Login Gagal</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fs-5">{{ session('loginbuy') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
 
 @push('scripts')
@@ -523,5 +553,9 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        $(document).ready(function() {
+            $('#loginErrorModal').modal('show');
+        });
     </script>
 @endpush

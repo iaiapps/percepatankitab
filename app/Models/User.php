@@ -24,6 +24,8 @@ class User extends Authenticatable
         'password',
         'token_code',
         'status',
+        'address',
+        'no_hp',
     ];
 
     /**

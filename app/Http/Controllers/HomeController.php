@@ -35,6 +35,8 @@ class HomeController extends Controller
             return view('guest.guest', compact('user'));
         } elseif ($role == 'user') {
             return view('home.home', compact('user'));
+        } else {
+            return 'anda tidak punya akses';
         };
     }
 }

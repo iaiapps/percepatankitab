@@ -28,7 +28,7 @@
                             <input type="text" class="form-control" id="nama" name="name">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Password</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class="mb-3">

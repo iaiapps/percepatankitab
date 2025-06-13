@@ -7,10 +7,8 @@
                     <h3 class="modal-title">Selamat Datang</h3>
                 </div>
                 <div class="modal-body">
-                    <p class="fs-5">Terima kasih telah melakukan bukti pembayaran, akun anda sudah aktif. Untuk
-                        mengakses
-                        kelas silahkan
-                        masukkan kode berikut:
+                    <p class="fs-5">Terima kasih telah melakukan pembayaran, akun anda sudah aktif. Ttoken anda
+                        adalah:
                         <br>
                     </p>
                     <span

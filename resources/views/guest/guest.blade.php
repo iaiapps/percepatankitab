@@ -37,7 +37,7 @@
 
 <body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
     <div id="app">
-        <div class="text-center">
+        <div class="text-center container">
             <div class="mb-1 pt-3 text-center">
                 <a href="{{ route('home') }}" class="b-brand text-primary">
                     <img src="{{ asset('img/logo.png') }}" alt="logo" style="width: 100px">
@@ -64,17 +64,21 @@
                 @endforeach
             @endif
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-body">
                     <p class="mb-1 fs-4">Selamat Datang di Aplikasi Percepatan Baca Kitab</p>
                 </div>
-            </div>
+            </div> --}}
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-3 fs-5 ">Sebelum melanjutkan, silahkan upload bukti pembayaran
-                        terlebih
-                        dahulu!
+                    <p class="mb-3 fs-5 ">Sebelum melanjutkan, silahkan melakukan pembayaran terlebih dahulu dan upload
+                        bukti pembayaran!
                     </p>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        Cara Pembayaran
+                    </button>
                     <hr>
                     @if (isset($user->payment))
                         <p class="bg-warning rounded p-2">bukti pembayaran sudah diupload</p>
@@ -88,8 +92,9 @@
                             Upload Pembayaran
                         </button>
                     @endif
-                    <p class="mb-3 fs-5">Akun akan aktif dalam 1x24 jam</p>
-                    <p class="mb-3 fs-5">Jika Akun belum aktif silahkan hubungi admin</p>
+                    <p class="mb-3 fs-5">Akun akan aktif dalam 1x24 jam, Jika Akun belum aktif silahkan hubungi admin
+                    </p>
+
                 </div>
             </div>
             <div class="card">
@@ -101,6 +106,25 @@
                 </div>
             </div>
             @include('guest.create')
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cara Pembayaran</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Transfer ke rekenaing a/n xxxxx sejumlah Rp.xxxx
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

@@ -53,7 +53,7 @@
             </div>
         </form>
 
-        <!-- Result Display (hidden by default) -->
+        {{-- <!-- Result Display (hidden by default) -->
         <div class="quiz-container d-none" id="result-container">
             <div class="text-center">
                 <h2>Hasil Quiz</h2>
@@ -65,7 +65,7 @@
                     <i class="bi bi-arrow-repeat"></i> Ulangi Quiz
                 </a>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection
 
@@ -126,7 +126,329 @@
                     "Menyambung dua kalimat"
                 ],
                 answer: "Menafikan seluruh jenis secara mutlak"
+            }, {
+                id: 6,
+                question: "Apa yang dinyatakan dengan fi’il ta’ajjub?",
+                options: [
+                    "Waktu dan tempat kejadian",
+                    "Perintah dan larangan",
+                    "Rasa takjub atau kagum",
+                    "Penafian terhadap jenis"
+                ],
+                answer: "Rasa takjub atau kagum"
+            }, {
+                id: 7,
+                question: "Isim rofa’ jatuh setelah fi’il yang disandarkan kepada-nya biasanya berfungsi sebagai:",
+                options: [
+                    "Maf’ul bih",
+                    "Fā‘il",
+                    "Hal",
+                    "Badal"
+                ],
+                answer: "Fā‘il"
+            }, {
+                id: 8,
+                question: "Nā’ib Fā‘il menggantikan posisi:",
+                options: [
+                    "Fi’il",
+                    "Mubtada’",
+                    "Maf’ul bih",
+                    "Fā‘il"
+                ],
+                answer: "Fā‘il"
+            }, {
+                id: 9,
+                question: "Maf’ul bih adalah isim yang menunjukkan:",
+                options: [
+                    "Waktu kejadian",
+                    "Tempat peristiwa",
+                    "Pelaku perbuatan",
+                    "Objek yang dikenai perbuatan"
+                ],
+                answer: "Objek yang dikenai perbuatan"
+            }, {
+                id: 10,
+                question: "Tanāzu’ fil ‘amal adalah ketika dua fi’il:",
+                options: [
+                    "Mengikuti satu mubtada’",
+                    "Berebut satu objek yang sama",
+                    "Tidak memiliki maf’ul bih",
+                    "Tidak bisa dibedakan bentuknya"
+                ],
+                answer: "Berebut satu objek yang sama"
+            }, {
+                id: 11,
+                question: "Maf‘ūl Muṭlaq berasal dari:",
+                options: [
+                    "Isim fa’il",
+                    "Masdar dari fi’il dalam kalimat",
+                    "Huruf nida’",
+                    "Huruf jar"
+                ],
+                answer: "Masdar dari fi’il dalam kalimat"
+            }, {
+                id: 12,
+                question: "Maf‘ūl lahu menjelaskan:",
+                options: [
+                    "Siapa pelakunya",
+                    "Waktu kejadian",
+                    "Alasan terjadinya perbuatan",
+                    "Objek utama"
+                ],
+                answer: "Alasan terjadinya perbuatan"
+            }, {
+                id: 13,
+                question: "Maf‘ūl Fīhi berfungsi untuk menunjukkan:",
+                options: [
+                    "Objek utama",
+                    "Keterangan waktu atau tempat",
+                    "Kata sifat",
+                    "Kata seru"
+                ],
+                answer: "Keterangan waktu atau tempat"
+            },
+            {
+                id: 14,
+                question: "Maf‘ūl Ma‘ah muncul setelah huruf:",
+                options: [
+                    "إِلَّا istitsna",
+                    "فَـ isti’naf",
+                    "وَ  ma‘iyyah",
+                    "أَوْ ikhtiyari"
+                ],
+                answer: "وَ  ma‘iyyah"
+            },
+            {
+                id: 15,
+                question: "Ḥāl biasanya merupakan:",
+                options: [
+                    "Isim ma’rifah marfū‘",
+                    "Isim nakirah manshūb yang menjelaskan keadaan",
+                    "Fi’il lampau",
+                    "Huruf ta’ajjub"
+                ],
+                answer: "Isim nakirah manshūb yang menjelaskan keadaan"
+            },
+            {
+                id: 16,
+                question: "Tamyīz berfungsi untuk:",
+                options: [
+                    "Menunjukkan objek utama",
+                    "Menjelaskan makna / benda yang samar",
+                    "Memanggil seseorang",
+                    "Menafikan perbuatan"
+                ],
+                answer: "Menjelaskan makna / benda yang samar"
+            },
+            {
+                id: 17,
+                question: "Istitsnā’ digunakan untuk:",
+                options: [
+                    "Menyatakan keadaan",
+                    "Menunjukkan jumlah",
+                    "Mengecualikan sebagian dari keseluruhan",
+                    "Menyebut subjek baru"
+                ],
+                answer: "Mengecualikan sebagian dari keseluruhan"
+            },
+            {
+                id: 18,
+                question: "Munādā adalah isim yang:",
+                options: [
+                    "Dihubungkan dengan fi’il lazim",
+                    "Digunakan untuk dipanggil menggunakan huruf nida’",
+                    "Dimasukkan ke dalam maf‘ūl bih",
+                    "Berperan sebagai hal"
+                ],
+                answer: "Digunakan untuk dipanggil menggunakan huruf nida’"
+            },
+            {
+                id: 19,
+                question: "Dalam potongan kalimat قال الشيخ الفقيه الصالح الزاهد عبد الملك بن عبد الله, apakah kedudukan kata / mahal i‘rob \"الشيخ\"?",
+                options: [
+                    "فاعل",
+                    "نعت",
+                    "مفعول به",
+                    "بدل"
+                ],
+                answer: "فاعل"
+            },
+            {
+                id: 20,
+                question: "Apa kedudukan kata / mahal i‘rob \"الزاهد\" dalam frasa قال الشيخ الفقيه الصالح الزاهد عبد الملك?",
+                options: [
+                    "بدل",
+                    "نعت للفقيه",
+                    "نعت للشيخ",
+                    "مفعول به"
+                ],
+                answer: "نعت للشيخ"
+            }, {
+                id: 21,
+                question: "Apa kedudukan kata / mahal i‘rob \"شيخي\" dalam kalimat: أملى عليّ شيخي الأجل الإمام الزاهد السعيد الموفق?",
+                options: [
+                    "مفعول به",
+                    "بدل",
+                    "فاعل",
+                    "نعت"
+                ],
+                answer: "فاعل"
+            },
+            {
+                id: 22,
+                question: "Apa kedudukan kata / mahal i‘rob \"له\" dalam frasa: غفر الله له?",
+                options: [
+                    "فاعل",
+                    "مفعول به",
+                    "بدل",
+                    "جار ومجرور"
+                ],
+                answer: "جار ومجرور"
+            },
+            {
+                id: 23,
+                question: "Apa kedudukan kata / mahal i‘rob \"الكتاب\" dalam susunan: هذا الكتاب المختصر?",
+                options: [
+                    "بدل",
+                    "نعت",
+                    "فاعل",
+                    "خبر"
+                ],
+                answer: "بدل"
+            },
+            {
+                id: 24,
+                question: "Apa kedudukan kata / mahal i‘rob \"آخر\" dalam frasa: وهو آخر كتاب صنفه?",
+                options: [
+                    "مبتدأ",
+                    "خبر",
+                    "نعت",
+                    "مفعول به"
+                ],
+                answer: "خبر"
+            },
+            {
+                id: 25,
+                question: "Apa kedudukan kata / mahal i‘rob \"الأخواص\" dalam frasa: ولم يستمله منه الأخواص?",
+                options: [
+                    "فاعل",
+                    "مفعول به",
+                    "بدل",
+                    "خبر"
+                ],
+                answer: "فاعل"
+            },
+            {
+                id: 26,
+                question: "Apa kedudukan kata / mahal i‘rob \"الملك\" dalam susunan: الحمد لله الملك الحكيم الجواد الكريم العزيز الرحيم?",
+                options: [
+                    "بدل",
+                    "نعت",
+                    "خبر",
+                    "مفعول به"
+                ],
+                answer: "نعت"
+            },
+            {
+                id: 27,
+                question: "Apa kedudukan kata / mahal i‘rob \"السموات\" dalam kalimat: فطر السموات والأرض بقدرته?",
+                options: [
+                    "فاعل",
+                    "مفعول به",
+                    "بدل",
+                    "مبتدأ"
+                ],
+                answer: "مفعول به"
+            },
+            {
+                id: 28,
+                question: "Apa kedudukan kata / mahal i‘rob \"يعبدون\" dalam kalimat: وما خلق الجن والإنس إلا ليعبدون?",
+                options: [
+                    "خبر",
+                    "مفعول به",
+                    "جار ومجرور",
+                    "فعل مضارع منصوب"
+                ],
+                answer: "فعل مضارع منصوب"
+            },
+            {
+                id: 29,
+                question: "Apa kedudukan kata / mahal i‘rob \"الطريقُ\" dalam kalimat: فالطريقُ إليه واضحٌ للقاصدين?",
+                options: [
+                    "خبر",
+                    "مفعول به",
+                    "مبتدأ",
+                    "بدل"
+                ],
+                answer: "مبتدأ"
+            },
+            {
+                id: 30,
+                question: "Apa kedudukan kata / mahal i‘rob \"اللهَ\" dalam susunan: ولكنّ اللهَ يضل من يشاء?",
+                options: [
+                    "بدل",
+                    "اسم إنّ",
+                    "اسم لكنّ",
+                    "فاعل"
+                ],
+                answer: "اسم لكنّ"
+            },
+            {
+                id: 31,
+                question: "Apa kedudukan kata / mahal i‘rob \"أعلم\" dalam kalimat: وهو أعلم بالمهتدين?",
+                options: [
+                    "مفعول به",
+                    "بدل",
+                    "خبر",
+                    "اسم كان"
+                ],
+                answer: "خبر"
+            },
+            {
+                id: 32,
+                question: "Apa kedudukan kata / mahal i‘rob \"الأبرار\" dalam kalimat: والصلاة على سيدِ المرسلين وعلى آله الأبرار الطيبين الطاهرين?",
+                options: [
+                    "نعت",
+                    "بدل",
+                    "مفعول به",
+                    "حال"
+                ],
+                answer: "نعت"
+            },
+            {
+                id: 33,
+                question: "Apa kedudukan kata / mahal i‘rob \"يومِ الدين\" dalam kalimat: عظّم إلى يومِ الدين?",
+                options: [
+                    "مفعول به",
+                    "بدل",
+                    "مجرور",
+                    "حال"
+                ],
+                answer: "مجرور"
+            },
+            {
+                id: 34,
+                question: "Apa kedudukan kata / mahal i‘rob \"إخواني\" dalam kalimat: اعلموا إخواني أسعدكم الله?",
+                options: [
+                    "بدل",
+                    "مفعول به",
+                    "منادى",
+                    "خبر"
+                ],
+                answer: "منادى"
+            },
+            {
+                id: 35,
+                question: "Apa kedudukan kata / mahal i‘rob \"الله\" dalam susunan: أسعدكم الله?",
+                options: [
+                    "مفعول به",
+                    "بدل",
+                    "فاعل",
+                    "مبتدأ"
+                ],
+                answer: "فاعل"
             }
+
         ];
 
         // Variabel state quiz
@@ -147,14 +469,14 @@
         const quizForm = document.getElementById('quiz-form');
         const formScore = document.getElementById('form-score');
         const allAnswersInput = document.getElementById('all-answers');
-        const resultContainer = document.getElementById('result-container');
-        const finalScoreElement = document.getElementById('final-score');
-        const maxScoreElement = document.getElementById('max-score');
+        // const resultContainer = document.getElementById('result-container');
+        // const finalScoreElement = document.getElementById('final-score');
+        // const maxScoreElement = document.getElementById('max-score');
 
         // Inisialisasi quiz
         function initQuiz() {
             totalQuestionsElement.textContent = quizData.length;
-            maxScoreElement.textContent = quizData.length;
+            // maxScoreElement.textContent = quizData.length;
             loadQuestion();
         }
 
@@ -276,8 +598,8 @@
 
             // Tampilkan hasil sebelum submit
             quizForm.classList.add('d-none');
-            resultContainer.classList.remove('d-none');
-            finalScoreElement.textContent = score;
+            // resultContainer.classList.remove('d-none');
+            // finalScoreElement.textContent = score;
 
             const percentage = (score / quizData.length) * 100;
             let message = '';
@@ -292,12 +614,12 @@
                 message = 'Anda mungkin perlu mempelajari materi ini lebih dalam lagi.';
             }
 
-            document.getElementById('result-message').textContent = message;
+            // document.getElementById('result-message').textContent = message;
 
             // Submit form setelah 3 detik
-            setTimeout(() => {
-                quizForm.submit();
-            }, 3000);
+            // setTimeout(() => {
+            quizForm.submit();
+            // }, 500);
         }
 
         // Event listeners

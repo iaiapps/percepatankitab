@@ -64,6 +64,14 @@ class LandingController extends Controller
     {
         //
     }
+
+    // handling form buy
+    public function formbuy()
+    {
+        return view('auth.registerbuy');
+    }
+
+
     // handling quizz //
     public function quizzdata()
     {
@@ -99,6 +107,13 @@ class LandingController extends Controller
             'score' => $score,
         ]);
         // dd(?$score);
-        return redirect()->back();
+        return redirect()->route('quizzscore', $str);
+    }
+
+    public function quizzscore(Request $request)
+    {
+        $str = $request->str;
+        $quizz = Quizz::where('str', $str)->get()->first();
+        return view('quizz.quizzscore', compact('quizz'));
     }
 }
