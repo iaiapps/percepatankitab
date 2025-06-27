@@ -24,8 +24,16 @@
                             <p class="mt-3">{{ Str::limit($course->description, 150) }}</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-danger">hapus</button>
-                            <button class="btn btn-primary">lihat</button>
+                            <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
+                                action="{{ route('course.destroy', $course->id) }}" method="post" class="d-inline">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">
+                                    hapus
+                                </button>
+                            </form>
+
+                            <a href="{{ route('course.show', $course->id) }}" class="btn btn-primary">lihat</a>
                         </div>
                     </div>
                 </div>

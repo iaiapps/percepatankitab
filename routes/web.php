@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EbookController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,8 +40,11 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('payment', PaymentController::class);
         // aktifkan user yang sudah membayar
         Route::post('activate/{id}', [PaymentController::class, 'activate'])->name('activate');
+
         Route::resource('setting', SettingController::class);
         Route::resource('course', CourseController::class);
+        Route::resource('ebook', EbookController::class);
+        Route::get('/ebook/{ebook}/view', [EbookController::class, 'view'])->name('ebook.view');
     });
     Route::middleware(['role:user'])->group(function () {
         // status aktif user

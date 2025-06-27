@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
@@ -61,7 +62,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('admin.course.show', compact('course'));
     }
 
     /**
@@ -85,7 +86,14 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        // dd($course->all());
+        if ($course->thumbnail_path && file_exists(public_path($course->thumbnail_path))) {
+            unlink(public_path($course->thumbnail_path));
+        }
+        $course->delete();
+
+        return redirect()->route('course.index')
+            ->with('success', 'Course deleted successfully');
     }
 
 
@@ -123,34 +131,49 @@ class CourseController extends Controller
      */
     private function saveThumbnailToStorage(Course $course)
     {
-        // dd($course);
         try {
             $thumbnailUrl = $this->getYoutubeThumbnail($course->youtube_url, 'high');
 
             if (!$thumbnailUrl) {
+                Log::error('Thumbnail URL not found for course: ' . $course->id);
                 return false;
             }
-            // download gambar
+
             $image = Http::get($thumbnailUrl)->body();
 
-            // Buat direktori jika belum ada
             $directory = public_path('img-thumbnails');
+            $directory = str_replace('/', DIRECTORY_SEPARATOR, $directory);
+
             if (!File::exists($directory)) {
-                File::makeDirectory($directory, 0755, true);
+                Log::info('Creating directory: ' . $directory);
+                $made = File::makeDirectory($directory, 0777, true);
+                if (!$made) {
+                    Log::error('Failed to create directory: ' . $directory);
+                    return false;
+                }
             }
 
             $file_name = 'yt_' . $course->youtube_id . '_' . time() . '.jpg';
-            $path = 'img-thumbnails/' . $file_name;
+            $path = 'img-thumbnails' . DIRECTORY_SEPARATOR . $file_name;
+            $full_path = public_path($path);
+            $full_path = str_replace('/', DIRECTORY_SEPARATOR, $full_path);
 
-            file_put_contents(public_path($path), $image);
+            Log::info('Attempting to save thumbnail to: ' . $full_path);
+            $bytes = file_put_contents($full_path, $image);
+
+            if ($bytes === false) {
+                Log::error('Failed to write file: ' . $full_path);
+                return false;
+            }
 
             $course->update([
-                'thumbnail_path' => $path,
+                'thumbnail_path' => str_replace(DIRECTORY_SEPARATOR, '/', $path), // Simpan dengan forward slash untuk konsistensi URL
                 'file_name' => $file_name
             ]);
 
             return true;
         } catch (\Exception $e) {
+            Log::error('Error saving thumbnail: ' . $e->getMessage());
             report($e);
             return false;
         }
