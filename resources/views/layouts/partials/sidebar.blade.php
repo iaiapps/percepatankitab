@@ -59,6 +59,25 @@
                             </a>
                         </li>
                         <li class="pc-item pc-caption">
+                            <label data-i18n="Widget">Marketing</label>
+                        </li>
+                        <li class="pc-item">
+                            <a href="{{ route('user.index') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-cart"></i>
+                                </span>
+                                <span class="pc-mtext">Reseller</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a href="{{ route('setting.index') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-at"></i>
+                                </span>
+                                <span class="pc-mtext">Affiliator</span>
+                            </a>
+                        </li>
+                        <li class="pc-item pc-caption">
                             <label data-i18n="Widget">Management</label>
                         </li>
                         <li class="pc-item">

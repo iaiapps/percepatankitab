@@ -100,7 +100,9 @@ class PaymentController extends Controller
         $id = $request->id;
         $role = User::where('id', $id)->first();
         $role->syncRoles('user');
-        $token_code = Str::random(10);
+        // $str = Str::random(5);
+        // fungsi generate angka 10000-99999
+        $token_code = mt_rand(10000, 99999);
         Payment::where('user_id', $id)->update([
             'token_code' => $token_code,
         ]);

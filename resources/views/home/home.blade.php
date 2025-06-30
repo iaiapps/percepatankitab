@@ -10,10 +10,12 @@
 
     <div class="card">
         <div class="card-body">
-            {{-- <p>{{ $role }}</p> --}}
             <p class="mb-2 fs-4">Selamat Datang di Aplikasi Manajemen Percepatan Baca Kitab</p>
         </div>
     </div>
+
+
+
     @if ($role !== 'admin' and $role !== 'operator')
         <div class="card">
             <div class="card-body">
@@ -24,6 +26,28 @@
         @if ($user->status !== '1')
             @include('home.user_welcome')
         @endif
+    @else
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-body pb-0 d-flex justify-content-between">
+                        <p class="mb-0 fs-5">Pembayaran Baru :</p>
+                        <p class="mb-0 fs-5 badge text-bg-primary">9999</p>
+
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-body pb-0 d-flex justify-content-between">
+                        <p class="mb-0 fs-5">Jumlah Pengguna :</p>
+                        <p class="mb-0 fs-5 badge text-bg-primary">9999</p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
     @endif
 @endsection
 @push('scripts')

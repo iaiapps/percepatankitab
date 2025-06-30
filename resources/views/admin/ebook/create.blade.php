@@ -42,7 +42,7 @@
                     @enderror
                 </div>
 
-                {{-- <div class="form-group mb-3">
+                <div class="form-group mb-3">
                     <label for="cover_image">Cover Image (Optional)</label>
                     <input id="cover_image" type="file" class="form-control @error('cover_image') is-invalid @enderror"
                         name="cover_image" accept="image/*">
@@ -51,7 +51,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div> --}}
+                </div>
 
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-primary">

@@ -57,13 +57,13 @@ class EbookController extends Controller
 
 
         // Upload cover image jika ada
-        // $coverPath = null;
-        // if ($request->hasFile('cover_image')) {
-        //     $cover = $request->file('cover_image');
-        //     $coverName = 'cover_' . time() . '.' . $cover->getClientOriginalExtension();
-        //     $coverPath = 'ebooks/covers/' . $coverName;
-        //     Storage::disk('public')->put($coverPath, file_get_contents($cover));
-        // }
+        $coverPath = null;
+        $coverImage = $request->file('cover_image');
+        if ($coverImage != null) {
+            $coverName = 'cover_' . time() . '.' . $coverImage->getClientOriginalExtension();
+            $coverImage->move(public_path('ebook-file'), $coverName);
+            $coverPath = 'ebook-file/' . $coverName;
+        }
 
         // Simpan data
         Ebook::create([
@@ -72,7 +72,7 @@ class EbookController extends Controller
             'ebook_path' => $filePath,
             'file_name' => $fileName,
             'file_size' => $fileSize,
-            // 'cover_image' => $coverPath,
+            'cover_image' => $coverPath,
         ]);
 
         return redirect()->route('ebook.index')
@@ -108,7 +108,17 @@ class EbookController extends Controller
      */
     public function destroy(Ebook $ebook)
     {
-        //
+        // dd($course->all());
+        if ($ebook->ebook_path && file_exists(public_path($ebook->ebook_path))) {
+            unlink(public_path($ebook->ebook_path));
+        }
+        if ($ebook->cover_image && file_exists(public_path($ebook->cover_image))) {
+            unlink(public_path($ebook->cover_image));
+        }
+        $ebook->delete();
+
+        return redirect()->route('ebook.index')
+            ->with('success', 'Ebook deleted successfully');
     }
 
     // helper view ebook

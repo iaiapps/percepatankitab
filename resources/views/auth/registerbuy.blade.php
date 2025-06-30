@@ -11,7 +11,6 @@
     <div class="auth-main">
         <div class="auth-wrapper v3">
             <div class="auth-form">
-
                 <div class="card my-5">
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
@@ -26,7 +25,6 @@
                             @csrf
                             <div class="d-flex justify-content-between align-items-end mb-4">
                                 <h3 class="mb-0"><b>Isi Formulir Pembelian</b></h3>
-                                {{-- <a href="{{ route('login') }}" class="link-primary">Sudah punya akun?</a> --}}
                             </div>
                             <input type="text" value="passwordformbuy" name="formbuy" readonly hidden>
                             <div class="form-group mb-3">

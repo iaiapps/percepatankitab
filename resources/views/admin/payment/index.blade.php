@@ -47,43 +47,45 @@
                                             $id = 'tidak ada';
                                         }
                                     @endphp
-                                    <img class="img-pembayaran" src="{{ $img }}" alt="bukti"> <a
-                                        href="{{ route('payment.show', $id) ?? 'belum' }}"
-                                        class="ms-3 btn btn-sm btn-outline-primary">lihat
+                                    <img class="img-pembayaran" src="{{ $img }}" alt="bukti">
+                                    <br>
+                                    <a href="{{ route('payment.show', $id) ?? 'belum' }}"
+                                        class=" mt-2 btn btn-sm btn-outline-primary">lihat
                                         bukti</a>
                                 </td>
                                 <td>
                                     @if ($user->getRoleNames()->first() == 'guest')
-                                        <p class="mb-0 bg-danger text-center text-white rounded">belum membayar</p>
+                                        <p class="mb-0 bg-danger text-center text-white rounded">belum diverifikasi</p>
                                     @elseif ($user->getRoleNames()->first() == 'user')
-                                        <p class="mb-0 bg-primary text-center text-white rounded">sudah membayar</p>
+                                        <p class="mb-0 bg-primary text-center text-white rounded">sudah diverifikasi</p>
                                     @else
                                         <p>tidak dapat menentukan status ...</p>
                                     @endif
                                 </td>
                                 <td>{{ $user->payment->token_code ?? 'belum ada' }}</td>
                                 <td>
-
-                                    <form class="d-inline-block"
+                                    <form class="d-block"
                                         onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"
                                         action="{{ route('activate', $user->id) }}" method="POST">
                                         @csrf
 
-                                        <button type="submit" class="btn btn-secondary btn-sm"><i
-                                                class="bi bi-arrow-clockwise"></i> aktifkan
+                                        <button type="submit" class="btn btn-primary btn-sm w-100"><i
+                                                class="bi bi-check2-circle"></i> aktifkan
                                         </button>
                                     </form>
 
                                     <a href="https://wa.me/{{ $user->no_hp }}?text=Hai kak, ..."
-                                        class="btn btn-primary btn-sm">kirim</a>
-                                    {{-- <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
+                                        class="btn btn-success btn-sm w-100 "> <i class="bi bi-send"></i> kirim</a>
+
+                                    <form class="d-block"
+                                        onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
                                         action="{{ route('user.destroy', $user->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="bi bi-trash3"></i> del
+                                        <button type="submit" class="btn btn-danger btn-sm w-100">
+                                            <i class="bi bi-trash3"></i> hapus
                                         </button>
-                                    </form> --}}
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -96,7 +98,7 @@
 @push('css')
     <style>
         .img-pembayaran {
-            width: 50px;
+            width: 70px;
         }
     </style>
     <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">

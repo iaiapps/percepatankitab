@@ -20,7 +20,11 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h4 class="mb-3">{{ $course->name }}</h4>
-                            <img class="img-thumbnail" src="{{ $course->thumbnail_path }}" alt="thumbnail">
+                            @if ($course->file_name == null)
+                                <img class="img-thumbnail" src="{{ $course->thumbnail_url }}" alt="thumbnail">
+                            @else
+                                <img class="img-thumbnail" src="{{ $course->thumbnail_path }}" alt="thumbnail">
+                            @endif
                             <p class="mt-3">{{ Str::limit($course->description, 150) }}</p>
                         </div>
                         <div class="card-footer">
