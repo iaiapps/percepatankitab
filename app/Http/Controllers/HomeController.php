@@ -29,14 +29,15 @@ class HomeController extends Controller
         $user = Auth::user();
         $role = $user->getRoleNames()->first();
 
-        if ($role == 'admin' or $role == 'operator') {
+        // dd($role);
+        if ($role == 'admin' or $role == 'operator' or $role == 'reseller' or $role == 'affiliator') {
             return view('home.home');
         } elseif ($role == 'guest') {
             return view('guest.guest', compact('user'));
         } elseif ($role == 'user') {
             return view('home.home', compact('user'));
         } else {
-            return 'anda tidak punya akses';
+            return abort('401');
         };
     }
 }

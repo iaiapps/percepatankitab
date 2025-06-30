@@ -26,6 +26,8 @@ class User extends Authenticatable
         'status',
         'address',
         'no_hp',
+        'type',
+        'ref_code',
     ];
 
     /**
@@ -59,5 +61,10 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function reseller()
+    {
+        return $this->hasOne(Reseller::class);
     }
 }

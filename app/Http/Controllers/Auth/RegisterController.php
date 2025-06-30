@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\Profile;
+use App\Models\Reseller;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -24,6 +27,12 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    // disable register.blade
+    public function showRegistrationForm()
+    {
+        // return view('auth.register');
+        return redirect()->route('landing');
+    }
     /**
      * Where to redirect users after registration.
      *
@@ -49,23 +58,28 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // validasi formbuy
         $formbuy = $data['formbuy'];
+        // // validasi reseller type
+        // $formtype = $data['type'];
+
         if ($formbuy == 'passwordformbuy') {
             return Validator::make($data, [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'no_hp' => ['required'],
+                'type' => ['required'],
             ]);
         } else {
             return Validator::make($data, [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'password_confirmation' => ['required'],
+                'password_confirmation' => ['required', 'same:password'],
                 'no_hp' => ['required'],
+                'type' => ['required'],
             ]);
         }
-        dd($formbuy);
     }
 
     /**
@@ -76,27 +90,55 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // cek ref
+        $ref = $data['ref'] ?? null;
+
+        // validasi formbuy
         $formbuy = $data['formbuy'];
+        // validasi reseller type
+        $formtype = $data['type'];
+
         if ($formbuy == 'passwordformbuy') {
             $password =  Hash::make('passwordformbuy');
+            $status = null;
         } else {
             $password =  Hash::make($data['password']);
+            $status = 1;
         }
 
         $create =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $password,
+            'status' => $status,
             'no_hp' => $data['no_hp'],
             'address' => $data['address'],
-        ])->assignRole('guest');
+            'type' => $data['type'],
+            'ref_code' => $ref,
+        ]);
 
-        // $id  = $create->id;
-        // $make_profile = Profile::create([
-        //     'user_id' => $id,
-        //     'full_name' => $data['name'],
-        //     'no_hp' => $data['no_hp'],
-        // ]);
+        if ($formtype == 'normal') {
+            $create->assignRole('guest');
+
+            // buat data payment
+            $user_id = $create->id;
+            Payment::create([
+                'user_id' => $user_id,
+                'name' => $data['name'],
+                'kode_referral' => $ref,
+            ]);
+        } elseif ($formtype == 'reseller') {
+            $create->assignRole('reseller');
+
+            $user_id = $create->id;
+            $str = Str::random(5);
+            Reseller::create([
+                'user_id' => $user_id,
+                'kode_referral' => 'RES' . Str::upper($str),
+            ]);
+        } elseif ($formtype == 'affiliator') {
+            $create->assignRole('affiliator');;
+        }
 
         return $create;
     }

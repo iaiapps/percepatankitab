@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Percepatan Baca Kitab') }}</title>
+    <title>{{ config('app.name', 'Percepatan Baca Kitab') }} | @yield ('title')</title>
 
     <!-- [Favicon] icon -->
     <link rel="icon" href={{ asset('mantis/dist/assets/images/favicon.svg') }} type="image/x-icon">

@@ -65,12 +65,18 @@ class LandingController extends Controller
         //
     }
 
-    // handling form buy
+    // handling register form landing page
+    // register form buy
     public function formbuy()
     {
         return view('auth.registerbuy');
     }
 
+    // register form reseller
+    public function formreseller()
+    {
+        return view('auth.registerreseller');
+    }
 
     // handling quizz //
     public function quizzdata()

@@ -62,7 +62,7 @@
                             <label data-i18n="Widget">Marketing</label>
                         </li>
                         <li class="pc-item">
-                            <a href="{{ route('user.index') }}" class="pc-link">
+                            <a href="{{ route('reseller.index') }}" class="pc-link">
                                 <span class="pc-micon">
                                     <i class="bi bi-cart"></i>
                                 </span>

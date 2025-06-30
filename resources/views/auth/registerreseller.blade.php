@@ -24,16 +24,10 @@
                         <div class="card-body">
                             @csrf
                             <div class="d-flex justify-content-between align-items-end mb-4">
-                                <h3 class="mb-0"><b>Isi Formulir Pembelian</b></h3>
+                                <h3 class="mb-0"><b>Formulir Pendaftaran Reseller </b></h3>
                             </div>
-                            <input type="text" value="normal" name="type" readonly hidden>
-                            <input type="text" value="passwordformbuy" name="formbuy" readonly hidden>
-
-                            {{-- jika ada ref --}}
-                            @if (request()->has('ref'))
-                                <input type="text" name="ref" value="{{ request()->query('ref') }}">
-                            @endif
-
+                            <input type="text" value="reseller" name="type" readonly hidden>
+                            <input type="text" value="reseller" name="formbuy" readonly hidden>
                             <div class="form-group mb-3">
                                 <label class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" placeholder="Nama Lengkap" name="name">
@@ -49,6 +43,16 @@
                             <div class="form-group mb-3">
                                 <label class="form-label">Alamat Lengkap</label>
                                 <textarea class="form-control" aria-label="With textarea" name="address"></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Password (minimal 8 karakter)</label>
+                                <input type="password" class="form-control" placeholder="********" name="password">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label">Ulangi Password</label>
+                                <input type="password" class="form-control" placeholder="********"
+                                    name="password_confirmation">
                             </div>
 
                             <div class="d-grid mt-3">

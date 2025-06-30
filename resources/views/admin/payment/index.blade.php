@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table id="table" class="table table-striped align-middle" style="width: 100%">
+                <table id="table" class="table table-striped align-middle align-middle" style="width: 100%">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -28,15 +28,17 @@
                             <th scope="col">Bukti Pembayaran</th>
                             <th scope="col">Status Pembayaran</th>
                             <th scope="col">Token</th>
+                            <th scope="col">Kode Referral</th>
+                            <th scope="col">Komisi</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($users->where('type', '!=', 'reseller') as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->profile->no_hp ?? 'belum ada data' }}</td>
+                                <td>{{ $user->no_hp ?? '-' }}</td>
                                 <td>
                                     @php
                                         if ($user->payment) {
@@ -47,11 +49,16 @@
                                             $id = 'tidak ada';
                                         }
                                     @endphp
-                                    <img class="img-pembayaran" src="{{ $img }}" alt="bukti">
-                                    <br>
-                                    <a href="{{ route('payment.show', $id) ?? 'belum' }}"
-                                        class=" mt-2 btn btn-sm btn-outline-primary">lihat
-                                        bukti</a>
+                                    @if (isset($user->payment))
+                                        <img class="img-pembayaran" src="{{ $img }}" alt="bukti">
+                                        <br>
+                                        <a href="{{ route('payment.show', $id) ?? 'belum' }}"
+                                            class=" mt-2 btn btn-sm btn-outline-primary">lihat
+                                            bukti</a>
+                                    @else
+                                        <p class="mb-0 bg-danger text-center text-white rounded">belum upload</p>
+                                    @endif
+
                                 </td>
                                 <td>
                                     @if ($user->getRoleNames()->first() == 'guest')
@@ -61,8 +68,18 @@
                                     @else
                                         <p>tidak dapat menentukan status ...</p>
                                     @endif
+                                    {{-- @if ($user->payment == 'pending')
+                                        <p class="mb-0 bg-danger text-center text-white rounded">belum diverifikasi</p>
+                                    @elseif ($user->payment == 'completed')
+                                        <p class="mb-0 bg-primary text-center text-white rounded">sudah diverifikasi</p>
+                                    @else
+                                        <p>tidak dapat menentukan status ...</p>
+                                    @endif --}}
+
                                 </td>
                                 <td>{{ $user->payment->token_code ?? 'belum ada' }}</td>
+                                <td>{{ $user->ref_code ?? '00000' }}</td>
+                                <td>{{ $user->payment->komisi_referral ?? '-' }}</td>
                                 <td>
                                     <form class="d-block"
                                         onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"

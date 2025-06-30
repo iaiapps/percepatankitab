@@ -150,7 +150,7 @@
                 <p class="fs-5">Tanpa modal, tanpa ribet. Cukup sebar link resellermu, hasilkan cuan harian.
                     Daftar sekarang, mulai hasilkan dari hari ini juga!
                 </p>
-                <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Reseller</a>
+                <a href="{{ route('formreseller') }}" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Reseller</a>
 
             </div>
         </div>

@@ -32,5 +32,15 @@ class RoleSeeder extends Seeder
             'name' => 'guest',
             'guard_name' => 'web'
         ]);
+
+        Role::create([
+            'name' => 'reseller',
+            'guard_name' => 'web'
+        ]);
+
+        Role::create([
+            'name' => 'affiliator',
+            'guard_name' => 'web'
+        ]);
     }
 }

@@ -14,7 +14,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $users = User::where('id', '!=', 1)->where('id', '!=', 2)->get();
+        $users = User::where('id', '!=', 1)->where('id', '!=', 2)->where('type', '!=', 'reseller')->where('type', '!=', 'affiliator')->get();
         return view('admin.payment.index', compact('users'));
     }
 
@@ -46,13 +46,13 @@ class PaymentController extends Controller
         $file_name = $name . '-pembayaran' . '-' . time() . '-' . $file->getClientOriginalName();
 
         // simpan di folder public
-        $request->file('document')->move(public_path('img-pembayaran'), $file_name);
+        $file->move(public_path('img-pembayaran'), $file_name);
 
         //masukkan ke array validate
         $imgDocument['user_id'] = $id;
         $imgDocument['name'] = $name;
         $imgDocument['img'] = $file_name;
-
+        $imgDocument['status'] = 'pending';
 
         //simpan ke database
         Payment::create($imgDocument);
@@ -98,15 +98,29 @@ class PaymentController extends Controller
     public function activate(Request $request)
     {
         $id = $request->id;
-        $role = User::where('id', $id)->first();
-        $role->syncRoles('user');
+        $user = User::where('id', $id)->first();
+        $user->syncRoles('user');
+
+
         // $str = Str::random(5);
         // fungsi generate angka 10000-99999
         $token_code = mt_rand(10000, 99999);
+
+        // cek dulu sek
+        if (isset($user->ref_code)) {
+            $word = Str::take($user->ref_code, 3);
+
+            if ($word == 'RES') {
+            }
+        } else {
+        }
+
         Payment::where('user_id', $id)->update([
             'token_code' => $token_code,
+            'status' => 'verified',
+            'kode_referral' => $user->ref_code,
         ]);
-        User::where('id', $id)->first()->update([
+        $user->update([
             'token_code' => $token_code,
         ]);
 
