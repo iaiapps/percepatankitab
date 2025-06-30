@@ -21,8 +21,9 @@
            <div class="ms-auto">
                <ul class="list-unstyled">
                    <li class="pc-h-item">
-
                        <div class="float-end d-flex">
+                           <a href="{{ route('profile') }}" class="d-block btn btn-outline-primary py-1 px-2"> <i
+                                   class="bi bi-person"></i></a>
                            <form action="{{ route('logout') }}" method="post">
                                @csrf
                                <button type="submit" class="ms-2 btn btn-danger">logout</button>

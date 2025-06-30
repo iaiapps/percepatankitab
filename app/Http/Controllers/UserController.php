@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -64,6 +65,9 @@ class UserController extends Controller
         //
     }
 
+
+    // handle dari user
+    // status
     public function status(Request $request)
     {
         $id = $request->id;
@@ -74,5 +78,14 @@ class UserController extends Controller
             'status' => '1',
         ]);
         return redirect()->back();
+    }
+
+    // all profile
+    public function profile()
+    {
+        $user = Auth::user();
+        $id = $user->id;
+        $user = User::find($id);
+        return view('user.profile', compact('user'));
     }
 }

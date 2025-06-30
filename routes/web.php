@@ -33,10 +33,14 @@ Route::post('/tokenlogin', [LoginController::class, 'tokenlogin'])->name('tokenl
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
+    // home
     Route::get('home', [HomeController::class, 'index'])->name('home');
 
     // guest routes after login
     Route::post('upload', [PaymentController::class, 'store'])->name('upload');
+
+    // profile
+    Route::get('profile', [UserController::class, 'profile'])->name('profile');
 
     // Admin routes
     Route::middleware(['role:admin'])->group(function () {

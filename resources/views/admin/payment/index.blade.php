@@ -8,9 +8,7 @@
         </div>
     @endif
 
-
     <div class="card p-3 rounded">
-
         <div class="table-responsive">
             <div class="mb-3">
                 <div class="btn-group">
@@ -29,7 +27,7 @@
                             <th scope="col">Status Pembayaran</th>
                             <th scope="col">Token</th>
                             <th scope="col">Kode Referral</th>
-                            <th scope="col">Komisi</th>
+
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -77,9 +75,9 @@
                                     @endif --}}
 
                                 </td>
-                                <td>{{ $user->payment->token_code ?? 'belum ada' }}</td>
-                                <td>{{ $user->ref_code ?? '00000' }}</td>
-                                <td>{{ $user->payment->komisi_referral ?? '-' }}</td>
+                                <td>{{ $user->payment->token_code ?? '-' }}</td>
+                                <td>{{ $user->ref_code ?? '-' }}</td>
+
                                 <td>
                                     <form class="d-block"
                                         onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"
