@@ -17,6 +17,7 @@
                 <div class="fs-5 mb-4">
                     @if ($result <= 50)
                         <div class="border border-2 p-2 rounded">
+                            <p>Level anda Beginner</p>
                             <p>Kamu sedang memulai langkah awal yang tepat! Yuk, tingkatkan pemahaman Nahwu-Shorof-mu
                                 dengan
                                 buku ini, panduan terbaik untuk pemula sepertimu!</p>
@@ -25,6 +26,7 @@
                         </div>
                     @elseif ($result >= 50 && $result <= 90)
                         <div class="border border-2 p-2 rounded">
+                            <p>Level anda Fondation</p>
                             <p>Kamu sudah punya dasar yang bagus! Sekarang saatnya memperkuat fondasi ilmu Nahwu-Shorof
                                 dengan
                                 buku ini, agar kamu bisa baca kitab kuning.</p>
@@ -33,15 +35,13 @@
                         </div>
                     @elseif ($result >= 90)
                         <div class="border border-2 p-2 rounded">
+                            <p>Level anda Intermediate</p>
                             <p>Hebat! Kamu sudah sampai di tingkat menengah. Ingin naik level jadi ahli? Buku ini siap jadi
                                 bekalmu untuk menguasai Kitab Kuning menjadi ahli.</p>
                         </div>
                     @endif
                 </div>
-                <div class="mb-4" id="result-message"></div>
-                <a href="{{ url()->current() }}" class="btn btn-primary mt-4">
-                    <i class="bi bi-arrow-repeat"></i> Ulangi Quiz
-                </a>
+
             </div>
         </div>
     </div>

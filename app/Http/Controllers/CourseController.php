@@ -49,7 +49,6 @@ class CourseController extends Controller
         ]);
 
         // Opsional: Simpan thumbnail ke storage lokal
-
         $this->saveThumbnailToStorage($course);
 
         return redirect()->route('course.index');

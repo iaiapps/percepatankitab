@@ -118,11 +118,50 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Transfer ke rekenaing a/n xxxxx sejumlah Rp.xxxx
+                    <p class="d-inline-flex gap-1">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#jawa" role="button"
+                            aria-expanded="false" aria-controls="jawa">
+                            Pembayaran Pulau Jawa
+                        </a>
+                    </p>
+                    <div class="collapse" id="jawa">
+                        <div class="card card-body">
+                            <p>
+                                Transfer ke rekening Bank BRI <span class="bg-warning p-2">623101025711536</span> a/n
+                                <span>MOCH ILYAS</span>
+                                sejumlah Rp. 350.008 + ongkir Rp. 15.000 Total <span class="p-1 bg-warning">Rp.
+                                    365.008</span>
+                            </p>
+                            <hr>
+                            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                                data-bs-target="#upload">
+                                Upload Pembayaran
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="d-inline-flex gap-1">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#luarjawa" role="button"
+                            aria-expanded="false" aria-controls="luarjawa">
+                            Pembayaran Luar Pulau Jawa
+                        </a>
+                    </p>
+                    <div class="collapse" id="luarjawa">
+                        <div class="card card-body">
+                            <p>
+                                Transfer ke rekening Bank BRI <span class="bg-warning p-2">623101025711536</span> a/n
+                                <span>MOCH ILYAS</span>
+                                sejumlah Rp. 350.008 + ongkir Rp. 25.000 Total <span class="p-1 bg-warning">Rp.
+                                    375.008</span>
+                            </p>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+
                 </div>
             </div>
         </div>

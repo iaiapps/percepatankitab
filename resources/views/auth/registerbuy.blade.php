@@ -28,7 +28,7 @@
                                 <h3 class="mb-0"><b>Isi Formulir Pembelian</b></h3>
                                 {{-- <a href="{{ route('login') }}" class="link-primary">Sudah punya akun?</a> --}}
                             </div>
-                            <input type="text" value="passwordformbuy" name="formbuy" readonly>
+                            <input type="text" value="passwordformbuy" name="formbuy" readonly hidden>
                             <div class="form-group mb-3">
                                 <label class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" placeholder="Nama Lengkap" name="name">
