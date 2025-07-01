@@ -31,32 +31,30 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        // get data pembayaran
-        $id = $request->user_id;
-        $name = $request->name;
-
-        //validate upload bukti pembayaran
-        $imgDocument = $request->validate([
+        // Validasi data, ini sudah jadi satu request
+        $validatedData = $request->validate([
+            'user_id'  => 'required|exists:users,id',
+            'name'     => 'required|string|max:255',
             'document' => 'required|file|image|mimes:jpeg,jpg,png|max:1024',
         ]);
 
-        //beri nama
+        // Proses file upload
         $file = $request->file('document');
-        $file_name = $name . '-pembayaran' . '-' . time() . '-' . $file->getClientOriginalName();
+        $fileName = $validatedData['name'] . '-pembayaran-' . time() . '-' . $file->getClientOriginalName();
+        $file->move(public_path('img-pembayaran'), $fileName);
 
-        // simpan di folder public
-        $file->move(public_path('img-pembayaran'), $file_name);
+        // Siapkan data untuk disimpan
+        $paymentData = [
+            'name'   => $validatedData['name'],
+            'img'    => $fileName,
+            'status' => 'pending',
+        ];
 
-        //masukkan ke array validate
-        $imgDocument['user_id'] = $id;
-        $imgDocument['name'] = $name;
-        $imgDocument['img'] = $file_name;
-        $imgDocument['status'] = 'pending';
-
-        //simpan ke database
-        Payment::create($imgDocument);
-
+        // Simpan atau update berdasarkan user_id
+        Payment::updateOrCreate(
+            ['user_id' => $validatedData['user_id']], // cari berdasarkan user_id
+            $paymentData // update/isi data
+        );
         // kembali ke payment
         return redirect()->route('home')->with('success', 'Bukti Pembayaran berhasil diupload!');
     }
@@ -106,20 +104,22 @@ class PaymentController extends Controller
         // fungsi generate angka 10000-99999
         $token_code = mt_rand(10000, 99999);
 
-        // cek dulu sek
-        if (isset($user->ref_code)) {
-            $word = Str::take($user->ref_code, 3);
+        // // cek dulu sek
+        // if (isset($user->ref_code)) {
+        //     $word = Str::take($user->ref_code, 3);
 
-            if ($word == 'RES') {
-            }
-        } else {
-        }
+        //     if ($word == 'RES') {
+        //     }
+        // } else {
+        // }
 
+        // update payment
         Payment::where('user_id', $id)->update([
             'token_code' => $token_code,
             'status' => 'verified',
             'kode_referral' => $user->ref_code,
         ]);
+        // uodate token user
         $user->update([
             'token_code' => $token_code,
         ]);

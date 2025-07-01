@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ebook;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class EbookController extends Controller
@@ -140,5 +141,20 @@ class EbookController extends Controller
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="' . $ebook->file_name . '"'
         ]);
+    }
+
+
+    // -------------------------------- handle user -------------------------------- //
+    public function userebook()
+    {
+        $user = Auth::user();
+        $id = $user->id;
+        $ebooks = Ebook::all();
+        return view('user.ebook.index', compact('ebooks', 'user'));
+    }
+    public function userebookshow($id)
+    {
+        $course = Ebook::where("id", $id)->first();
+        return view('user.ebook.show', compact('course'));
     }
 }

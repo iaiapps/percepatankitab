@@ -32,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users->where('type', '!=', 'reseller') as $user)
+                        @foreach ($users as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>
@@ -47,7 +47,7 @@
                                             $id = 'tidak ada';
                                         }
                                     @endphp
-                                    @if (isset($user->payment))
+                                    @if (isset($user->payment->img))
                                         <img class="img-pembayaran" src="{{ $img }}" alt="bukti">
                                         <br>
                                         <a href="{{ route('payment.show', $id) ?? 'belum' }}"
@@ -85,7 +85,7 @@
                                         @csrf
 
                                         <button type="submit" class="btn btn-primary btn-sm w-100"><i
-                                                class="bi bi-check2-circle"></i> aktifkan
+                                                class="bi bi-check2-circle"></i> verifikasi
                                         </button>
                                     </form>
 

@@ -183,27 +183,12 @@ class CourseController extends Controller
     {
         $user = Auth::user();
         $id = $user->id;
-        $user_token_code = $user->token_code;
-        $payment_token_code = $user->payment->token_code;
-        // dd($user->payment->token_code);
         $courses = Course::all();
-
-        if ($user_token_code == $payment_token_code) {
-            $permit = true;
-        } else {
-            $permit = false;
-        }
-        return view('user.course.index', compact('permit', 'courses', 'user'));
+        return view('user.course.index', compact('courses', 'user'));
     }
-
-    public function kode(Request $request)
+    public function usercourseshow($id)
     {
-        $id = $request->user_id;
-        $kode = $request->kode;
-
-        $user = User::find($id);
-        // dd($user);
-        $user->update(['token_code' => $kode]);
-        return redirect()->back();
+        $course = Course::where("id", $id)->first();
+        return view('user.course.show', compact('course'));
     }
 }

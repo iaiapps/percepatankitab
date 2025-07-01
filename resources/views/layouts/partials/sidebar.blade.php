@@ -115,7 +115,15 @@
                         </a>
                     </li>
                     <li class="pc-item">
-                        <a href="{{ '#' }}" class="pc-link">
+                        <a href="{{ route('userebook') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-journal-bookmark"></i>
+                            </span>
+                            <span class="pc-mtext mt-3">Ebook</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('profile') }}" class="pc-link">
                             <span class="pc-micon">
                                 <i class="bi bi-person"></i>
                             </span>

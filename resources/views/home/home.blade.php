@@ -7,7 +7,6 @@
         $role = $user->getRoleNames()->first();
         // dd($role);
     @endphp
-
     <div class="card">
         <div class="card-body">
             <p class="mb-0 fs-5">Selamat Datang di Aplikasi Manajemen Percepatan Baca Kitab</p>
@@ -44,6 +43,15 @@
             @include('home.user_welcome')
         @break
 
+        @case($role == 'user')
+            <div class="card">
+                <div class="card-body">
+                    <p class="mb-2">Link menuju kelas</p>
+                    <a href="{{ route('usercourse') }}" class="btn btn-primary mt-2">kelas</a>
+                </div>
+            </div>
+        @break
+
         @case($role == 'reseller')
             <div class="card">
                 <div class="card-body">
@@ -58,6 +66,12 @@
 
             </div>
         @break
+
+        <div class="card text-center">
+            <div class="card-body">
+                <p class="mb-0 fs-5">Halaman yang dicari tidak ditemukan ...</p>
+            </div>
+        </div>
 
         @default
     @endswitch

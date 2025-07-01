@@ -126,6 +126,7 @@ class RegisterController extends Controller
                 'user_id' => $user_id,
                 'name' => $data['name'],
                 'kode_referral' => $ref,
+                'status' => 'pending',
             ]);
         } elseif ($formtype == 'reseller') {
             $create->assignRole('reseller');

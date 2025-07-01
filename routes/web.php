@@ -68,7 +68,10 @@ Route::middleware(['auth'])->group(function () {
 
         // kelas
         Route::get('usercourse', [CourseController::class, 'usercourse'])->name('usercourse');
-        Route::post('kode', [CourseController::class, 'kode'])->name('kode');
+        Route::get('usercourseshow/{id}', [CourseController::class, 'usercourseshow'])->name('usercourseshow');
+        // ebook
+        Route::get('userebook', [EbookController::class, 'userebook'])->name('userebook');
+        Route::get('userebookshow/{id}', [EbookController::class, 'userebookshow'])->name('userebookshow');
     });
 
     // Reseller routes
