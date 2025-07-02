@@ -27,7 +27,7 @@
                             @csrf
                             <div class="d-flex justify-content-between align-items-end mb-4">
                                 <h3 class="mb-0"><b>Daftar</b></h3>
-                                <a href="{{ route('login') }}" class="link-primary">Sudah punya akun?</a>
+                                {{-- <a href="{{ route('login') }}" class="link-primary">Sudah punya akun?</a> --}}
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Nama Lengkap</label>

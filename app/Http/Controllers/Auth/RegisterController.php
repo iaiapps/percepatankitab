@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Payment;
-use App\Models\Profile;
 use App\Models\Reseller;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
+use App\Models\Referral;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -117,7 +117,7 @@ class RegisterController extends Controller
             'ref_code' => $ref,
         ]);
 
-        if ($formtype == 'normal') {
+        if ($formtype == 'pembeli') {
             $create->assignRole('guest');
 
             // buat data payment
@@ -133,12 +133,21 @@ class RegisterController extends Controller
 
             $user_id = $create->id;
             $str = Str::random(5);
-            Reseller::create([
+            Referral::create([
                 'user_id' => $user_id,
+                'tipe' => 'reseller',
                 'kode_referral' => 'RES' . Str::upper($str),
             ]);
         } elseif ($formtype == 'affiliator') {
-            $create->assignRole('affiliator');;
+            $create->assignRole('affiliator');
+
+            $user_id = $create->id;
+            $str = Str::random(5);
+            Referral::create([
+                'user_id' => $user_id,
+                'tipe' => 'affiliator',
+                'kode_referral' => 'AFF' . Str::upper($str),
+            ]);
         }
 
         return $create;

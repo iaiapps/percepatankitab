@@ -1,17 +1,21 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\EbookController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SoldController;
 use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\EbookController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ReferralController;
+use App\Http\Controllers\ResellerController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CommissionController;
+use App\Models\Referral;
 
 // ini route di landing
 Route::get('/', [LandingController::class, 'index'])->name('landing');
@@ -57,8 +61,12 @@ Route::middleware(['auth'])->group(function () {
         // ebook
         Route::resource('ebook', EbookController::class);
         Route::get('/ebook/{ebook}/view', [EbookController::class, 'view'])->name('ebook.view');
-        // reseller
-        Route::resource('reseller', ResellerController::class);
+        // referral
+        Route::get('reseller', [ReferralController::class, 'reseller'])->name('reseller');
+        Route::get('affiliator', [ReferralController::class, 'affiliator'])->name('affiliator');
+        Route::resource('referral', ReferralController::class)->except('index');
+        // komisi
+        Route::resource('commission', CommissionController::class);
     });
 
     // User (pemberli) routes
@@ -75,7 +83,10 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Reseller routes
-    // Route::middleware(['role:reseller'])->group(function () {
-    //     Route::resource('reseller', ResellerController::class);
-    // });
+    Route::middleware(['role:reseller'])->group(function () {
+        Route::get('soldbyreseller', [SoldController::class, 'soldByReseller'])->name('soldbyreseller');
+    });
+    Route::middleware(['role:affiliator'])->group(function () {
+        Route::get('soldbyaffiliator', [SoldController::class, 'soldByAffiliator'])->name('soldbyaffiliator');
+    });
 });

@@ -132,7 +132,7 @@
                                 <h5>Pembayaran luar Pulau Jawa</h5>
                                 <ul class="mb-1 list-group">
                                     <li class="list-group-item p-2">Harga buku: Rp 350.000</li>
-                                    <li class="list-group-item p-2">Ongkos kirim: Rp 25.000</li>
+                                    <li class="list-group-item p-2">Ongkos kirim: Rp 40.000</li>
                                     <li class="list-group-item p-2">kode unik "8" (cantumkan di akhir digit)</li>
                                     <li class="list-group-item p-2">Metode pembayaran: Transfer Bank </li>
                                     <li class="list-group-item p-2">Transfer ke rekening Bank BRI <span
@@ -143,9 +143,9 @@
                                 </ul>
 
                                 <p class="mb-3 p-2 border border-primary">
-                                    Transfer sejumlah : <br> Rp. 350.000 + ongkir Rp. 25.000 + kode unik 8 <br> Total <span
+                                    Transfer sejumlah : <br> Rp. 350.000 + ongkir Rp. 40.000 + kode unik 8 <br> Total <span
                                         class="p-1 bg-warning fs-5 rounded">Rp.
-                                        375.008</span>
+                                        390.008</span>
                                 </p>
 
                                 <p class="mb-1 text-danger"> <i>Catatan: Estimasi pengiriman: 3-5 hari</i>

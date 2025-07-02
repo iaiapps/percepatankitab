@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reseller extends Model
+class Commission extends Model
 {
     protected $guarded = ['id'];
 
-    public function user()
+    public function referral()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Referral::class);
     }
 }

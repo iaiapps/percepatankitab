@@ -1,13 +1,7 @@
 @extends('layouts.app-auth')
+@section('title', 'Pendaftaran Reseller')
 
 @section('content')
-    <!-- [ Pre-loader ] start -->
-    <div class="loader-bg">
-        <div class="loader-track">
-            <div class="loader-fill"></div>
-        </div>
-    </div>
-
     <div class="auth-main">
         <div class="auth-wrapper v3">
             <div class="auth-form">
@@ -62,11 +56,9 @@
                     </form>
                 </div>
                 <div class="auth-footer row">
-
                     <div class="col my-1 text-center">
                         <p class="m-0">Copyright © <a href="#">Percepatan Baca Kitab</a></p>
                     </div>
-
                 </div>
             </div>
         </div>

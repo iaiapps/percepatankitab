@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Payment;
+use App\Models\Reseller;
+use App\Models\Commission;
+use App\Models\Referral;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -15,7 +18,8 @@ class PaymentController extends Controller
     public function index()
     {
         $users = User::where('id', '!=', 1)->where('id', '!=', 2)->where('type', '!=', 'reseller')->where('type', '!=', 'affiliator')->get();
-        return view('admin.payment.index', compact('users'));
+        $payments = Payment::all();
+        return view('admin.payment.index', compact('payments'));
     }
 
     /**
@@ -95,34 +99,43 @@ class PaymentController extends Controller
     // aktifkan pembayaran user
     public function activate(Request $request)
     {
+        // get data
         $id = $request->id;
-        $user = User::where('id', $id)->first();
+        $payment = Payment::where('id', $id)->first();
+        $user = User::where('id', $payment->user_id)->first();
         $user->syncRoles('user');
-
-
-        // $str = Str::random(5);
-        // fungsi generate angka 10000-99999
         $token_code = mt_rand(10000, 99999);
-
-        // // cek dulu sek
-        // if (isset($user->ref_code)) {
-        //     $word = Str::take($user->ref_code, 3);
-
-        //     if ($word == 'RES') {
-        //     }
-        // } else {
-        // }
-
         // update payment
-        Payment::where('user_id', $id)->update([
+        $payment->update([
             'token_code' => $token_code,
             'status' => 'verified',
             'kode_referral' => $user->ref_code,
         ]);
-        // uodate token user
+        // update token user
         $user->update([
             'token_code' => $token_code,
         ]);
+        // create commission
+        $tipe_pembelian = $request->tipe_pembelian;
+        $get_referral = Referral::where('kode_referral', $payment->kode_referral)->first();
+        if ($tipe_pembelian == 'reseller') {
+            $nominal = '50.000';
+        } elseif ($tipe_pembelian == 'affiliator') {
+            $nominal = '12.000';
+        }
+        if ($get_referral) {
+            Commission::updateOrCreate(
+                [
+                    'referral_id' => $get_referral->id,
+                    'payment_id' => $payment->id,
+                ],
+                [
+                    'kode_referral' => $payment->kode_referral,
+                    'nominal' => $nominal,
+                    'status' => 'pending',
+                ]
+            );
+        }
 
         return redirect()->back()->with('success', 'berhasil mengubah data!');
     }

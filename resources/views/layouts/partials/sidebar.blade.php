@@ -61,7 +61,7 @@
                         <label data-i18n="Widget">Marketing</label>
                     </li>
                     <li class="pc-item">
-                        <a href="{{ route('reseller.index') }}" class="pc-link">
+                        <a href="{{ route('reseller') }}" class="pc-link">
                             <span class="pc-micon">
                                 <i class="bi bi-cart"></i>
                             </span>
@@ -69,11 +69,19 @@
                         </a>
                     </li>
                     <li class="pc-item">
-                        <a href="{{ route('setting.index') }}" class="pc-link">
+                        <a href="{{ route('affiliator') }}" class="pc-link">
                             <span class="pc-micon">
                                 <i class="bi bi-at"></i>
                             </span>
                             <span class="pc-mtext">Affiliator</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('commission.index') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-coin"></i>
+                            </span>
+                            <span class="pc-mtext">Pembayaran Komisi</span>
                         </a>
                     </li>
                     <li class="pc-item pc-caption">
@@ -120,6 +128,41 @@
                                 <i class="bi bi-journal-bookmark"></i>
                             </span>
                             <span class="pc-mtext mt-3">Ebook</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('profile') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <span class="pc-mtext">Profil</span>
+                        </a>
+                    </li>
+                @break
+
+                @case('reseller')
+                    <li class="pc-item">
+                        <a href="{{ route('home') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-speedometer2"></i>
+                            </span>
+                            <span class="pc-mtext">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('soldbyreseller') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-cart2"></i>
+                            </span>
+                            <span class="pc-mtext">Daftar Pembeli</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ '#' }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-coin"></i>
+                            </span>
+                            <span class="pc-mtext">Pembayaran Komisi</span>
                         </a>
                     </li>
                     <li class="pc-item">

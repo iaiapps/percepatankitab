@@ -57,9 +57,23 @@
                 <div class="card-body">
                     <p class="mb-2">Link Reseller Anda adalah :</p>
                     <div class="mb-2 fs-5 p-2 bg-primary-subtle rounded"> <input type="text" id="inputToCopy"
-                            class="form-control w-100 text-black" value="{{ url('formbuy?ref=') . $user->reseller->kode_referral }}"
+                            class="form-control w-100 text-black" value="{{ url('formbuy?ref=') . $user->referral->kode_referral }}"
                             readonly>
 
+                        <button class="btn btn-primary mt-2" onclick="copyInput()">Salin Teks</button>
+                    </div>
+                </div>
+
+            </div>
+        @break
+
+        @case($role == 'affiliator')
+            <div class="card">
+                <div class="card-body">
+                    <p class="mb-2">Link Affiliate Anda adalah :</p>
+                    <div class="mb-2 fs-5 p-2 bg-primary-subtle rounded"> <input type="text" id="inputToCopy"
+                            class="form-control w-100 text-black" value="{{ url('formbuy?ref=') . $user->referral->kode_referral }}"
+                            readonly>
                         <button class="btn btn-primary mt-2" onclick="copyInput()">Salin Teks</button>
                     </div>
                 </div>

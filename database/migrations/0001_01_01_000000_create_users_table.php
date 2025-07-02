@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('token_code')->nullable();
             $table->string('status')->nullable();
             $table->longText('address')->nullable();
-            $table->longText('type')->nullable();
+            $table->string('type')->nullable();
             $table->string('ref_code')->nullable();
             $table->timestamps();
         });

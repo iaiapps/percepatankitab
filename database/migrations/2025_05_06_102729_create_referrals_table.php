@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resellers', function (Blueprint $table) {
+        Schema::create('referrals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('kode_referral')->unique();
+            $table->enum('tipe', ['reseller', 'affiliator']);
             $table->string('total_komisi')->default(0);
             $table->timestamps();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resellers');
+        Schema::dropIfExists('referrals');
     }
 };

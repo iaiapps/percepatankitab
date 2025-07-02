@@ -1,5 +1,5 @@
 @extends('layouts.app-auth')
-
+@section('title', 'Login')
 @section('content')
     <div class="auth-main">
         <div class="auth-wrapper v3">
@@ -17,7 +17,7 @@
 
                             <div class="d-flex justify-content-between align-items-end mb-4">
                                 <h3 class="mb-0"><b>Login</b></h3>
-                                <a href="{{ route('register') }}" class="link-primary">Tidak punya akun?</a>
+                                {{-- <a href="{{ route('register') }}" class="link-primary">Tidak punya akun?</a> --}}
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Alamat Email</label>
@@ -57,7 +57,11 @@
                         </form>
                     </div>
                 </div>
-
+                <div class="auth-footer row">
+                    <div class="col my-1 text-center">
+                        <p class="m-0">Copyright © <a href="#">Percepatan Baca Kitab</a></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -58,13 +58,8 @@ class User extends Authenticatable
         return $this->hasOne(Payment::class);
     }
 
-    public function profile()
+    public function referral()
     {
-        return $this->hasOne(Profile::class);
-    }
-
-    public function reseller()
-    {
-        return $this->hasOne(Reseller::class);
+        return $this->hasOne(Referral::class);
     }
 }

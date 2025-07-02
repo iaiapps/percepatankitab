@@ -1,5 +1,5 @@
 @extends('layouts.app-auth')
-
+@section('title', 'Pendaftaran Pembelian')
 @section('content')
     <!-- [ Pre-loader ] start -->
     <div class="loader-bg">
@@ -26,12 +26,12 @@
                             <div class="d-flex justify-content-between align-items-end mb-4">
                                 <h3 class="mb-0"><b>Isi Formulir Pembelian</b></h3>
                             </div>
-                            <input type="text" value="normal" name="type" readonly hidden>
+                            <input type="text" value="pembeli" name="type" readonly hidden>
                             <input type="text" value="passwordformbuy" name="formbuy" readonly hidden>
 
                             {{-- jika ada ref --}}
                             @if (request()->has('ref'))
-                                <input type="text" name="ref" value="{{ request()->query('ref') }}">
+                                <input type="text" name="ref" value="{{ request()->query('ref') }}" hidden>
                             @endif
 
                             <div class="form-group mb-3">
@@ -58,11 +58,9 @@
                     </form>
                 </div>
                 <div class="auth-footer row">
-
                     <div class="col my-1 text-center">
                         <p class="m-0">Copyright © <a href="#">Percepatan Baca Kitab</a></p>
                     </div>
-
                 </div>
             </div>
         </div>
