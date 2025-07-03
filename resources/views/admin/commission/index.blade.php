@@ -22,7 +22,8 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Status Pembayaran</th>
+                            <th scope="col">Referral</th>
+                            <th scope="col">Pembayaran</th>
                             <th scope="col">Komisi</th>
                             <th scope="col">Bayar</th>
                             <th scope="col">Actions</th>
@@ -33,12 +34,13 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $commission->referral->user->name }}</td>
+                                <td>{{ $commission->referral->tipe }}</td>
                                 <td>{{ $commission->status }}</td>
                                 <td>{{ $commission->nominal }}</td>
                                 <td>
                                     <form class="d-block"
                                         onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"
-                                        action="{{ route('activate', $commission->id) }}" method="POST">
+                                        action="{{ route('paid', $commission->id) }}" method="POST">
                                         @csrf
 
                                         <button type="submit" class="btn btn-primary btn-sm"><i

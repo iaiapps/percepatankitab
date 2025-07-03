@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Commission;
 use Illuminate\Http\Request;
+
 
 class CommissionController extends Controller
 {
@@ -61,6 +63,20 @@ class CommissionController extends Controller
      */
     public function destroy(Commission $commission)
     {
-        //
+        $commission->delete();
+        return back();
+    }
+
+    // handle paid commission
+    public function paidCommission(Request $request)
+    {
+        $now = Carbon::now();
+        $commission = Commission::where('id', $request->id)->first();
+        $commission->update([
+            'status' => 'paid',
+            'paid_at' => $now,
+        ]);
+
+        return back();
     }
 }

@@ -37,7 +37,7 @@ class ReferralController extends Controller
      */
     public function show(Referral $referral)
     {
-        //
+        return view('admin.referral.show', compact('referral'));
     }
 
     /**
@@ -70,6 +70,7 @@ class ReferralController extends Controller
         $resellers = Referral::where('tipe', 'reseller')->get();
         return view('admin.referral.reseller', compact('resellers'));
     }
+    // affiliator
     public function affiliator()
     {
         $affiliators = Referral::where('tipe', 'affiliator')->get();

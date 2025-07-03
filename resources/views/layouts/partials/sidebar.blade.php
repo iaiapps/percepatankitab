@@ -158,7 +158,7 @@
                         </a>
                     </li>
                     <li class="pc-item">
-                        <a href="{{ '#' }}" class="pc-link">
+                        <a href="{{ route('commissionbyreseller') }}" class="pc-link">
                             <span class="pc-micon">
                                 <i class="bi bi-coin"></i>
                             </span>

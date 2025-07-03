@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,10 +30,12 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $role = $user->getRoleNames()->first();
+        $payment = Payment::all();
+        $users = User::all();
 
         // dd($role);
         if ($role == 'admin' or $role == 'operator' or $role == 'reseller' or $role == 'affiliator') {
-            return view('home.home');
+            return view('home.home', compact('users', 'payment'));
         } elseif ($role == 'guest') {
             return view('guest.guest', compact('user'));
         } elseif ($role == 'user') {

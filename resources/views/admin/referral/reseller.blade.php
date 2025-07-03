@@ -3,9 +3,7 @@
 @section('title', 'Data Reseller')
 @section('content')
     <div class="card p-3 rounded">
-
         <div class="table-responsive">
-
             <div class="table-responsive">
                 <table id="table" class="table table-striped align-middle" style="width: 100%">
                     <thead>
@@ -22,7 +20,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $reseller->user->name }}</td>
-                                <td>{{ $reseller->kode_reseller }}</td>
+                                <td>{{ $reseller->kode_referral }}</td>
                                 <td><a href="{{ route('referral.show', $reseller->id) }}" class="btn btn-primary btn-sm"><i
                                             class="bi bi-card-checklist"></i>
                                         lihat</a></td>

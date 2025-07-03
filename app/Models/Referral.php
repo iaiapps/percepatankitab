@@ -12,4 +12,8 @@ class Referral extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function commission()
+    {
+        return $this->hasMany(Commission::class);
+    }
 }

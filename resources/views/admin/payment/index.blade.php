@@ -95,7 +95,8 @@
                                         onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"
                                         action="{{ route('activate', $payment->id) }}" method="POST">
                                         @csrf
-                                        <input type="text" value="{{ $tipe_pembelian }}" name="tipe_pembelian" readonly>
+                                        <input type="text" value="{{ $tipe_pembelian }}" name="tipe_pembelian" readonly
+                                            hidden>
                                         <button type="submit" class="btn btn-primary btn-sm w-100"> verifikasi
                                             {{ $tipe_pembelian }}</button>
                                     </form>

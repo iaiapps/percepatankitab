@@ -21,7 +21,7 @@
                     <div class="card">
                         <div class="card-body pb-0 d-flex justify-content-between">
                             <p class="mb-0 fs-5">Pembayaran Baru :</p>
-                            <p class="mb-0 fs-5 badge text-bg-primary">9999</p>
+                            <p class="mb-0 fs-5 badge text-bg-primary">{{ count($payment->where('status', 'pending')) }}</p>
 
                         </div>
                         <hr>
@@ -30,8 +30,27 @@
                 <div class="col-12 col-md-6">
                     <div class="card">
                         <div class="card-body pb-0 d-flex justify-content-between">
-                            <p class="mb-0 fs-5">Jumlah Pengguna :</p>
-                            <p class="mb-0 fs-5 badge text-bg-primary">9999</p>
+                            <p class="mb-0 fs-5">Jumlah Pembeli :</p>
+                            <p class="mb-0 fs-5 badge text-bg-primary">{{ count($users->where('type', 'pembeli')) }}</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body pb-0 d-flex justify-content-between">
+                            <p class="mb-0 fs-5">Jumlah Reseller :</p>
+                            <p class="mb-0 fs-5 badge text-bg-primary">{{ count($users->where('type', 'reseller')) }}</p>
+
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body pb-0 d-flex justify-content-between">
+                            <p class="mb-0 fs-5">Jumlah Affiliator :</p>
+                            <p class="mb-0 fs-5 badge text-bg-primary">{{ count($users->where('type', 'affiliator')) }}</p>
                         </div>
                         <hr>
                     </div>

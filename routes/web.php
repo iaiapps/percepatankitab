@@ -64,9 +64,10 @@ Route::middleware(['auth'])->group(function () {
         // referral
         Route::get('reseller', [ReferralController::class, 'reseller'])->name('reseller');
         Route::get('affiliator', [ReferralController::class, 'affiliator'])->name('affiliator');
-        Route::resource('referral', ReferralController::class)->except('index');
+        Route::resource('referral', ReferralController::class)->except('index', 'create');
         // komisi
         Route::resource('commission', CommissionController::class);
+        Route::post('paid/{id}', [CommissionController::class, 'paidCommission'])->name('paid');
     });
 
     // User (pemberli) routes
@@ -85,6 +86,7 @@ Route::middleware(['auth'])->group(function () {
     // Reseller routes
     Route::middleware(['role:reseller'])->group(function () {
         Route::get('soldbyreseller', [SoldController::class, 'soldByReseller'])->name('soldbyreseller');
+        Route::get('commissionbyreseller', [SoldController::class, 'commissionByReseller'])->name('commissionbyreseller');
     });
     Route::middleware(['role:affiliator'])->group(function () {
         Route::get('soldbyaffiliator', [SoldController::class, 'soldByAffiliator'])->name('soldbyaffiliator');
