@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('landings', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->longText('value');
+            $table->string('description');
             $table->timestamps();
         });
     }

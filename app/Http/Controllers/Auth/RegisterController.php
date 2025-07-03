@@ -60,8 +60,6 @@ class RegisterController extends Controller
     {
         // validasi formbuy
         $formbuy = $data['formbuy'];
-        // // validasi reseller type
-        // $formtype = $data['type'];
 
         if ($formbuy == 'passwordformbuy') {
             return Validator::make($data, [
@@ -103,14 +101,12 @@ class RegisterController extends Controller
             $status = null;
         } else {
             $password =  Hash::make($data['password']);
-            $status = 1;
         }
 
         $create =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $password,
-            'status' => $status,
             'no_hp' => $data['no_hp'],
             'address' => $data['address'],
             'type' => $data['type'],

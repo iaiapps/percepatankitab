@@ -71,6 +71,14 @@
             </div>
         @break
 
+        @case($role == 'reseller' and $user->status !== '1')
+            @include('home.ref_welcome')
+        @break
+
+        @case($role == 'affiliator' and $user->status !== '1')
+            @include('home.ref_welcome')
+        @break
+
         @case($role == 'reseller')
             <div class="card">
                 <div class="card-body">

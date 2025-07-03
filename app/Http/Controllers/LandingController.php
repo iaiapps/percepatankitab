@@ -9,12 +9,40 @@ use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
+
+    private function settingD($nama)
+    {
+        $data = Landing::where('name', $nama)->first();
+        return $data->value;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('landing');
+        $diskon = $this->settingD('diskon');
+        $countdown_diskon = $this->settingD('countdown_diskon');
+        $besar_diskon = $this->settingD('besar_diskon');
+        $harga_awal = $this->settingD('harga_awal');
+        $harga_diskon = $this->settingD('harga_diskon');
+        //
+        $kontak_alamat = $this->settingD('kontak_alamat');
+        $kontak_hp = $this->settingD('kontak_hp');
+        $kontak_email = $this->settingD('kontak_email');
+
+        $value = [
+            'diskon' => $diskon,
+            'countdown_diskon' => $countdown_diskon,
+            'besar_diskon' => $besar_diskon,
+            'harga_awal' => $harga_awal,
+            'harga_diskon' => $harga_diskon,
+            'kontak_alamat' => $kontak_alamat,
+            'kontak_hp' => $kontak_hp,
+            'kontak_email' => $kontak_email,
+
+        ];
+        // dd($data_value);
+        return view('landing', compact('value'));
     }
 
     /**
@@ -77,6 +105,11 @@ class LandingController extends Controller
     {
         return view('auth.registerreseller');
     }
+    // register form affiliator
+    public function formaffiliator()
+    {
+        return view('auth.registeraffiliator');
+    }
 
     // handling quizz //
     public function quizzdata()
@@ -121,5 +154,17 @@ class LandingController extends Controller
         $str = $request->str;
         $quizz = Quizz::where('str', $str)->get()->first();
         return view('quizz.quizzscore', compact('quizz'));
+    }
+
+
+    // ---------- admin setting landing page ---------- //
+    public function settingLanding()
+    {
+        $landings = Landing::all();
+        return view('admin.landing.index', compact('landings'));
+    }
+    public function settingLandingCreate()
+    {
+        return view('admin.landing.create');
     }
 }

@@ -23,6 +23,7 @@ Route::get('/', [LandingController::class, 'index'])->name('landing');
 // register
 Route::get('formbuy', [LandingController::class, 'formbuy'])->name('formbuy');
 Route::get('formreseller', [LandingController::class, 'formreseller'])->name('formreseller');
+Route::get('formaffiliator', [LandingController::class, 'formaffiliator'])->name('formaffiliator');
 
 // ini route quizz
 Route::get('quizzdata', [LandingController::class, 'quizzdata'])->name('quizzdata');
@@ -54,8 +55,6 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('payment', PaymentController::class);
         // aktifkan user yang sudah membayar
         Route::post('activate/{id}', [PaymentController::class, 'activate'])->name('activate');
-        // setting
-        Route::resource('setting', SettingController::class);
         // course
         Route::resource('course', CourseController::class);
         // ebook
@@ -65,9 +64,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('reseller', [ReferralController::class, 'reseller'])->name('reseller');
         Route::get('affiliator', [ReferralController::class, 'affiliator'])->name('affiliator');
         Route::resource('referral', ReferralController::class)->except('index', 'create');
+        Route::post('activatereferral/{id}', [ReferralController::class, 'activatereferral'])->name('activatereferral');
+
         // komisi
         Route::resource('commission', CommissionController::class);
         Route::post('paid/{id}', [CommissionController::class, 'paidCommission'])->name('paid');
+        // setting
+        Route::resource('setting', SettingController::class);
+        Route::get('settinglanding', [LandingController::class, 'settingLanding'])->name('settinglanding');
+        Route::get('settinglandingcreate', [LandingController::class, 'settingLandingCreate'])->name('settinglanding.create');
     });
 
     // User (pemberli) routes

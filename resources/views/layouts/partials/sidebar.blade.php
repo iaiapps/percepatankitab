@@ -149,30 +149,69 @@
                             <span class="pc-mtext">Dashboard</span>
                         </a>
                     </li>
+                    @if ($user->status == 1)
+                        <li class="pc-item">
+                            <a href="{{ route('soldbyreseller') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-cart2"></i>
+                                </span>
+                                <span class="pc-mtext">Daftar Pembeli</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a href="{{ route('commissionbyreseller') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-coin"></i>
+                                </span>
+                                <span class="pc-mtext">Pembayaran Komisi</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a href="{{ route('profile') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <span class="pc-mtext">Profil</span>
+                            </a>
+                        </li>
+                    @endif
+                @break
+
+                @case('affiliator')
                     <li class="pc-item">
-                        <a href="{{ route('soldbyreseller') }}" class="pc-link">
+                        <a href="{{ route('home') }}" class="pc-link">
                             <span class="pc-micon">
-                                <i class="bi bi-cart2"></i>
+                                <i class="bi bi-speedometer2"></i>
                             </span>
-                            <span class="pc-mtext">Daftar Pembeli</span>
+                            <span class="pc-mtext">Dashboard</span>
                         </a>
                     </li>
-                    <li class="pc-item">
-                        <a href="{{ route('commissionbyreseller') }}" class="pc-link">
-                            <span class="pc-micon">
-                                <i class="bi bi-coin"></i>
-                            </span>
-                            <span class="pc-mtext">Pembayaran Komisi</span>
-                        </a>
-                    </li>
-                    <li class="pc-item">
-                        <a href="{{ route('profile') }}" class="pc-link">
-                            <span class="pc-micon">
-                                <i class="bi bi-person"></i>
-                            </span>
-                            <span class="pc-mtext">Profil</span>
-                        </a>
-                    </li>
+                    @if ($user->status == 1)
+                        <li class="pc-item">
+                            <a href="{{ route('soldbyreseller') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-cart2"></i>
+                                </span>
+                                <span class="pc-mtext">Daftar Pembeli</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a href="{{ route('commissionbyreseller') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-coin"></i>
+                                </span>
+                                <span class="pc-mtext">Pembayaran Komisi</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a href="{{ route('profile') }}" class="pc-link">
+                                <span class="pc-micon">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <span class="pc-mtext">Profil</span>
+                            </a>
+                        </li>
+                    @endif
                 @break
 
                 @default

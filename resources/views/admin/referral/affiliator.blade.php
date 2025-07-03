@@ -14,6 +14,8 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Kode affiliator</th>
                             <th scope="col">Komisi</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Aktifkan</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -22,14 +24,27 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $affiliator->user->name }}</td>
-                                <td>{{ $affiliator->kode_affiliator }}</td>
+                                <td>{{ $affiliator->kode_referral }}</td>
                                 <td><a href="{{ route('referral.show', $affiliator->id) }}"
                                         class="btn btn-primary btn-sm"><i class="bi bi-card-checklist"></i>
-                                        lihat</a></td>
+                                        lihat</a>
+                                </td>
+                                <td>{{ $affiliator->user->status == 1 ? 'aktif' : 'tidak aktif' }}</td>
+                                <td>
+                                    <form onsubmit="return confirm('Apakah anda yakin untuk mengubah data ?');"
+                                        action="{{ route('activatereferral', $affiliator->id) }}" method="post"
+                                        class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            aktifkan
+                                        </button>
+                                    </form>
+                                </td>
                                 <td>
                                     <a href="{{ route('referral.edit', $affiliator->id) }}"
                                         class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i>
                                         edit</a>
+
 
                                     <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
                                         action="{{ route('referral.destroy', $affiliator->id) }}" method="post"

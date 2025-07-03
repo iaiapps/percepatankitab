@@ -39,30 +39,33 @@
 
     <!-- Hero Section -->
     <section class="hero-section ">
-        <div class="countdown-box mb-4 text-center w-100">
-            <div class="d-flex justify-content-center">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">00</span>
-                    <span>Hari</span>
+        @if ($value['diskon'] == 1)
+            <div class="countdown-box mb-4 text-center w-100">
+                <div class="d-flex justify-content-center">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span>Hari</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span>Jam</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span>Menit</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span>Detik</span>
+                    </div>
                 </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span>Jam</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span>Menit</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span>Detik</span>
+                <div class=" d-block p-3">
+                    <p class="text-center mb-0 bg-danger fs-4 d-inline-block p-3 rounded">Diskon
+                        {{ $value['besar_diskon'] }} akan segera berakhir!
+                    </p>
                 </div>
             </div>
-            <div class=" d-block p-3">
-                <p class="text-center mb-0 bg-danger fs-4 d-inline-block p-3 rounded">Diskon 30% akan segera berakhir!
-                </p>
-            </div>
-        </div>
+        @endif
         <div class="container">
 
             <div class="row align-items-center">
@@ -165,7 +168,8 @@
                 <p class="fs-5">Tanpa stok, tanpa repot, cukup bagikan link dan nikmati hasilnya.
                     Daftar sekarang & mulai hasilkan pasif income!
                 </p>
-                <a href="#pricing" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Affiliate</a>
+                <a href="{{ route('formaffiliator') }}" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar
+                    Affiliate</a>
 
             </div>
         </div>
@@ -182,8 +186,8 @@
                         <p class="fs-4">Dapat buku + akses kelas senilai 2 jutaan dengan harga spesial</p>
 
                         <div class="my-4">
-                            <h2 class="original-price d-inline">Rp500.000</h2>
-                            <h1 class="d-inline ms-3 text-danger display-5 fw-bold">Rp350.000</h1>
+                            <h2 class="original-price d-inline">{{ $value['harga_awal'] }}</h2>
+                            <h1 class="d-inline ms-3 text-danger display-5 fw-bold">{{ $value['harga_diskon'] }}</h1>
                         </div>
 
                         <ul class="list-unstyled text-start mb-4 fs-5 mt-3">
@@ -417,11 +421,9 @@
                         <div class="col-lg-6 mb-4 mb-lg-0">
                             <h5>Kontak Kami</h5>
                             <ul class="list-unstyled ">
-                                <li><i class="bi bi-geo-alt me-2"></i> Jl. Sriti, Kelurahan Banjar Sengon,
-                                    Kecamatan
-                                    Patrang, Jember, Jawa Timur - Indonesia</li>
-                                <li><i class="bi bi-telephone me-2"></i> +6281298440068</li>
-                                <li><i class="bi bi-envelope me-2"></i> ansacademy18@gmail.com</li>
+                                <li><i class="bi bi-geo-alt me-2"></i> {{ $value['kontak_alamat'] }}</li>
+                                <li><i class="bi bi-telephone me-2"></i> {{ $value['kontak_hp'] }}</li>
+                                <li><i class="bi bi-envelope me-2"></i> {{ $value['kontak_email'] }}</li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
@@ -526,7 +528,8 @@
 @push('scripts')
     <script>
         // Countdown Timer
-        const targetDate = new Date('2025-05-24');
+        const count = '{{ $value['countdown_diskon'] }}';
+        const targetDate = new Date(count);
 
         function updateCountdown() {
             const now = new Date();

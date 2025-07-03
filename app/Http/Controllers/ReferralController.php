@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Referral;
 use Illuminate\Http\Request;
 
@@ -75,5 +76,17 @@ class ReferralController extends Controller
     {
         $affiliators = Referral::where('tipe', 'affiliator')->get();
         return view('admin.referral.affiliator', compact('affiliators'));
+    }
+
+    // aktivasi referral
+    public function activatereferral(Request $request)
+    {
+        $id = $request->id;
+        $referral = Referral::where('id', $id)->first();
+        $user = $referral->user;
+        $user->update([
+            'status' => '1'
+        ]);
+        return redirect()->back()->with('success', 'berhasil mengubah data!');
     }
 }
