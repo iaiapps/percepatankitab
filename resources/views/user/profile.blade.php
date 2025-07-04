@@ -52,6 +52,12 @@
                                 <label class="form-label text-muted">Bergabung Sejak</label>
                                 <p class="font-weight-bold">{{ $user->created_at }}</p>
                             </div>
+                            @if ($user->type == 'reseller' or $user->type == 'affiliator')
+                                <div class="mb-3">
+                                    <label class="form-label text-muted">Nama Bank</label>
+                                    <p class="font-weight-bold">{{ $user->referral->nama_bank }}</p>
+                                </div>
+                            @endif
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -64,8 +70,17 @@
                                 <p class="font-weight-bold text-success">{{ $user->status == 1 ? 'Aktif' : 'Belum Aktif' }}
                                 </p>
                             </div>
-
+                            @if ($user->type == 'reseller' or $user->type == 'affiliator')
+                                <div class="mb-3">
+                                    <label class="form-label text-muted">Nomor Rekening</label>
+                                    <p class="font-weight-bold ">{{ $user->referral->no_rekening }}
+                                    </p>
+                                </div>
+                            @endif
                         </div>
+
+
+
                         <div class="mb-3">
                             <label class="form-label text-muted">Alamat</label>
                             <p class="text-muted mb-0">{{ $user->address ?? '-' }}</p>

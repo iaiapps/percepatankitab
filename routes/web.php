@@ -90,10 +90,16 @@ Route::middleware(['auth'])->group(function () {
 
     // Reseller routes
     Route::middleware(['role:reseller'])->group(function () {
-        Route::get('soldbyreseller', [SoldController::class, 'soldByReseller'])->name('soldbyreseller');
-        Route::get('commissionbyreseller', [SoldController::class, 'commissionByReseller'])->name('commissionbyreseller');
+        Route::get('soldbyreseller', [SoldController::class, 'soldByReferral'])->name('soldbyreseller');
+        Route::get('commissionbyreseller', [SoldController::class, 'commissionByreferral'])->name('commissionbyreseller');
+        Route::get('databankres', [ReferralController::class, 'databank'])->name('databankres');
+        Route::post('databankres/{referral}', [ReferralController::class, 'storedatabank'])->name('storedatabankres');
     });
+    // Affiliator routes
     Route::middleware(['role:affiliator'])->group(function () {
-        Route::get('soldbyaffiliator', [SoldController::class, 'soldByAffiliator'])->name('soldbyaffiliator');
+        Route::get('soldbyaffiliator', [SoldController::class, 'soldByReferral'])->name('soldbyaffiliator');
+        Route::get('commissionbyaffiliator', [SoldController::class, 'commissionByreferral'])->name('commissionbyaffiliator');
+        Route::get('databankaff', [ReferralController::class, 'databank'])->name('databankaff');
+        Route::post('databankaff/{referral}', [ReferralController::class, 'storedatabank'])->name('storedatabankaff');
     });
 });

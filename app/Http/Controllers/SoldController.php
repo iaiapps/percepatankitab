@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class SoldController extends Controller
 {
 
-    // ---------- handle reseller ---------- //
-    public function soldByReseller()
+    // ---------- handle refferal ---------- //
+    public function soldByReferral()
     {
         $user = Auth::user();
         $kode_referral = $user->referral->kode_referral;
@@ -19,7 +19,7 @@ class SoldController extends Controller
         return view('referral.sold', compact('payments'));
     }
 
-    public function commissionByReseller()
+    public function commissionByReferral()
     {
         $user = Auth::user();
         $kode_referral = $user->referral->kode_referral;

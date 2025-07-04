@@ -188,7 +188,7 @@
                     </li>
                     @if ($user->status == 1)
                         <li class="pc-item">
-                            <a href="{{ route('soldbyreseller') }}" class="pc-link">
+                            <a href="{{ route('soldbyaffiliator') }}" class="pc-link">
                                 <span class="pc-micon">
                                     <i class="bi bi-cart2"></i>
                                 </span>
@@ -196,7 +196,7 @@
                             </a>
                         </li>
                         <li class="pc-item">
-                            <a href="{{ route('commissionbyreseller') }}" class="pc-link">
+                            <a href="{{ route('commissionbyaffiliator') }}" class="pc-link">
                                 <span class="pc-micon">
                                     <i class="bi bi-coin"></i>
                                 </span>

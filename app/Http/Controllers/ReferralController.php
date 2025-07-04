@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Referral;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReferralController extends Controller
 {
@@ -88,5 +89,23 @@ class ReferralController extends Controller
             'status' => '1'
         ]);
         return redirect()->back()->with('success', 'berhasil mengubah data!');
+    }
+
+    // update data bank
+    public function databank()
+    {
+        $id = Auth::user()->id;
+        $referral = Referral::where('user_id', $id)->first();
+        // dd($referral);
+        return view('referral.databank', compact('referral'));
+    }
+
+    public function storedatabank(Referral $referral, Request $request)
+    {
+        $referral->update([
+            'nama_bank' => $request->nama_bank,
+            'no_rekening' => $request->no_rekening
+        ]);
+        return redirect()->route('profile');
     }
 }

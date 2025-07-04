@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('kode_referral')->unique();
             $table->enum('tipe', ['reseller', 'affiliator']);
             $table->string('total_komisi')->default(0);
+            $table->string('nama_bank')->default(0);
+            $table->string('no_rekening')->default(0);
             $table->timestamps();
         });
     }

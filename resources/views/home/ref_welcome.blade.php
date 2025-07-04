@@ -5,10 +5,10 @@
                 <h3 class="modal-title">Selamat Datang</h3>
             </div>
             <div class="modal-body">
-                <p class="fs-5">Terima kasih telah melakukan pendaftaran, akun anda belum aktif, mohon tunggu
-                    verifikasi dari admin
-
-                    <br>
+                <p class="fs-5">Terima kasih telah melakukan pendaftaran.
+                    <br>Akun anda belum aktif, mohon tunggu
+                    verifikasi dari admin. <br>
+                    Verifiaksi akun akan dilakukan dalam 1x24 jam.
                 </p>
             </div>
 

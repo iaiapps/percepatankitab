@@ -10,7 +10,9 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Kode reseller</th>
+                            <th scope="col">Kode Reseller</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Aktifkan?</th>
                             <th scope="col">Komisi</th>
                             <th scope="col">Actions</th>
                         </tr>
@@ -21,9 +23,31 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $reseller->user->name }}</td>
                                 <td>{{ $reseller->kode_referral }}</td>
-                                <td><a href="{{ route('referral.show', $reseller->id) }}" class="btn btn-primary btn-sm"><i
+
+                                <td>
+                                    {{ $reseller->user->status == 1 ? 'Aktif' : 'Tidak Aktif' }}
+                                </td>
+                                <td>
+                                    @if ($reseller->user->status != 1)
+                                        <form onsubmit="return confirm('Apakah anda yakin untuk mengubah data ?');"
+                                            action="{{ route('activatereferral', $reseller->id) }}" method="post"
+                                            class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                aktifkan
+                                            </button>
+                                        </form>
+                                    @else
+                                        <button type="submit" class="btn btn-danger btn-sm" disabled>
+                                            aktifkan
+                                        </button>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('referral.show', $reseller->id) }}" class="btn btn-primary btn-sm"><i
                                             class="bi bi-card-checklist"></i>
-                                        lihat</a></td>
+                                        lihat</a>
+                                </td>
                                 <td>
                                     <a href="{{ route('referral.edit', $reseller->id) }}" class="btn btn-warning btn-sm"><i
                                             class="bi bi-pencil-square"></i>

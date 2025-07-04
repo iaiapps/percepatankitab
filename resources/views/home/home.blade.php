@@ -80,6 +80,13 @@
         @break
 
         @case($role == 'reseller')
+            @if ($user->referral->nama_bank == 0)
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    Lengkapi bank dan nomor rekening! <a href="{{ route('databankres') }}" class="btn btn-secondary btn-sm">klik
+                        disini</a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <p class="mb-2">Link Reseller Anda adalah :</p>
@@ -95,6 +102,13 @@
         @break
 
         @case($role == 'affiliator')
+            @if ($user->referral->nama_bank == 0)
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    Lengkapi bank dan nomor rekening! <a href="{{ route('databankaff') }}" class="btn btn-secondary btn-sm">klik
+                        disini</a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <p class="mb-2">Link Affiliate Anda adalah :</p>
