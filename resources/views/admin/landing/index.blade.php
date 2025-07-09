@@ -32,8 +32,8 @@
                                 <td> {{ $landing->description }}</td>
 
                                 <td>
-                                    <a href="{{ route('landing.edit', $landing->id) }}" class="btn btn-warning btn-sm"><i
-                                            class="bi bi-pencil-square"></i>
+                                    <a href="{{ route('settinglanding.edit', $landing->id) }}"
+                                        class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i>
                                         edit</a>
 
                                     {{-- <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"

@@ -71,8 +71,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('paid/{id}', [CommissionController::class, 'paidCommission'])->name('paid');
         // setting
         Route::resource('setting', SettingController::class);
+        Route::resource('settinglanding', LandingController::class)->except('index');
         Route::get('settinglanding', [LandingController::class, 'settingLanding'])->name('settinglanding');
-        Route::get('settinglandingcreate', [LandingController::class, 'settingLandingCreate'])->name('settinglanding.create');
+        // Route::get('settinglandingedit/{id}', [LandingController::class, 'settingLandingEdit'])->name('settinglanding.edit');
+        // Route::put('settinglandingupdate/{landing}', [LandingController::class, 'settingLandingUpdate'])->name('settinglanding.update');
     });
 
     // User (pemberli) routes

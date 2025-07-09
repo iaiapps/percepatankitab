@@ -50,7 +50,7 @@ class LandingController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.landing.create');
     }
 
     /**
@@ -72,25 +72,39 @@ class LandingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Landing $landing)
+    public function edit(Landing $settinglanding)
     {
-        //
+        // $id = $landing->id;
+        // $data = Landing::find($id);
+        $landing = $settinglanding;
+
+        return view('admin.landing.edit', compact('landing'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Landing $landing)
+    public function update(Request $request, Landing $settinglanding)
     {
-        //
+        $landing = $settinglanding;
+        $name = $request->name;
+        $value = $request->value;
+        $description = $request->description;
+
+        $landing->update([
+            'name' => $name,
+            'value' => $value,
+            'description' => $description
+        ]);
+        return redirect()->route('settinglanding');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Landing $landing)
+    public function destroy(Landing $settinglanding)
     {
-        //
+        $landing = $settinglanding;
     }
 
     // handling register form landing page
@@ -156,15 +170,11 @@ class LandingController extends Controller
         return view('quizz.quizzscore', compact('quizz'));
     }
 
-
     // ---------- admin setting landing page ---------- //
+    // update,create, ada di atas
     public function settingLanding()
     {
         $landings = Landing::all();
         return view('admin.landing.index', compact('landings'));
-    }
-    public function settingLandingCreate()
-    {
-        return view('admin.landing.create');
     }
 }

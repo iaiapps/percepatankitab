@@ -10,7 +10,7 @@
                     <div class="border p-3">
                         <p class="mb-0 fs-5">Setting Landing Page</p>
                         <hr>
-                        <a class="btn btn-primary" href="{{ route('settinglanding') }}">Setting</a>
+                        <a class="btn btn-primary" href="{{ route('settinglanding.index') }}">Setting</a>
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
