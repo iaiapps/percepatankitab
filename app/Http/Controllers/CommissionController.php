@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Commission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class CommissionController extends Controller
@@ -68,7 +69,7 @@ class CommissionController extends Controller
     }
 
     // handle paid commission
-    public function paidCommission(Request $request)
+    public function commissionPay(Request $request)
     {
         $now = Carbon::now();
         $commission = Commission::where('id', $request->id)->first();
@@ -78,5 +79,42 @@ class CommissionController extends Controller
         ]);
 
         return back();
+    }
+
+    // handle rekap
+    public function rekap()
+    {
+        $start = Carbon::now()->subWeek()->startOfWeek(Carbon::SATURDAY);
+        $end = Carbon::now()->subDay()->endOfDay(); // Jumat
+
+        $commissions = Commission::with('referral.user', 'payment.user')
+            ->where('status', 'pending')
+            ->whereBetween('created_at', [$start, $end])
+            ->get();
+
+        $total = $commissions->sum('nominal');
+
+        return view('admin.commission.rekap', compact('commissions', 'total', 'start', 'end'));
+    }
+
+    // handle pay weekly
+    public function commissionPayWeekly(Request $request)
+    {
+        // Hitung minggu ini: dari Sabtu lalu hingga Jumat ini
+        $start = Carbon::now()->subWeek()->startOfWeek(Carbon::SATURDAY);
+        $end = Carbon::now()->subDay()->endOfDay();
+
+        $commissions = Commission::where('status', 'pending')
+            ->whereBetween('created_at', [$start, $end])
+            ->get();
+
+        foreach ($commissions as $commission) {
+            $commission->update([
+                'status' => 'paid',
+                'paid_at' => now(),
+            ]);
+        }
+
+        return redirect()->route('admin.commission.rekap')->with('success', '✅ Semua komisi minggu ini telah dibayarkan.');
     }
 }

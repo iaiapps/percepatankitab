@@ -7,12 +7,12 @@
                 class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <div class="btn-group">
             <a href="{{ route('payment.create') }}" class="btn btn-primary"><i class="bi bi-plus-circle"></i>
                 Tambah Data</a>
         </div>
-    </div>
+    </div> --}}
     <div class="card p-3 rounded">
         <div class="mb-3">
             <ul class="list-group">
@@ -25,31 +25,30 @@
         <div class="table-responsive">
 
             <div class="table-responsive">
-                <table id="table" class="table table-striped align-middle align-middle" style="width: 100%">
+                <table id="table" class="table table-striped align-middle align-middle text-center" style="width: 100%">
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">No Hp</th>
-                            <th scope="col">Bukti Pembayaran</th>
-                            <th scope="col">Status Pembayaran</th>
-                            <th scope="col">Token</th>
-                            <th scope="col">Kode Referral</th>
-                            <th scope="col">Normal/Res/Aff</th>
-                            <th scope="col">Status WA</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col" class="text-center">No</th>
+                            <th scope="col" class="text-center">Nama</th>
+                            <th scope="col" class="text-center">No Hp</th>
+                            <th scope="col" class="text-center">Bukti Pembayaran</th>
+                            <th scope="col" class="text-center">Status Pembayaran</th>
+                            <th scope="col" class="text-center">Token</th>
+                            <th scope="col" class="text-center">Kode Referral</th>
+                            <th scope="col" class="text-center">Normal/Res/Aff</th>
+                            <th scope="col" class="text-center">Status WA</th>
+                            <th scope="col" class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($payments as $payment)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $payment->name }}
-
+                                <td>{{ $payment->name }} </td>
+                                <td>{{ $payment->user->no_hp ?? '-' }}
                                     <a href="{{ route('payment.show', $payment->id) }}"
-                                        class="btn btn-secondary btn-sm">alamat</a>
+                                        class="bg-warning text-black text-center rounded w-100 d-inline-block">alamat</a>
                                 </td>
-                                <td>{{ $payment->user->no_hp ?? '-' }}</td>
                                 <td>
                                     @php
                                         if (isset($payment->img)) {
@@ -65,7 +64,7 @@
                                         <br>
                                         {{-- <a href="{{ route('payment.show', $id) ?? 'belum' }}" --}}
                                         <a href="{{ route('paymentimg', $id) ?? 'belum' }}"
-                                            class=" mt-2 btn btn-sm btn-outline-primary">lihat
+                                            class=" mt-2 bg-success text-black p-1 rounded">lihat
                                             bukti</a>
                                     @else
                                         <p class="mb-0 bg-danger text-center text-white rounded">belum upload</p>
@@ -74,9 +73,9 @@
                                 </td>
                                 <td>
                                     @if ($payment->status == 'pending')
-                                        <p class="mb-0 bg-danger text-center text-white rounded">belum diverifikasi</p>
+                                        <p class="mb-0 bg-danger text-center text-white rounded">unverified</p>
                                     @elseif ($payment->status == 'verified')
-                                        <p class="mb-0 bg-primary text-center text-white rounded">sudah diverifikasi</p>
+                                        <p class="mb-0 bg-primary text-center text-white rounded">verified</p>
                                     @else
                                         <p>tidak dapat menentukan status ...</p>
                                     @endif
@@ -107,7 +106,9 @@
                                             {{ $tipe_pembelian }}</button>
                                     </form>
                                 </td>
-                                <td>{{ $payment->wa_notified ? 'terkirim' . ' ' . $payment->wa_sent_at ?? '-' : 'belum terkirim' }}
+                                <td><small>
+                                        {{ $payment->wa_notified ? 'terkirim' . ' ' . \Carbon\Carbon::parse($payment->wa_sent_at)->isoFormat('DD MMMM YYYY : HH:MM') ?? '-' : 'belum terkirim' }}
+                                    </small>
                                 </td>
                                 <td>
                                     <form class="d-block"

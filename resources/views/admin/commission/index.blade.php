@@ -11,10 +11,9 @@
     <div class="card p-3 rounded">
         <div class="table-responsive">
             <div class="mb-3">
-                <div class="btn-group">
-                    <a href="{{ route('commission.create') }}" class="btn btn-primary"><i class="bi bi-plus-circle"></i>
-                        Tambah Data</a>
-                </div>
+                <a href="{{ route('commissions.rekap') }}" class="btn btn-warning mb-3">
+                    Rekap & Bayar Mingguan
+                </a>
             </div>
             <div class="table-responsive">
                 <table id="table" class="table table-striped align-middle align-middle" style="width: 100%">
@@ -40,7 +39,7 @@
                                 <td>
                                     <form class="d-block"
                                         onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"
-                                        action="{{ route('paid', $commission->id) }}" method="POST">
+                                        action="{{ route('commissions.pay', $commission->id) }}" method="POST">
                                         @csrf
 
                                         <button type="submit" class="btn btn-primary btn-sm"><i

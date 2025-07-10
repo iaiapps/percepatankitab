@@ -70,7 +70,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('activatereferral/{id}', [ReferralController::class, 'activatereferral'])->name('activatereferral');
         // komisi
         Route::resource('commission', CommissionController::class);
-        Route::post('paid/{id}', [CommissionController::class, 'paidCommission'])->name('paid');
+        Route::post('pay/{id}', [CommissionController::class, 'commissionPay'])->name('commissions.pay');
+        // pembayaran massal
+        Route::get('rekap', [CommissionController::class, 'rekap'])->name('commissions.rekap');
+        Route::post('payweekly', [CommissionController::class, 'commissionPayWeekly'])->name('commissions.payWeekly');
         // tracking
         Route::resource('tracking', TrackvideoController::class);
         Route::get('manualrun', [TrackvideoController::class, 'manualRun'])->name('manualrun');
