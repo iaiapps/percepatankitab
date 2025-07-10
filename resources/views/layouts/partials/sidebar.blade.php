@@ -88,6 +88,14 @@
                         <label data-i18n="Widget">Management</label>
                     </li>
                     <li class="pc-item">
+                        <a href="{{ route('tracking.index') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-list-check"></i>
+                            </span>
+                            <span class="pc-mtext">Tracking Video</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
                         <a href="{{ route('user.index') }}" class="pc-link">
                             <span class="pc-micon">
                                 <i class="bi bi-people"></i>

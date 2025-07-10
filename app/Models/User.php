@@ -28,6 +28,7 @@ class User extends Authenticatable
         'no_hp',
         'type',
         'ref_code',
+        'activated_at',
     ];
 
     /**
@@ -57,9 +58,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Payment::class);
     }
-
     public function referral()
     {
         return $this->hasOne(Referral::class);
+    }
+    public function trackvideos()
+    {
+        return $this->hasMany(Trackvideo::class);
     }
 }

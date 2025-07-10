@@ -25,7 +25,7 @@
                             @else
                                 <img class="img-thumbnail" src="{{ $course->thumbnail_path }}" alt="thumbnail">
                             @endif
-                            <p class="mt-3">{{ Str::limit($course->description, 150) }}</p>
+                            {{-- <p class="mt-3">{{ Str::limit($course->description, 150) }}</p> --}}
                         </div>
                         <div class="card-footer">
                             <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
@@ -86,8 +86,8 @@
 
 @endsection
 @push('css')
-    <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/pagination.css') }}"> --}}
 
     <style>
         .img-thumbnail {
@@ -95,7 +95,7 @@
         }
     </style>
 @endpush
-@push('scripts')
+{{-- @push('scripts')
     <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
@@ -104,4 +104,4 @@
             });
         });
     </script>
-@endpush
+@endpush --}}

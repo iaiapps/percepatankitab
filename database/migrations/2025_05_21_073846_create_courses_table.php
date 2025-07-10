@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('youtube_url');
             $table->string('youtube_id');
-            $table->string('description')->nullable();
+            // $table->string('description')->nullable();
             $table->string('thumbnail_url')->nullable();
             $table->string('file_name')->nullable();
             $table->string('thumbnail_path')->nullable();

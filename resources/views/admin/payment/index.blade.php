@@ -36,6 +36,7 @@
                             <th scope="col">Token</th>
                             <th scope="col">Kode Referral</th>
                             <th scope="col">Normal/Res/Aff</th>
+                            <th scope="col">Status WA</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -43,7 +44,11 @@
                         @foreach ($payments as $payment)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $payment->name }}</td>
+                                <td>{{ $payment->name }}
+
+                                    <a href="{{ route('payment.show', $payment->id) }}"
+                                        class="btn btn-secondary btn-sm">alamat</a>
+                                </td>
                                 <td>{{ $payment->user->no_hp ?? '-' }}</td>
                                 <td>
                                     @php
@@ -58,7 +63,8 @@
                                     @if (isset($payment->img))
                                         <img class="img-pembayaran" src="{{ $img }}" alt="bukti">
                                         <br>
-                                        <a href="{{ route('payment.show', $id) ?? 'belum' }}"
+                                        {{-- <a href="{{ route('payment.show', $id) ?? 'belum' }}" --}}
+                                        <a href="{{ route('paymentimg', $id) ?? 'belum' }}"
                                             class=" mt-2 btn btn-sm btn-outline-primary">lihat
                                             bukti</a>
                                     @else
@@ -101,11 +107,9 @@
                                             {{ $tipe_pembelian }}</button>
                                     </form>
                                 </td>
-
+                                <td>{{ $payment->wa_notified ? 'terkirim' . ' ' . $payment->wa_sent_at ?? '-' : 'belum terkirim' }}
+                                </td>
                                 <td>
-                                    <a href="https://wa.me/{{ $payment->no_hp }}?text=Hai kak, ..."
-                                        class="btn btn-success btn-sm "> <i class="bi bi-send"></i> </a>
-
                                     <form class="d-block"
                                         onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
                                         action="{{ route('payment.destroy', $payment->id) }}" method="post"

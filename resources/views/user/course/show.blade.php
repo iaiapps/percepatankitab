@@ -8,8 +8,8 @@
     <div class="card p-3">
         <h4>{{ $course->name }}</h4>
         <hr>
-        <p>{{ $course->description }}</p>
-        <div class="card-body text-center">
+        {{-- <p>{{ $course->description }}</p> --}}
+        <div class="card-body text-center p-0">
             <div class=" embed-responsive">
                 <iframe class="embed-responsive-item"
                     src="https://www.youtube.com/embed/{{ $course->youtube_id }}?autoplay=0&rel=0&controls=1&modestbranding=1"

@@ -131,19 +131,12 @@
         @default
     @endswitch
 
-
-
-
-
-
 @endsection
 @push('scripts')
     <script>
         $(document).ready(function() {
             $('#onload').modal('show');
         });
-
-
 
         function copyInput() {
             const input = document.getElementById('inputToCopy');

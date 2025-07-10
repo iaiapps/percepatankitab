@@ -15,6 +15,7 @@ use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\TrackvideoController;
 use App\Models\Referral;
 
 // ini route di landing
@@ -53,6 +54,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('user', UserController::class);
         // payment
         Route::resource('payment', PaymentController::class);
+        Route::get('paymentimg/{paymentimg}', [PaymentController::class, 'showimg'])->name('paymentimg');
+        Route::get('downloadDoc/{payment}', [PaymentController::class, 'downloadDoc'])->name('downloadDoc');
         // aktifkan user yang sudah membayar
         Route::post('activate/{id}', [PaymentController::class, 'activate'])->name('activate');
         // course
@@ -65,10 +68,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('affiliator', [ReferralController::class, 'affiliator'])->name('affiliator');
         Route::resource('referral', ReferralController::class)->except('index', 'create');
         Route::post('activatereferral/{id}', [ReferralController::class, 'activatereferral'])->name('activatereferral');
-
         // komisi
         Route::resource('commission', CommissionController::class);
         Route::post('paid/{id}', [CommissionController::class, 'paidCommission'])->name('paid');
+        // tracking
+        Route::resource('tracking', TrackvideoController::class);
+        Route::get('manualrun', [TrackvideoController::class, 'manualRun'])->name('manualrun');
+        Route::get('laporan', [TrackvideoController::class, 'pengirimanVideo'])->name('laporan');
         // setting
         Route::resource('setting', SettingController::class);
         Route::resource('settinglanding', LandingController::class)->except('index');

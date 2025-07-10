@@ -35,7 +35,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $commission->referral->user->name }}</td>
                                 <td>{{ $commission->referral->tipe }}</td>
-                                <td>{{ $commission->status }}</td>
+                                <td>{{ $commission->status }} : {{ $commission->paid_at ?? '-' }}</td>
                                 <td>{{ $commission->nominal }}</td>
                                 <td>
                                     <form class="d-block"

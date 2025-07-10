@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('trackvideos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('name');
-            $table->string('token_code')->nullable()->unique();
-            $table->string('img')->nullable();
-            $table->string('status')->nullable();
-            $table->string('kode_referral')->nullable();
-            $table->boolean('wa_notified')->default(false);
-            $table->timestamp('wa_sent_at')->nullable();
+            $table->foreignId('course_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('sent')->default(false);
+            $table->timestamp('sent_at')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('trackvideos');
     }
 };

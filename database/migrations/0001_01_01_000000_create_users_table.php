@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('address')->nullable();
             $table->string('type')->nullable();
             $table->string('ref_code')->nullable();
+            $table->timestamp('activated_at')->nullable();
             $table->timestamps();
         });
 
