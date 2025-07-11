@@ -85,39 +85,43 @@
                     <p class=" mb-4 fw-bold">Metode cepat dan revolusioner untuk belajar baca Kitab kuning
                     </p>
                     <p class="mb-4 fw-bold">Apa yang kamu dapatkan?
-                        Bukan cuma buku, tapi juga 10 BONUS PREMIUM senilai total Rp 2.400.000+</p>
+                        Bukan cuma buku, tapi juga 10 BONUS PREMIUM</p>
                 </div>
                 <ul class="list-unstyled mb-4 fs-5">
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Kelas online Baca
                         Kitab
-                        Kuning selama 4,5 bulan penuh (senilai Rp1.500.000) </li>
+                        Kuning selama 4,5 bulan penuh </li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Modul Praktik Baca
-                        Kitab yang langsung bisa kamu terapkan (senilai Rp50.000)</li>
+                        Kitab yang langsung bisa kamu terapkan</li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Akses ke Grup WA
                         Eksklusif untuk diskusi dan bimbingan langsung </li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Sesi Zoom
-                        Interaktif langsung bareng penulis buku (senilai Rp500.000)</li>
+                        Interaktif langsung bareng penulis buku</li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Dua e-book:
                         "Tips Praktis Menghafal Mufradat" dan "101 Alasan Kenapa Kamu Harus Bisa Baca Kitab Kuning"
-                        (senilai total Rp100.000)</li>
+                    </li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Checklist Harian
                         Latihan Baca Kitab (format printable)</li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Kelas Setoran
                         Sorogan
-                        via VN dengan koreksi langsung (senilai Rp250.000)</li>
+                        via VN dengan koreksi langsung</li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Mini Ebook: 10
-                        Kesalahan Umum Pemula (senilai Rp50.000)</li>
+                        Kesalahan Umum Pemula</li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Template Latihan
                         I’rab
                         Kosong (format printable)</li>
                     <li class="mb-2 d-flex"><i class="bi bi-check-circle-fill text-warning me-3"></i> Sertifikat Digital
-                        Kelulusan setelah ujian praktik (senilai Rp30.000)</li>
+                        Kelulusan setelah ujian praktik</li>
                 </ul>
                 <div class="text-center">
                     <a href="#pricing" class="btn btn-warning btn-lg fw-bold px-4 me-2 mb-3 mt-3">Dapatkan Sekarang</a>
                     <a href="{{ route('login') }}" class="btn btn-success btn-lg fw-bold px-4 me-2" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Masuk Kelas
                         Gratis</a>
+                </div>
+                <div class="mt-5 text-center card bg-danger text-white p-1">
+                    <p class="fs-1 mb-1">Total Buku Terjual</p>
+                    <p class="display-1 fw-bold mb-1 font">1.000</p>
                 </div>
             </div>
         </div>
@@ -148,13 +152,12 @@
             <div class="col-lg-8 text-center">
                 {{-- <h2 class="fw-bold text-white">Atau</h2> --}}
                 <p class="text-dark mb-3 fs-4">Bantu jualkan buku, dan dapatkan Rp50.000 untuk setiap penjualan.
-                    Jual minimal 2 buku sehari? Kamu dapat bonus tambahan Rp40.000 per hari!"</p>
+                    Jual minimal 2 buku sehari? Kamu dapat bonus tambahan Rp10.000 per hari!"</p>
 
                 <p class="fs-5">Tanpa modal, tanpa ribet. Cukup sebar link resellermu, hasilkan cuan harian.
                     Daftar sekarang, mulai hasilkan dari hari ini juga!
                 </p>
                 <a href="{{ route('formreseller') }}" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar Reseller</a>
-
             </div>
         </div>
     </section>
@@ -163,14 +166,13 @@
             <div class="col-lg-8 text-center text-white">
                 <h2 class="fw-bold ">Atau</h2>
                 <p class="fs-4 mb-3">Punya jaringan atau followers?
-                    Gabung program afiliate kami dan dapatkan komisi 4% setiap ada pembelian lewat link afiliatemu."
+                    Gabung program afiliate kami dan dapatkan komisi 3,4% setiap ada pembelian lewat link afiliatemu."
                 </p>
                 <p class="fs-5">Tanpa stok, tanpa repot, cukup bagikan link dan nikmati hasilnya.
                     Daftar sekarang & mulai hasilkan pasif income!
                 </p>
                 <a href="{{ route('formaffiliator') }}" class="btn btn-light btn-lg fw-bold px-5 mb-3">Daftar
                     Affiliate</a>
-
             </div>
         </div>
     </section>
@@ -525,6 +527,13 @@
     @endif
 @endsection
 
+@push('css')
+    <style>
+        .font {
+            font-size: 4rem !important
+        }
+    </style>
+@endpush
 @push('scripts')
     <script>
         // Countdown Timer
