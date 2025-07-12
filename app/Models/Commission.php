@@ -12,4 +12,8 @@ class Commission extends Model
     {
         return $this->belongsTo(Referral::class);
     }
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
 }

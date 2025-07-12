@@ -129,10 +129,13 @@ class PaymentController extends Controller
         $tipe_pembelian = $request->tipe_pembelian;
         $get_referral = Referral::where('kode_referral', $payment->kode_referral)->first();
         if ($tipe_pembelian == 'reseller') {
-            $nominal = '50.000';
+            $nominal = '50000';
         } elseif ($tipe_pembelian == 'affiliator') {
-            $nominal = '12.000';
+            $nominal = '12000';
+        } else {
+            $nominal = '-';
         }
+        // dd($tipe_pembelian);
         if ($get_referral) {
             Commission::updateOrCreate(
                 [

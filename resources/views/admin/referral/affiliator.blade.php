@@ -13,9 +13,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Kode affiliator</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Aktifkan</th>
-                            <th scope="col">Komisi</th>
+                            <th scope="col">Total Komisi</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -25,22 +23,14 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $affiliator->user->name }}</td>
                                 <td>{{ $affiliator->kode_referral }}</td>
-                                <td>{{ $affiliator->user->status == 1 ? 'aktif' : 'tidak aktif' }}</td>
-                                <td>
-                                    <a href="{{ route('referral.show', $affiliator->id) }}"
-                                        class="btn btn-primary btn-sm"><i class="bi bi-card-checklist"></i>
+
+                                <td>Rp
+                                    {{ number_format((int) str_replace('.', '', $affiliator->total_komisi), 0, ',', '.') }}
+                                    <br>
+                                    <a href="{{ route('referral.show', $affiliator->id) }}" class="btn btn-primary btn-sm">
                                         lihat</a>
                                 </td>
-                                <td>
-                                    <form onsubmit="return confirm('Apakah anda yakin untuk mengubah data ?');"
-                                        action="{{ route('activatereferral', $affiliator->id) }}" method="post"
-                                        class="d-inline">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            aktifkan
-                                        </button>
-                                    </form>
-                                </td>
+
                                 <td>
                                     <a href="{{ route('referral.edit', $affiliator->id) }}"
                                         class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i>

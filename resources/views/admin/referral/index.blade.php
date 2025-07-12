@@ -5,12 +5,7 @@
     <div class="card p-3 rounded">
 
         <div class="table-responsive">
-            {{-- <div class="mb-3">
-                <div class="btn-group">
-                    <a href="{{ route('referral.create') }}" class="btn btn-primary"><i class="bi bi-plus-circle"></i>
-                        Tambah Data</a>
-                </div>
-            </div> --}}
+
             <div class="table-responsive">
                 <table id="table" class="table table-striped align-middle" style="width: 100%">
                     <thead>
@@ -35,15 +30,7 @@
                                     <a href="{{ route('referral.edit', $referral->id) }}" class="btn btn-warning btn-sm"><i
                                             class="bi bi-pencil-square"></i>
                                         edit</a>
-                                    {{-- <form class="d-inline-block"
-                                        onsubmit="return confirm('Apakah anda yakin untuk mereset password ?');"
-                                        action="{{ route('reset.pass', ['id' => $referral->id]) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" class="btn btn-secondary btn-sm"><i
-                                                class="bi bi-arrow-clockwise"></i> reset
-                                        </button>
-                                    </form> --}}
+
                                     <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
                                         action="{{ route('referral.destroy', $referral->id) }}" method="post"
                                         class="d-inline">

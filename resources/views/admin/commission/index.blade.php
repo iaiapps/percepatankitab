@@ -11,7 +11,7 @@
     <div class="card p-3 rounded">
         <div class="table-responsive">
             <div class="mb-3">
-                <a href="{{ route('commissions.rekap') }}" class="btn btn-warning mb-3">
+                <a href="{{ route('commissions.rekap') }}" class="btn btn-primary mb-3">
                     Rekap & Bayar Mingguan
                 </a>
             </div>
@@ -34,18 +34,27 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $commission->referral->user->name }}</td>
                                 <td>{{ $commission->referral->tipe }}</td>
-                                <td>{{ $commission->status }} : {{ $commission->paid_at ?? '-' }}</td>
-                                <td>{{ $commission->nominal }}</td>
+                                <td>{{ $commission->status }} :
+                                    {{ $commission->paid_at ? \Carbon\Carbon::parse($commission->paid_at)->isoFormat('DD MMMM YYYY, HH:MM') : '-' }}
+                                </td>
+                                <td> Rp {{ number_format((int) str_replace('.', '', $commission->nominal), 0, ',', '.') }}
+                                </td>
                                 <td>
-                                    <form class="d-block"
-                                        onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"
-                                        action="{{ route('commissions.pay', $commission->id) }}" method="POST">
-                                        @csrf
-
-                                        <button type="submit" class="btn btn-primary btn-sm"><i
-                                                class="bi bi-check2-circle"></i> bayar
+                                    @if ($commission->status == 'pending')
+                                        <form class="d-block"
+                                            onsubmit="return confirm('Apakah anda yakin untuk mengubah data?');"
+                                            action="{{ route('commissions.pay', $commission->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary btn-sm"> bayar
+                                            </button>
+                                        </form>
+                                    @elseif ($commission->status == 'paid')
+                                        <button type="submit" class="btn btn-primary btn-sm" disabled> bayar
                                         </button>
-                                    </form>
+                                    @else
+                                        <p>tidak dapat menentukan status ...</p>
+                                    @endif
+
                                 </td>
                                 <td>
                                     <form class="d-block"
@@ -68,11 +77,6 @@
     </div>
 @endsection
 @push('css')
-    <style>
-        .img-pembayaran {
-            width: 70px;
-        }
-    </style>
     <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 @endpush

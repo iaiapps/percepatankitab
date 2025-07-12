@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quizz;
 use App\Models\Landing;
+use App\Models\Payment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -41,8 +42,10 @@ class LandingController extends Controller
             'kontak_email' => $kontak_email,
 
         ];
+
+        $payment = Payment::all()->count();
         // dd($data_value);
-        return view('landing', compact('value'));
+        return view('landing', compact('value', 'payment'));
     }
 
     /**

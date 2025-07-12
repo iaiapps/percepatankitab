@@ -4,7 +4,7 @@
 @endphp
 
 <nav class="pc-sidebar overflow-auto">
-    <div class="navbar-wrapper">
+    <div class="navbar-wrapper h-100">
         <div class="mb-1 pt-3 text-center">
             <a href="{{ route('home') }}" class="b-brand text-primary">
                 <img src="{{ asset('img/logo.png') }}" alt="logo" style="width: 50px">
@@ -17,7 +17,7 @@
         </div>
         <hr>
 
-        <ul class="pc-navbar  ">
+        <ul class="pc-navbar">
             @switch($role)
                 @case('admin')
                     <li class="pc-item">
@@ -157,32 +157,32 @@
                             <span class="pc-mtext">Dashboard</span>
                         </a>
                     </li>
-                    @if ($user->status == 1)
-                        <li class="pc-item">
-                            <a href="{{ route('soldbyreseller') }}" class="pc-link">
-                                <span class="pc-micon">
-                                    <i class="bi bi-cart2"></i>
-                                </span>
-                                <span class="pc-mtext">Daftar Pembeli</span>
-                            </a>
-                        </li>
-                        <li class="pc-item">
-                            <a href="{{ route('commissionbyreseller') }}" class="pc-link">
-                                <span class="pc-micon">
-                                    <i class="bi bi-coin"></i>
-                                </span>
-                                <span class="pc-mtext">Pembayaran Komisi</span>
-                            </a>
-                        </li>
-                        <li class="pc-item">
-                            <a href="{{ route('profile') }}" class="pc-link">
-                                <span class="pc-micon">
-                                    <i class="bi bi-person"></i>
-                                </span>
-                                <span class="pc-mtext">Profil</span>
-                            </a>
-                        </li>
-                    @endif
+                    {{-- @if ($user->status == 1) --}}
+                    <li class="pc-item">
+                        <a href="{{ route('soldbyreseller') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-cart2"></i>
+                            </span>
+                            <span class="pc-mtext">Daftar Pembeli</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('commissionbyreseller') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-coin"></i>
+                            </span>
+                            <span class="pc-mtext">Pembayaran Komisi</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('profile') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <span class="pc-mtext">Profil</span>
+                        </a>
+                    </li>
+                    {{-- @endif --}}
                 @break
 
                 @case('affiliator')
@@ -194,32 +194,32 @@
                             <span class="pc-mtext">Dashboard</span>
                         </a>
                     </li>
-                    @if ($user->status == 1)
-                        <li class="pc-item">
-                            <a href="{{ route('soldbyaffiliator') }}" class="pc-link">
-                                <span class="pc-micon">
-                                    <i class="bi bi-cart2"></i>
-                                </span>
-                                <span class="pc-mtext">Daftar Pembeli</span>
-                            </a>
-                        </li>
-                        <li class="pc-item">
-                            <a href="{{ route('commissionbyaffiliator') }}" class="pc-link">
-                                <span class="pc-micon">
-                                    <i class="bi bi-coin"></i>
-                                </span>
-                                <span class="pc-mtext">Pembayaran Komisi</span>
-                            </a>
-                        </li>
-                        <li class="pc-item">
-                            <a href="{{ route('profile') }}" class="pc-link">
-                                <span class="pc-micon">
-                                    <i class="bi bi-person"></i>
-                                </span>
-                                <span class="pc-mtext">Profil</span>
-                            </a>
-                        </li>
-                    @endif
+                    {{-- @if ($user->status == 1) --}}
+                    <li class="pc-item">
+                        <a href="{{ route('soldbyaffiliator') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-cart2"></i>
+                            </span>
+                            <span class="pc-mtext">Daftar Pembeli</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('commissionbyaffiliator') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-coin"></i>
+                            </span>
+                            <span class="pc-mtext">Pembayaran Komisi</span>
+                        </a>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{{ route('profile') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <span class="pc-mtext">Profil</span>
+                        </a>
+                    </li>
+                    {{-- @endif --}}
                 @break
 
                 @default

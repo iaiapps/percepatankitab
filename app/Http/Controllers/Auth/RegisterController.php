@@ -101,6 +101,7 @@ class RegisterController extends Controller
             $status = null;
         } else {
             $password =  Hash::make($data['password']);
+            $status = 1;
         }
 
         $create =  User::create([
@@ -111,6 +112,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'type' => $data['type'],
             'ref_code' => $ref,
+            'status' => $status,
         ]);
 
         if ($formtype == 'pembeli') {

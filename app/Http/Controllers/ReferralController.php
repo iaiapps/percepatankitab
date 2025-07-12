@@ -80,16 +80,16 @@ class ReferralController extends Controller
     }
 
     // aktivasi referral
-    public function activatereferral(Request $request)
-    {
-        $id = $request->id;
-        $referral = Referral::where('id', $id)->first();
-        $user = $referral->user;
-        $user->update([
-            'status' => '1'
-        ]);
-        return redirect()->back()->with('success', 'berhasil mengubah data!');
-    }
+    // public function activatereferral(Request $request)
+    // {
+    //     $id = $request->id;
+    //     $referral = Referral::where('id', $id)->first();
+    //     $user = $referral->user;
+    //     $user->update([
+    //         'status' => '1'
+    //     ]);
+    //     return redirect()->back()->with('success', 'berhasil mengubah data!');
+    // }
 
     // update data bank
     public function databank()

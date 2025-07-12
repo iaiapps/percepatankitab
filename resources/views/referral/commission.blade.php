@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Penjualan')
+@section('title', 'Data Komisi')
 @section('content')
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible fade show"> {{ $message }} <button type="button"
@@ -17,9 +17,10 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Tanggal Pembelian</th>
-                            <th scope="col">Status Verifikasi</th>
-                            <th scope="col">Komisi</th>
+                            {{-- <th scope="col">Tanggal Komisi</th> --}}
+                            <th scope="col">Pembayaran Komisi</th>
+                            <th scope="col">Tanggal Pembayaran</th>
+                            <th scope="col">Komisi </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,22 +29,31 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $commission->referral->user->name }}</td>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($commission->created_at)->isoFormat('DD MMMM YYYY') }}
-                                </td>
-                                <td>
                                     @if ($commission->status == 'pending')
-                                        <span class="mb-0 bg-danger text-center text-white rounded p-1">belum
-                                            diverifikasi</span>
-                                    @elseif ($commission->status == 'verified')
-                                        <span class="mb-0 bg-primary text-center text-white rounded p-1">sudah
-                                            diverifikasi</span>
+                                        <span class="mb-0 bg-danger text-center text-white rounded p-1">pending</span>
+                                    @elseif ($commission->status == 'paid')
+                                        <span class="mb-0 bg-primary text-center text-white rounded p-1">paid</span>
                                     @else
                                         <span class="mb-0 bg-warning text-center text-white rounded p-1">tidak dapat
                                             menentukan status ...</span>
                                     @endif
                                 </td>
 
-                                <td>{{ $commission->nominal ?? '-' }}</td>
+                                <td>
+                                    @if ($commission->status == 'pending')
+                                        <span class="mb-0">-</span>
+                                    @elseif ($commission->status == 'paid')
+                                        <span
+                                            class="mb-0">{{ \Carbon\Carbon::parse($commission->paid_at)->isoFormat('DD MMMM YYYY, HH:MM') }}</span>
+                                    @else
+                                        <span class="mb-0">tidak dapat
+                                            menentukan ...</span>
+                                    @endif
+
+                                </td>
+                                <td>Dari = {{ $commission->payment->name }}, <br> Komisi =
+                                    {{ $commission->nominal ?? ' - ' }}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -53,11 +63,6 @@
     </div>
 @endsection
 @push('css')
-    <style>
-        .img-pembayaran {
-            width: 70px;
-        }
-    </style>
     <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 @endpush

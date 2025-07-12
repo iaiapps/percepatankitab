@@ -26,4 +26,21 @@ class SoldController extends Controller
         $commissions = Commission::where('kode_referral', $kode_referral)->get();
         return view('referral.commission', compact('commissions'));
     }
+
+    // affiliator
+    // public function soldByAffiliator()
+    // {
+    //     $user = Auth::user();
+    //     $kode_referral = $user->referral->kode_referral;
+    //     $payments = Payment::where('kode_referral', $kode_referral)->get();
+    //     return view('referral.sold', compact('payments'));
+    // }
+
+    // public function commissionByAffiliator()
+    // {
+    //     $user = Auth::user();
+    //     $kode_referral = $user->referral->kode_referral;
+    //     $commissions = Commission::where('kode_referral', $kode_referral)->get();
+    //     return view('referral.commission', compact('commissions'));
+    // }
 }

@@ -36,9 +36,9 @@
             <div class="profile-card shadow mb-3 p-3 rounded">
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Informasi Profil</h6>
-                    <button class="btn btn-sm btn-primary">
+                    {{-- <button class="btn btn-sm btn-primary">
                         Edit
-                    </button>
+                    </button> --}}
                 </div>
                 <hr>
                 <div class="card-body">
@@ -50,7 +50,8 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-muted">Bergabung Sejak</label>
-                                <p class="font-weight-bold">{{ $user->created_at }}</p>
+                                <p class="font-weight-bold">
+                                    {{ \Carbon\Carbon::parse($user->created_at)->isoFormat('DD MMMM YYYY') }}</p>
                             </div>
                             @if ($user->type == 'reseller' or $user->type == 'affiliator')
                                 <div class="mb-3">
@@ -67,7 +68,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label text-muted">Status</label>
-                                <p class="font-weight-bold text-success">{{ $user->status == 1 ? 'Aktif' : 'Belum Aktif' }}
+                                <p class="font-weight-bold text-success">{{ $user->status == 1 ? 'Aktif' : '-' }}
                                 </p>
                             </div>
                             @if ($user->type == 'reseller' or $user->type == 'affiliator')

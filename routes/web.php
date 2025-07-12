@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('reseller', [ReferralController::class, 'reseller'])->name('reseller');
         Route::get('affiliator', [ReferralController::class, 'affiliator'])->name('affiliator');
         Route::resource('referral', ReferralController::class)->except('index', 'create');
-        Route::post('activatereferral/{id}', [ReferralController::class, 'activatereferral'])->name('activatereferral');
+        // Route::post('activatereferral/{id}', [ReferralController::class, 'activatereferral'])->name('activatereferral');
         // komisi
         Route::resource('commission', CommissionController::class);
         Route::post('pay/{id}', [CommissionController::class, 'commissionPay'])->name('commissions.pay');

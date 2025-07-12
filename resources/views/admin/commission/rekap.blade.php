@@ -45,14 +45,17 @@
                                     <td>{{ ucfirst($item->referral->user->type ?? '-') }}</td>
                                     <td>{{ $item->payment->user->name ?? '-' }}</td>
                                     <td>{{ $item->created_at->format('d M Y') }}</td>
-                                    <td>Rp {{ number_format($item->nominal, 0, ',', '.') }}</td>
+                                    <td>Rp {{ number_format((int) str_replace('.', '', $item->nominal), 0, ',', '.') }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="5" class="text-end">Total Komisi:</th>
-                                <th><strong>Rp {{ number_format($total, 0, ',', '.') }}</strong></th>
+                                <th><strong>Rp
+                                        {{ number_format((int) str_replace('.', '', $total), 0, ',', '.') }}</strong>
+                                </th>
                             </tr>
                         </tfoot>
                     </table>
@@ -60,18 +63,15 @@
                     <form action="{{ route('commissions.payWeekly') }}" method="POST"
                         onsubmit="return confirm('Yakin ingin membayar semua komisi minggu ini?')">
                         @csrf
-                        <button type="submit" class="btn btn-success">✅ Konfirmasi dan Bayar Semua</button>
+                        <button type="submit" class="btn btn-danger float-end">Konfirmasi dan Bayar Semua</button>
                     </form>
                 @endif
         </div>
     </div>
+
+
 @endsection
 @push('css')
-    <style>
-        .img-pembayaran {
-            width: 70px;
-        }
-    </style>
     <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 @endpush

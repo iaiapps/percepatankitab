@@ -16,10 +16,10 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Nama</th>
+                            <th scope="col">Nama Pembeli</th>
                             <th scope="col">Tanggal Pembelian</th>
-                            <th scope="col">Status Verifikasi</th>
-                            <th scope="col">Komisi</th>
+                            <th scope="col">Status Pembelian</th>
+                            {{-- <th scope="col">Komisi</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +43,7 @@
                                     @endif
                                 </td>
 
-                                <td>{{ $payment->commission->nominal ?? '-' }}</td>
+                                {{-- <td>{{ $payment->commission->nominal ?? '-' }}</td> --}}
                             </tr>
                         @endforeach
                     </tbody>

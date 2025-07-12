@@ -119,9 +119,13 @@
                         data-bs-target="#exampleModal">Masuk Kelas
                         Gratis</a>
                 </div>
-                <div class="mt-5 text-center card bg-danger text-white p-1">
+            </div>
+        </div>
+        <div class="mt-5 countdown-box w-100 text-center">
+            <div class="d-flex justify-content-center  ">
+                <div class="bg-danger px-5 py-2 rounded">
                     <p class="fs-1 mb-1">Total Buku Terjual</p>
-                    <p class="display-1 fw-bold mb-1 font">1.000</p>
+                    <p class="display-1 fw-bold mb-1 font">{{ 1000 + $payment }}</p>
                 </div>
             </div>
         </div>
@@ -432,11 +436,16 @@
                             <h5>Sosial Media Kami</h5>
 
                             <div class="mt-3">
-                                <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-5"></i></a>
-                                <a href="#" class="text-white me-2"><i class="bi bi-twitter fs-5"></i></a>
-                                <a href="#" class="text-white me-2"><i class="bi bi-instagram fs-5"></i></a>
-                                <a href="#" class="text-white me-2"><i class="bi bi-youtube fs-5"></i></a>
-                                <a href="#" class="text-white me-2"><i class="bi bi-tiktok fs-5"></i></a>
+                                <a href="https://www.facebook.com/share/15vbQVGoBE/" class="text-white me-2"
+                                    target="_blank"><i class="bi bi-facebook fs-5"></i></a>
+                                <a href="https://x.com/ans_ceo?t=NjZrMew-8CtxOS0LKls7PA&s=08" class="text-white me-2"
+                                    target="_blank"><i class="bi bi-twitter fs-5"></i></a>
+                                <a href="https://www.instagram.com/ilyas_ceo_ans?igsh=ejVranV3cGR0bzlq&utm_source=ig_contact_invite"
+                                    class="text-white me-2" target="_blank"><i class="bi bi-instagram fs-5"></i></a>
+                                <a href=" https://youtube.com/@ilyasans?si=NKXSukJ6DR-p0-sc" class="text-white me-2"
+                                    target="_blank"><i class="bi bi-youtube fs-5"></i></a>
+                                <a href="https://www.tiktok.com/@ilyasceoans?_t=ZS-8xw2NgZOugO&_r=1"
+                                    class="text-white me-2" target="_blank"><i class="bi bi-tiktok fs-5"></i></a>
                             </div>
                         </div>
                     </div>
@@ -450,13 +459,17 @@
     <footer class="py-4 bg-dark text-white">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center text-md-start">
+                <div class="text-center ">
                     <p class="mb-0">Copyright &copy;2025 Percepatan Baca Kitab Kuning | All rights reserved.</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
+                {{-- <div class="col-md-6 text-center text-md-end">
                     <a href="#" class="text-white text-decoration-none me-3">Kebijakan Privasi</a>
                     <a href="#" class="text-white text-decoration-none">Syarat & Ketentuan</a>
-                </div>
+                </div> --}}
+            </div>
+            <hr>
+            <div class="text-center ">
+                <small>Created By <a href="https://iaiapps.github.io/" class="text-white">iaiapps</a></small>
             </div>
         </div>
     </footer>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Referral;
 use App\Models\Commission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -84,8 +85,11 @@ class CommissionController extends Controller
     // handle rekap
     public function rekap()
     {
-        $start = Carbon::now()->subWeek()->startOfWeek(Carbon::SATURDAY);
-        $end = Carbon::now()->subDay()->endOfDay(); // Jumat
+        // $start = Carbon::now()->subWeek()->startOfWeek(Carbon::SATURDAY);
+        // $end = Carbon::now()->subDay()->endOfDay(); // Jumat
+
+        $start = Carbon::now()->startOfWeek(Carbon::SUNDAY);
+        $end = Carbon::now()->endOfWeek(Carbon::SATURDAY);
 
         $commissions = Commission::with('referral.user', 'payment.user')
             ->where('status', 'pending')
@@ -101,20 +105,33 @@ class CommissionController extends Controller
     public function commissionPayWeekly(Request $request)
     {
         // Hitung minggu ini: dari Sabtu lalu hingga Jumat ini
-        $start = Carbon::now()->subWeek()->startOfWeek(Carbon::SATURDAY);
-        $end = Carbon::now()->subDay()->endOfDay();
+        $start = Carbon::now()->startOfWeek(Carbon::SUNDAY);
+        $end = Carbon::now()->endOfWeek(Carbon::SATURDAY);
 
         $commissions = Commission::where('status', 'pending')
             ->whereBetween('created_at', [$start, $end])
             ->get();
 
-        foreach ($commissions as $commission) {
-            $commission->update([
-                'status' => 'paid',
-                'paid_at' => now(),
-            ]);
-        }
+        // Kelompokkan komisi berdasarkan referral
+        $commissionsByReferral = $commissions->groupBy('referral_id');
 
-        return redirect()->route('admin.commission.rekap')->with('success', '✅ Semua komisi minggu ini telah dibayarkan.');
+        foreach ($commissionsByReferral as $referralId => $items) {
+            $totalForReferral = $items->sum('nominal');
+
+            // Update komisi masing-masing menjadi 'paid'
+            foreach ($items as $commission) {
+                $commission->update([
+                    'status' => 'paid',
+                    'paid_at' => now(),
+                ]);
+            }
+
+            // Tambahkan total komisi ke referral
+            $referral = Referral::find($referralId);
+            if ($referral) {
+                $referral->increment('total_komisi', $totalForReferral);
+            }
+        }
+        return redirect()->route('commission.index')->with('success', '✅ Semua komisi minggu ini telah dibayarkan.');
     }
 }

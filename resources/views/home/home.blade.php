@@ -16,13 +16,17 @@
 
     @switch($role)
         @case($role == 'admin' or $role == 'operator')
+            <div class="card">
+                <div class="card-body">
+                    <p class="mb-0">Waktu server {{ \Carbon\Carbon::now() }}</p>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="card">
                         <div class="card-body pb-0 d-flex justify-content-between">
                             <p class="mb-0 fs-5">Pembayaran Baru :</p>
                             <p class="mb-0 fs-5 badge text-bg-primary">{{ count($payment->where('status', 'pending')) }}</p>
-
                         </div>
                         <hr>
                     </div>
@@ -71,14 +75,13 @@
             </div>
         @break
 
-        @case($role == 'reseller' and $user->status !== '1')
+        {{-- @case($role == 'reseller' and $user->status !== '1')
             @include('home.ref_welcome')
         @break
 
         @case($role == 'affiliator' and $user->status !== '1')
             @include('home.ref_welcome')
-        @break
-
+        @break --}}
         @case($role == 'reseller')
             @if ($user->referral->nama_bank == 0)
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">

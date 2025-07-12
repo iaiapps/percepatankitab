@@ -10,29 +10,30 @@
 
     <div class="card">
         <div class="card-body ">
-            <p> Komisi dari reseller {{ $referral->user->name }}</p>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>komisi ke-</td>
-                        <td>nominal</td>
-                        <td>dibayarkan</td>
-                        <td>status</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($referral->commission as $com)
+            <p class="fs-5 fw-bold mb-2 text-center"> Komisi dari reseller {{ $referral->user->name }}</p>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="table">
+                    <thead>
                         <tr>
-                            <td> {{ $loop->iteration }}</td>
-                            <td> {{ $com->nominal }}</td>
-                            <td> {{ $com->paid_at }}</td>
-                            <td> {{ $com->status }}</td>
-
+                            <td>komisi ke-</td>
+                            <td>nominal</td>
+                            <td>dibayarkan</td>
+                            <td>status</td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($referral->commission as $com)
+                            <tr>
+                                <td> {{ $loop->iteration }}</td>
+                                <td> {{ $com->nominal }}</td>
+                                <td> {{ \Carbon\Carbon::parse($com->paid_at)->isoFormat('DD MMMM YYYY, HH:MM') }}</td>
+                                <td> {{ $com->status }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
 
@@ -40,8 +41,20 @@
 
 @push('css')
     <style>
-        .img {
-            width: 80%;
+        .img-pembayaran {
+            width: 70px;
         }
     </style>
+    <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
+@endpush
+@push('scripts')
+    <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                "pageLength": 50
+            });
+        });
+    </script>
 @endpush
