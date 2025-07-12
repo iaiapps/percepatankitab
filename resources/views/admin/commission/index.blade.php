@@ -8,13 +8,44 @@
         </div>
     @endif
 
+    <div class="">
+        <a href="{{ route('commissions.rekap') }}" class="btn btn-primary mb-3">
+            Bayar Komisi Mingguan
+        </a>
+    </div>
     <div class="card p-3 rounded">
         <div class="table-responsive">
-            <div class="mb-3">
-                <a href="{{ route('commissions.rekap') }}" class="btn btn-primary mb-3">
-                    Rekap & Bayar Mingguan
-                </a>
+            <p class="mb-3 fs-5 text-center fw-bold">Seluruh Komisi Yang Ada</p>
+            {{-- Ringkasan --}}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body py-2">
+                            <h5>Reseller</h5>
+                            <p class="mb-1">Total: <strong>Rp {{ number_format($totalReseller, 0, ',', '.') }}</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-info text-white">
+                        <div class="card-body py-2">
+                            <h5>Affiliator</h5>
+                            <p class="mb-1">Total: <strong>Rp {{ number_format($totalAffiliator, 0, ',', '.') }}</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body py-2">
+                            <h5 class="text-white">Total Semua</h5>
+                            <p class="mb-1">Total: <strong>Rp {{ number_format($total, 0, ',', '.') }}</strong></p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="table-responsive">
                 <table id="table" class="table table-striped align-middle align-middle" style="width: 100%">
                     <thead>
@@ -32,12 +63,18 @@
                         @foreach ($commissions as $commission)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $commission->referral->user->name }}</td>
+                                <td>{{ $commission->referral->user->name }} <br>
+                                    {{ $commission->referral->nama_bank }}
+                                    {{ $commission->referral->no_rekening }}
+                                </td>
                                 <td>{{ $commission->referral->tipe }}</td>
                                 <td>{{ $commission->status }} :
                                     {{ $commission->paid_at ? \Carbon\Carbon::parse($commission->paid_at)->isoFormat('DD MMMM YYYY, HH:MM') : '-' }}
                                 </td>
-                                <td> Rp {{ number_format((int) str_replace('.', '', $commission->nominal), 0, ',', '.') }}
+                                <td>Tgl
+                                    {{ \Carbon\Carbon::parse($commission->created_at)->isoFormat('DD MMMM YYYY') }}
+                                    <br>
+                                    Rp {{ number_format((int) str_replace('.', '', $commission->nominal), 0, ',', '.') }}
                                 </td>
                                 <td>
                                     @if ($commission->status == 'pending')

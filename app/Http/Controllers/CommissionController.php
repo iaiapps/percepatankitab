@@ -17,7 +17,26 @@ class CommissionController extends Controller
     public function index()
     {
         $commissions = Commission::all();
-        return view('admin.commission.index', compact('commissions'));
+
+        $resellerCommissions = $commissions->where('referral.user.type', 'reseller');
+        $affiliatorCommissions = $commissions->where('referral.user.type', 'affiliator');
+
+        // Group by referral name
+        $resellerGrouped = $resellerCommissions->groupBy(fn($item) => $item->referral->user->name ?? 'Unknown');
+        $affiliatorGrouped = $affiliatorCommissions->groupBy(fn($item) => $item->referral->user->name ?? 'Unknown');
+
+        $totalReseller = $resellerCommissions->sum('nominal');
+        $totalAffiliator = $affiliatorCommissions->sum('nominal');
+        $total = $totalReseller + $totalAffiliator;
+        return view('admin.commission.index', compact(
+            'commissions',
+            'resellerGrouped',
+            'affiliatorGrouped',
+            'totalReseller',
+            'totalAffiliator',
+            'total',
+
+        ));
     }
 
     /**
@@ -85,9 +104,6 @@ class CommissionController extends Controller
     // handle rekap
     public function rekap()
     {
-        // $start = Carbon::now()->subWeek()->startOfWeek(Carbon::SATURDAY);
-        // $end = Carbon::now()->subDay()->endOfDay(); // Jumat
-
         $start = Carbon::now()->startOfWeek(Carbon::SUNDAY);
         $end = Carbon::now()->endOfWeek(Carbon::SATURDAY);
 
@@ -96,10 +112,28 @@ class CommissionController extends Controller
             ->whereBetween('created_at', [$start, $end])
             ->get();
 
-        $total = $commissions->sum('nominal');
+        $resellerCommissions = $commissions->where('referral.user.type', 'reseller');
+        $affiliatorCommissions = $commissions->where('referral.user.type', 'affiliator');
 
-        return view('admin.commission.rekap', compact('commissions', 'total', 'start', 'end'));
+        // Group by referral name
+        $resellerGrouped = $resellerCommissions->groupBy(fn($item) => $item->referral->user->name ?? 'Unknown');
+        $affiliatorGrouped = $affiliatorCommissions->groupBy(fn($item) => $item->referral->user->name ?? 'Unknown');
+
+        $totalReseller = $resellerCommissions->sum('nominal');
+        $totalAffiliator = $affiliatorCommissions->sum('nominal');
+        $total = $totalReseller + $totalAffiliator;
+
+        return view('admin.commission.rekap', compact(
+            'resellerGrouped',
+            'affiliatorGrouped',
+            'totalReseller',
+            'totalAffiliator',
+            'total',
+            'start',
+            'end'
+        ));
     }
+
 
     // handle pay weekly
     public function commissionPayWeekly(Request $request)
@@ -132,6 +166,6 @@ class CommissionController extends Controller
                 $referral->increment('total_komisi', $totalForReferral);
             }
         }
-        return redirect()->route('commission.index')->with('success', '✅ Semua komisi minggu ini telah dibayarkan.');
+        return redirect()->route('commissions.rekap')->with('success', 'Semua komisi minggu ini telah dibayarkan.');
     }
 }

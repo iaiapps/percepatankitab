@@ -26,7 +26,8 @@
                             <tr>
                                 <td> {{ $loop->iteration }}</td>
                                 <td> {{ $com->nominal }}</td>
-                                <td> {{ \Carbon\Carbon::parse($com->paid_at)->isoFormat('DD MMMM YYYY, HH:MM') }}</td>
+                                <td> {{ $com->paid_at ? \Carbon\Carbon::parse($com->paid_at)->isoFormat('DD MMMM YYYY, HH:MM') : ' - ' }}
+                                </td>
                                 <td> {{ $com->status }}</td>
                             </tr>
                         @endforeach

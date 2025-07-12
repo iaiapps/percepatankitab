@@ -8,80 +8,128 @@
         </div>
     @endif
 
-    <div class="mb-0">
-        <a href="{{ route('commission.index') }}" class="btn btn-primary mb-3">
-            kembali
-        </a>
+    <div class="mb-3">
+        <a href="{{ route('commission.index') }}" class="btn btn-primary">Kembali</a>
     </div>
-    <div class="card p-3 rounded">
-        <div class="container">
-            <h4>Rekap Komisi Mingguan</h3>
-                <p>Periode: <strong>{{ $start->format('d M Y') }}</strong> s.d <strong>{{ $end->format('d M Y') }}</strong>
-                </p>
 
-                @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                @endif
+    <div class="card p-4">
+        <h3>Rekap Komisi Mingguan</h4>
+            <p class="fs-5 mb-0">Periode: <strong>{{ $start->format('d M Y') }}</strong> s.d
+                <strong>{{ $end->format('d M Y') }}</strong>
+            </p>
+            <hr>
+            @if ($resellerGrouped->isEmpty() && $affiliatorGrouped->isEmpty())
+                <div class="alert alert-info">Tidak ada komisi yang belum dibayar minggu ini.</div>
+            @else
+                {{-- Ringkasan --}}
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card bg-success text-white">
+                            <div class="card-body py-2">
+                                <h5>Reseller</h5>
+                                <p>Total: <strong>Rp {{ number_format($totalReseller, 0, ',', '.') }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-info text-white">
+                            <div class="card-body py-2">
+                                <h5>Affiliator</h5>
+                                <p>Total: <strong>Rp {{ number_format($totalAffiliator, 0, ',', '.') }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body py-2">
+                                <h5 class="text-white">Total Semua</h5>
+                                <p>Total: <strong>Rp {{ number_format($total, 0, ',', '.') }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                @if ($commissions->isEmpty())
-                    <div class="alert alert-info">Tidak ada komisi yang belum dibayar minggu ini.</div>
-                @else
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Referral</th>
-                                <th>Jenis</th>
-                                <th>User Pembeli</th>
-                                <th>Tanggal Komisi</th>
-                                <th>Nominal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($commissions as $i => $item)
+                {{-- Komisi Reseller --}}
+                <h5 class="mb-0">Komisi Reseller</h5>
+                <hr>
+                @foreach ($resellerGrouped as $referralUser => $items)
+                    <div class="mb-4">
+                        <p>Referral: <strong>{{ $referralUser }}</strong> |
+                            Nama Bank : <strong>{{ $items->first()->referral->nama_bank }}</strong> |
+                            Nomor Rekening : <strong>{{ $items->first()->referral->no_rekening }}</strong>
+                        </p>
+                        <table class="table table-bordered">
+                            <thead>
                                 <tr>
-                                    <td>{{ $i + 1 }}</td>
-                                    <td>{{ $item->referral->user->name ?? '-' }}</td>
-                                    <td>{{ ucfirst($item->referral->user->type ?? '-') }}</td>
-                                    <td>{{ $item->payment->user->name ?? '-' }}</td>
-                                    <td>{{ $item->created_at->format('d M Y') }}</td>
-                                    <td>Rp {{ number_format((int) str_replace('.', '', $item->nominal), 0, ',', '.') }}
-                                    </td>
+                                    <th>No</th>
+                                    <th>Pembeli</th>
+                                    <th>Tanggal</th>
+                                    <th>Nominal</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th colspan="5" class="text-end">Total Komisi:</th>
-                                <th><strong>Rp
-                                        {{ number_format((int) str_replace('.', '', $total), 0, ',', '.') }}</strong>
-                                </th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @php $subtotal = 0; @endphp
+                                @foreach ($items as $i => $item)
+                                    @php $subtotal += $item->nominal; @endphp
+                                    <tr>
+                                        <td>{{ $i + 1 }}</td>
+                                        <td>{{ $item->payment->user->name ?? '-' }}</td>
+                                        <td>{{ $item->created_at->format('d M Y') }}</td>
+                                        <td>Rp {{ number_format($item->nominal, 0, ',', '.') }}</td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <th colspan="3" class="text-end">Total untuk {{ $referralUser }}:</th>
+                                    <th>Rp {{ number_format($subtotal, 0, ',', '.') }}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                @endforeach
 
-                    <form action="{{ route('commissions.payWeekly') }}" method="POST"
-                        onsubmit="return confirm('Yakin ingin membayar semua komisi minggu ini?')">
-                        @csrf
-                        <button type="submit" class="btn btn-danger float-end">Konfirmasi dan Bayar Semua</button>
-                    </form>
-                @endif
-        </div>
+                {{-- Komisi Affiliator --}}
+                <h5 class="mb-0">Komisi Affiliator</h5>
+                <hr>
+                @foreach ($affiliatorGrouped as $referralUser => $items)
+                    <div class="mb-4">
+                        <p>Referral: <strong>{{ $referralUser }}</strong> |
+                            Nama Bank : <strong>{{ $items->first()->referral->nama_bank }}</strong> |
+                            Nomor Rekening : <strong>{{ $items->first()->referral->no_rekening }}</strong>
+                        </p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Pembeli</th>
+                                    <th>Tanggal</th>
+                                    <th>Nominal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $subtotal = 0; @endphp
+                                @foreach ($items as $i => $item)
+                                    @php $subtotal += $item->nominal; @endphp
+                                    <tr>
+                                        <td>{{ $i + 1 }}</td>
+                                        <td>{{ $item->payment->user->name ?? '-' }}</td>
+                                        <td>{{ $item->created_at->format('d M Y') }}</td>
+                                        <td>Rp {{ number_format($item->nominal, 0, ',', '.') }}</td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <th colspan="3" class="text-end">Total untuk {{ $referralUser }}:</th>
+                                    <th>Rp {{ number_format($subtotal, 0, ',', '.') }}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                @endforeach
+
+                <form action="{{ route('commissions.payWeekly') }}" method="POST"
+                    onsubmit="return confirm('Yakin ingin membayar semua komisi minggu ini?')">
+                    @csrf
+                    <button type="submit" class="btn btn-danger float-end">Konfirmasi & Bayar Semua Komisi</button>
+                </form>
+            @endif
     </div>
-
-
 @endsection
-@push('css')
-    <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
-@endpush
-@push('scripts')
-    <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                "pageLength": 50
-            });
-        });
-    </script>
-@endpush

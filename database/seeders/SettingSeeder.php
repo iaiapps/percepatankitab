@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SettingSeeder extends Seeder
 {
@@ -12,6 +13,15 @@ class SettingSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Setting::create([
+            'name' => 'no_hp',
+            'value' => '081298440068',
+            'description' => 'No Hp untuk digunakan mengirim WA',
+        ]);
+        Setting::create([
+            'name' => 'token',
+            'value' => 'YMsEfPkZVnAVfuXDZF4D',
+            'description' => 'Token No Hp untuk digunakan mengirim WA',
+        ]);
     }
 }

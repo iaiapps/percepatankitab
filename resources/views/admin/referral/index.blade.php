@@ -3,49 +3,44 @@
 @section('title', 'Data Master Referral')
 @section('content')
     <div class="card p-3 rounded">
-
         <div class="table-responsive">
-
-            <div class="table-responsive">
-                <table id="table" class="table table-striped align-middle" style="width: 100%">
-                    <thead>
+            <table id="table" class="table table-striped align-middle" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Kode Referral</th>
+                        <th scope="col">Komisi</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($referrals->where('tipe', 'reseller') as $referral)
                         <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Kode Referral</th>
-                            <th scope="col">Komisi</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($referrals->where('tipe', 'reseller') as $referral)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $referral->user->name }}</td>
-                                <td>{{ $referral->kode_referral }}</td>
-                                <td><a href="{{ route('referral.show', $referral->id) }}" class="btn btn-primary btn-sm"><i
-                                            class="bi bi-card-checklist"></i>
-                                        lihat</a></td>
-                                <td>
-                                    <a href="{{ route('referral.edit', $referral->id) }}" class="btn btn-warning btn-sm"><i
-                                            class="bi bi-pencil-square"></i>
-                                        edit</a>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $referral->user->name }}</td>
+                            <td>{{ $referral->kode_referral }}</td>
+                            <td><a href="{{ route('referral.show', $referral->id) }}" class="btn btn-primary btn-sm"><i
+                                        class="bi bi-card-checklist"></i>
+                                    lihat</a></td>
+                            <td>
+                                <a href="{{ route('referral.edit', $referral->id) }}" class="btn btn-warning btn-sm"><i
+                                        class="bi bi-pencil-square"></i>
+                                    edit</a>
 
-                                    <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
-                                        action="{{ route('referral.destroy', $referral->id) }}" method="post"
-                                        class="d-inline">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="bi bi-trash3"></i> del
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                                <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
+                                    action="{{ route('referral.destroy', $referral->id) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash3"></i> del
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

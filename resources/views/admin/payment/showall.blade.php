@@ -14,7 +14,7 @@
             </div>
 
             <div class="border p-3 rounded">
-                <p class="mb-0">Nama Pengirim : Muhammad Ilyas</p>
+                <p class="mb-0">Nama Pengirim : Moch. Ilyas</p>
                 <hr>
                 <p class="mb-0">No Hp Pengirim : 081298440068</p>
             </div>

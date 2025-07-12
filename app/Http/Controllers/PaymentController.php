@@ -151,13 +151,13 @@ class PaymentController extends Controller
         }
         if (!$payment->wa_notified && $user->no_hp) {
             $phone = preg_replace('/[^0-9]/', '', $user->no_hp);
-            $message = "Assalamualaikum Wr. Wb {$user->name},
+            $message = "Assalamualaikum warahmatullah wabarakatuh,
+            \nHai {$user->name},
             \n✅ Pembayaran Anda telah diverifikasi.
             \nSelamat! Akun Anda telah aktif dan bisa mengakses semua kelas.
             \n🔑 Token Akses: *{$token_code}*
             \nSilakan masuk kelas untuk mulai belajar.";
 
-            // Http::withToken(env('FONNTE_API_KEY'))->post('https://api.fonnte.com/send', [
             Http::withHeaders([
                 'Authorization' => 'DQtfjXYnP1B185nrQAX2'
             ])->post('https://api.fonnte.com/send', [
